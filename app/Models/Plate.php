@@ -10,4 +10,14 @@ class Plate extends Model
     {
         return $this->belongsTo('App\Models\Restaurant');
     }
+
+    public function orders()
+    {
+        return $this->belongsToMany('App\Models\Order');
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany('App\Models\Category');
+    }
 }
