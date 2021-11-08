@@ -7,7 +7,7 @@
             <thead >
                 <tr class="bg-secondary text-white">
                     <th scope="col">Id</th>
-                    <th scope="col"></th>
+                    <th scope="col">Anteprima</th>
                     <th scope="col">Name</th>
                     <th scope="col">Portata</th>
                     <th scope="col">Categoria</th>

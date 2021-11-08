@@ -22,7 +22,6 @@ class RestaurantsTableSeeder extends Seeder
                 'vat_number'=>'09234567891',
                 'phone'=>"0688016055",
                 'hours'=>"Giornaliero: 6am-11pm",
-                'user_id' => 1
             ],
             [
                 'name' => "Bakeri",
@@ -31,7 +30,6 @@ class RestaurantsTableSeeder extends Seeder
                 'vat_number'=>'09234567671',
                 'phone'=>"0689016055",
                 'hours'=>"Giornaliero: 8am-7pm",
-                'user_id' => 2
 
             ],
             [
@@ -41,7 +39,6 @@ class RestaurantsTableSeeder extends Seeder
                 'vat_number'=>'09238567671',
                 'phone'=>"0688987055",
                 'hours'=>"Giornaliero: 11am-12:30am",
-                'user_id' => 3
 
             ],
             [
@@ -51,7 +48,6 @@ class RestaurantsTableSeeder extends Seeder
                 'vat_number'=>'09238569811',
                 'phone'=>"0688987099",
                 'hours'=>"Lun-Gio: 10am-10pm Ven: 10am-12am Sab: 12pm-12am Dom: 12pm-10pm",
-                'user_id' => 4
 
             ],
             [
@@ -61,7 +57,6 @@ class RestaurantsTableSeeder extends Seeder
                 'vat_number'=>'11389961001',
                 'phone'=>"06 574 3199",
                 'hours'=>"Lun-Dom: 10:30AM–2AM",
-                'user_id' => 5
             ],
         
          
