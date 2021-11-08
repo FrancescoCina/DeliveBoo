@@ -39,7 +39,24 @@ class PlateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // data validation
+        $request->validate([
+            'name' => 'required|unique:plates|max:255',
+            'image' => 'image|nullable',
+            'price' => 'min:2|max:6'
+        ]);
+
+        // catch the request value
+        $data = $request->all();
+
+        // creation of a new plate instance
+        $new_plate = new Plate();
+
+        // fill the new instance with the request data
+        $new_plate->fill($data);
+
+        // saving the new instance
+        $new_plate->save();
     }
 
     /**
