@@ -38,7 +38,7 @@ Route::middleware('auth')->name('admin.')->prefix('admin')->namespace('Admin')->
     // orders routes
     Route::get('/orders', 'OrderController@index')->name('orders.index');
     Route::get('/orders/{plate}', 'OrderController@show')->name('orders.show');
-    // Rotta SoftDelete MEMO
+    // Rotta SoftDelete
     // Route::delete('/orders/{plate}', 'OrderController@destroy')->name('orders.destroy');
 
     // Dovremo inserire in un secondo momento la rotta delle statistiche ordini MEMO
@@ -49,5 +49,5 @@ Route::middleware('auth')->name('admin.')->prefix('admin')->namespace('Admin')->
 // ROTTE DEL FRONTEND
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('guests.welcome');
 });
