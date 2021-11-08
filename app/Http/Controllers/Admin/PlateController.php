@@ -49,6 +49,8 @@ class PlateController extends Controller
         // catch the request value
         $data = $request->all();
 
+        dd($data);
+
         // creation of a new plate instance
         $new_plate = new Plate();
 
@@ -57,6 +59,12 @@ class PlateController extends Controller
 
         // saving the new instance
         $new_plate->save();
+
+        // attach categories to plate
+        if (array_key_exists('categories', $data)) $new_plate->categories()->attach($data['categories']);
+        // showing the result
+
+        return redirect()->route('admin.plates.show', $new_plate->id);
     }
 
     /**
@@ -76,9 +84,8 @@ class PlateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Plate $plate)
     {
-        return view('admin.plates.edit');
     }
 
     /**
