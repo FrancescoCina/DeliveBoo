@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Plate;
 use Illuminate\Http\Request;
 
 class PlateController extends Controller
@@ -14,7 +16,7 @@ class PlateController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.plates.index');
     }
 
     /**
@@ -24,7 +26,9 @@ class PlateController extends Controller
      */
     public function create()
     {
-        //
+        $plate = new Plate();
+        $categories = Category::all();
+        return view('admin.plates.create', compact('plate', 'categories'));
     }
 
     /**
@@ -57,7 +61,7 @@ class PlateController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.plates.edit');
     }
 
     /**
