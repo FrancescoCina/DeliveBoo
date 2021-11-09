@@ -19,7 +19,7 @@
                     <td>€ {{ $order->amount }}</td>
                     <td>{{ $order->is_payed }}</td>
                     <td>
-                      <form action="POST" action="{{ route('admin.orders.restore', $order->id) }}">
+                      <form method="POST" action="{{ route('admin.orders.restore', $order->id) }}">
                           @csrf
                           @method('PATCH')
                           <button class="btn btn-success" type="submit">Ripristina</button>

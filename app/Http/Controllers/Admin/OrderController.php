@@ -22,8 +22,9 @@ class OrderController extends Controller
 
     public function show($id)
     {
+        $restaurant = Restaurant::where('user_id', Auth::user()->id)->first();
         $order = Order::findOrFail($id);
-        return view('admin.orders.show', compact('order'));
+        return view('admin.orders.show', compact('order', 'restaurant'));
     }
 
     public function destroy(Order $order)
