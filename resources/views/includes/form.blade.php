@@ -1,6 +1,8 @@
 @extends('layouts.app')
 @section('content')
-@if ($errors->any())
+
+<section id="form" class="container">
+  @if ($errors->any())
     <div class="alert alert-danger">
         @foreach ($errors->all() as $error)
             <ul>
@@ -9,7 +11,6 @@
         @endforeach
     </div>
 @endif
-<section id="form" class="container">
     
     @if ($plate->id)
         <h1 class="text-center">Modifica Piatto</h1>
@@ -62,8 +63,8 @@
  
         @foreach ($categories as $category) 
           <div class="form-check form-check-inline">
-             <input class="form-check-input" type="checkbox" id="{{$category->id}}" value="option1">
-             <label class="form-check-label" for="{{$category->id}}" name="categories[]" @if(in_array($category->id , old('category', $categoriesIds ?? []))) checked @endif>{{$category->name}}</label>
+             <input class="form-check-input" type="checkbox" id="{{$category->id}}" value="{{$category->id}}" name="categories[]" @if(in_array($category->id , old('category', $categoriesIds ?? []))) checked @endif>
+             <label class="form-check-label" for="{{$category->id}}" >{{$category->name}}</label>
           </div>   
        @endforeach
        <div class="my-2 d-flex justify-content-between">

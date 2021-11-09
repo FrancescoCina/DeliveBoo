@@ -52,6 +52,7 @@ class PlateController extends Controller
      */
     public function store(Request $request)
     {
+
         // data validation
         $request->validate([
             'name' => 'required|unique:plates|max:255',
