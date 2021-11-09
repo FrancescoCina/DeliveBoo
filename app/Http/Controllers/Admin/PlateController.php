@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Plate;
+use App\Models\Category;
 
 class PlateController extends Controller
 {
@@ -14,7 +16,11 @@ class PlateController extends Controller
      */
     public function index()
     {
-        //
+        $plates = Plate::paginate(5);
+        $categories = Category::all();
+
+        return view('admin.plates.index', compact('categories', 'plates'));
+
     }
 
     /**
@@ -24,7 +30,7 @@ class PlateController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.plates.create');
     }
 
     /**
@@ -46,7 +52,8 @@ class PlateController extends Controller
      */
     public function show($id)
     {
-        //
+        $plate= Plate::find($id);
+        return view('admin.plates.show', compact('plate'));
     }
 
     /**
@@ -57,7 +64,7 @@ class PlateController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
