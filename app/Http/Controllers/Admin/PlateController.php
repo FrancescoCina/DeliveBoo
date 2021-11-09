@@ -90,7 +90,7 @@ class PlateController extends Controller
         // taking plate category Ids to verify who is checked
         $categoriesIds = $plate->categories->pluck('id')->toArray();
 
-        return view('admin.plate.edit', compact('categoriesIds'));
+        return view('admin.plate.edit', compact('post', 'categories', 'categoriesIds'));
     }
 
     /**
