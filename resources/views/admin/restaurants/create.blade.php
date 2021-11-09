@@ -8,43 +8,49 @@
 
 
 @else
-<form method="POST" action="{{ route('admin.restaurants.store') }}">
+<h2 class="text-success mt-5 text-center" > Crea il Tuo Ristorante!</h2>
+<div class="container">
+<form class="w-75 mx-auto mt-5 text-center" method="POST" action="{{ route('admin.restaurants.store') }}">
         @csrf
-        <div>
+        <div class="form-group">
             <label for="name">Nome Ristorante</label>
-            <input type="text" name="name" id="name">
+            <input class="form-control" type="text" name="name" id="name">
         </div>
-        <div>
+        <div class="form-group">
             <label for="logo">URL Logo</label>
-            <input type="text" name="logo" id="logo">
+            <input class="form-control" type="text" name="logo" id="logo">
         </div>
-        <div>
+        <div class="form-group">
             <label for="address">Indirizzo</label>
-            <input type="text" name="address" id="address">
+            <input class="form-control" type="text" name="address" id="address">
         </div>
-        <div>
+        <div class="form-group">
             <label for="vat_number">PIVA</label>
-            <input type="text" name="vat_number" id="vat_number">
+            <input class="form-control" type="text" name="vat_number" id="vat_number">
         </div>
-        <div>
+        <div class="form-group">
             <label for="phone">Numero di Telefono</label>
-            <input type="text" name="phone" id="phone">
+            <input class="form-control" type="text" name="phone" id="phone">
         </div>
-        <div>
+        <div class="form-group">
             <label for="hours">Orari</label>
-            <input type="text" name="hours" id="hours">
+            <input class="form-control" type="text" name="hours" id="hours">
         </div>
         <div>
-            <label for="type_id">Tipologie Ristorante</label>
+            <h2>Tipologie Ristorante</h2>
             <div>
                 @foreach($types as $type)
-                    <label for="'type' . '-' . {{$loop->iteration}}">{{$type->name}}</label>
-                    <input type="checkbox" name="type" id="'type' . '-' . {{$loop->iteration}}">
+                    <label for="type-{{$loop->iteration}}">{{$type->name}}</label>
+                    <input type="checkbox" name="types[]" value="{{$type->id}}" id="'type-{{$loop->iteration}}">
                 @endforeach
             </div>
         </div>
 
-        <button type="submit">Crea</button>
+        <div class="my-2 d-flex justify-content-center">
+         <button class='btn btn-success mx-4' type="submit">Crea</button>
+         <a class='btn btn-outline-secondary mx-4' href="{{route('admin.restaurants.index')}}">Indietro</a>
+       </div>
     </form>
+    </div>
     @endif
 @endsection
