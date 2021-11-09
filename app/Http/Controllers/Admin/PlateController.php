@@ -136,6 +136,10 @@ class PlateController extends Controller
         // catch all the data from the request
         $data = $request->all();
 
+        $boolean = filter_var($data['is_available'], FILTER_VALIDATE_BOOLEAN);
+        // reinsert in the request
+        $data['is_available'] = $boolean;
+
         // verifyng the checked categories
         if (!array_key_exists('categories', $data)) $plate->categories()->detach();
         else $plate->categories()->sync($data['categories']);
@@ -144,7 +148,7 @@ class PlateController extends Controller
         $plate->update($data);
 
         // result
-        return view('admin.plates.show', compact('post'));
+        return view('admin.plates.show', compact('plate'));
     }
 
     /**
