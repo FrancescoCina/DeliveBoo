@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Plate;
+use App\Models\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class PlateController extends Controller
 {
@@ -19,7 +22,10 @@ class PlateController extends Controller
         $plates = Plate::paginate(5);
         $categories = Category::all();
 
-        return view('admin.plates.index', compact('categories', 'plates'));
+        // take the restaurant id associated at the current user
+        $restaurant = Restaurant::where('user_id', Auth::user()->id)->first();
+
+        return view('admin.plates.index', compact('categories', 'plates', 'restaurant'));
     }
 
     /**
@@ -31,7 +37,11 @@ class PlateController extends Controller
     {
         $plate = new Plate();
         $categories = Category::all();
-        return view('admin.plates.create', compact('plate', 'categories'));
+
+        // take the restaurant id associated at the current user
+        $restaurant = Restaurant::where('user_id', Auth::user()->id)->first();
+
+        return view('admin.plates.create', compact('plate', 'categories', 'restaurant'));
     }
 
     /**
@@ -46,14 +56,23 @@ class PlateController extends Controller
         $request->validate([
             'name' => 'required|unique:plates|max:255',
             'image' => 'image|nullable',
-            'price' => 'min:2|max:6'
+            'price' => 'min:3|max:6',
+            'is_available' => 'nullable'
         ]);
 
         // catch the request value
         $data = $request->all();
+        // transform is_available in a boolean value
+        $boolean = filter_var($data['is_available'], FILTER_VALIDATE_BOOLEAN);
+        // reinsert in the request
+        $data['is_available'] = $boolean;
 
         // creation of a new plate instance
         $new_plate = new Plate();
+
+        // added restaurant_id 
+        $restaurantId = Restaurant::where('user_id', Auth::user()->id)->pluck('id')->toArray();
+        $new_plate->restaurant_id = $restaurantId[0];
 
         // fill the new instance with the request data
         $new_plate->fill($data);
@@ -77,6 +96,7 @@ class PlateController extends Controller
     public function show($id)
     {
         $plate = Plate::find($id);
+
         return view('admin.plates.show', compact('plate'));
     }
 
@@ -108,18 +128,17 @@ class PlateController extends Controller
     {
         // data validation
         $request->validate([
-            //? AGGIUNGERE L'IGNORE DEL NOME
-            // 'name' => 'required|unique:plates|max:255',
+            'name' => ['required', 'string', Rule::unique('plates')->ignore($plate->id)],
             'image' => 'image|nullable',
-            'price' => 'min:2|max:6'
+            'price' => 'min:3|max:6'
         ]);
 
         // catch all the data from the request
         $data = $request->all();
 
         // verifyng the checked categories
-        if (!array_key_exists('categories', $data)) $plate->tags()->detach();
-        else $plate->tags()->sync($data['tags']);
+        if (!array_key_exists('categories', $data)) $plate->categories()->detach();
+        else $plate->categories()->sync($data['categories']);
 
         // update 
         $plate->update($data);
