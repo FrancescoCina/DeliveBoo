@@ -36,6 +36,20 @@
             <option value="DOL">DOL</option>
           </select>
         </div>  
+        <div class="d-flex my-2">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="is_available" id="is_available" value="true">
+            <label class="form-check-label" for="is_available">
+              Disponibile
+            </label>
+          </div>
+          <div class="form-check ml-2">
+            <input class="form-check-input" type="radio" name="is_available" id="is_available" value="false">
+            <label class="form-check-label" for="is_available">
+              Non disponibile
+            </label>
+          </div>
+        </div>
  
         @foreach ($categories as $category) 
           <div class="form-check form-check-inline">
