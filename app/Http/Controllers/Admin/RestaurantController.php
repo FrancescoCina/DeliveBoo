@@ -21,21 +21,21 @@ class RestaurantController extends Controller
         $types = Type::all();
 
         return view('admin.restaurants.index', compact('restaurant', 'types'));
-
     }
 
     public function create()
     {
+        $restaurant = Restaurant::where('user_id', Auth::user()->id)->first();
 
         $types = Type::all();
 
-        return view("admin.restaurants.create", compact('types'));
+        return view("admin.restaurants.create", compact('types', 'restaurant'));
     }
 
     public function store(Request $request)
     {
 
-        $request -> validate([
+        $request->validate([
             'name' => 'required|max:100|string|min:3',
             //Modificare quando ci saranno le immagini definitive MEMO
             'logo' => 'string|nullable',
@@ -44,7 +44,7 @@ class RestaurantController extends Controller
             'hours' => 'string|nullable',
             'phone' => 'string|max:30',
         ]);
-        
+
         $data = $request->all();
 
         $new_restaurant = new Restaurant();
@@ -55,7 +55,7 @@ class RestaurantController extends Controller
 
         $new_restaurant->save();
 
-        if(array_key_exists('types', $data)) $restaurant->types()->attach($data['types']);
+        if (array_key_exists('types', $data)) $restaurant->types()->attach($data['types']);
 
         return redirect()->route('admin.restaurants.index');
     }

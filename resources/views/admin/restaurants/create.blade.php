@@ -2,6 +2,12 @@
 
 @section('content')
 
+@if($restaurant)
+
+    <h2 class="text-danger mt-5 text-center">C'è gia un ristorante associato al tuo profilo!</h2>
+
+
+@else
 <form method="POST" action="{{ route('admin.restaurants.store') }}">
         @csrf
         <div>
@@ -40,5 +46,5 @@
 
         <button type="submit">Crea</button>
     </form>
-
+    @endif
 @endsection
