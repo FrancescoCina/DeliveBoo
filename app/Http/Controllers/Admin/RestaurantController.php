@@ -55,7 +55,7 @@ class RestaurantController extends Controller
 
         $new_restaurant->save();
 
-        if (array_key_exists('types', $data)) $restaurant->types()->attach($data['types']);
+        if (array_key_exists('types', $data)) $new_restaurant->types()->attach($data['types']);
 
         return redirect()->route('admin.restaurants.index');
     }
