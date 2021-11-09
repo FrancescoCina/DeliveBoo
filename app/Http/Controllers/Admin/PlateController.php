@@ -16,7 +16,7 @@ class PlateController extends Controller
      */
     public function index()
     {
-        $plates = Plate::all();
+        $plates = Plate::paginate(5);
         $categories = Category::all();
 
         return view('admin.plates.index', compact('categories', 'plates'));

@@ -53,4 +53,5 @@
             </tbody>
         </div>
     </table>
+    <div class="d-flex justify-content-center">{{$plates->links()}}</div>
 @endsection
