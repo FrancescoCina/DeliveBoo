@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Plate;
 use Illuminate\Http\Request;
 use App\Models\Plate;
 use App\Models\Category;
@@ -20,7 +22,6 @@ class PlateController extends Controller
         $categories = Category::all();
 
         return view('admin.plates.index', compact('categories', 'plates'));
-
     }
 
     /**
@@ -30,7 +31,9 @@ class PlateController extends Controller
      */
     public function create()
     {
-        return view('admin.plates.create');
+        $plate = new Plate();
+        $categories = Category::all();
+        return view('admin.plates.create', compact('plate', 'categories'));
     }
 
     /**
@@ -41,7 +44,30 @@ class PlateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // data validation
+        $request->validate([
+            'name' => 'required|unique:plates|max:255',
+            'image' => 'image|nullable',
+            'price' => 'min:2|max:6'
+        ]);
+
+        // catch the request value
+        $data = $request->all();
+
+        // creation of a new plate instance
+        $new_plate = new Plate();
+
+        // fill the new instance with the request data
+        $new_plate->fill($data);
+
+        // saving the new instance
+        $new_plate->save();
+
+        // attach categories to plate
+        if (array_key_exists('categories', $data)) $new_plate->categories()->attach($data['categories']);
+
+        // showing the result
+        return redirect()->route('admin.plates.show', $new_plate->id);
     }
 
     /**
@@ -52,7 +78,7 @@ class PlateController extends Controller
      */
     public function show($id)
     {
-        $plate= Plate::find($id);
+        $plate = Plate::find($id);
         return view('admin.plates.show', compact('plate'));
     }
 
@@ -62,9 +88,15 @@ class PlateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Plate $plate)
     {
-        
+        // taking categories
+        $categories = Category::all();
+
+        // taking plate category Ids to verify who is checked
+        $categoriesIds = $plate->categories->pluck('id')->toArray();
+
+        return view('admin.plate.edit', compact('post', 'categories', 'categoriesIds'));
     }
 
     /**
@@ -74,9 +106,28 @@ class PlateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Plate $plate)
     {
-        //
+        // data validation
+        $request->validate([
+            //? AGGIUNGERE L'IGNORE DEL NOME
+            // 'name' => 'required|unique:plates|max:255',
+            'image' => 'image|nullable',
+            'price' => 'min:2|max:6'
+        ]);
+
+        // catch all the data from the request
+        $data = $request->all();
+
+        // verifyng the checked categories
+        if (!array_key_exists('categories', $data)) $plate->tags()->detach();
+        else $plate->tags()->sync($data['tags']);
+
+        // update 
+        $plate->update($data);
+
+        // result
+        return view('admin.plates.show', compact('post'));
     }
 
     /**
@@ -85,8 +136,12 @@ class PlateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Plate $plate)
     {
-        //
+        // deleting plate method
+        $plate->delete();
+
+        // result
+        return redirect()->route('admin.posts.index')->with('type', 'success')->with('msg', "$plate->title eliminato con successo");
     }
 }

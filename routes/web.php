@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\PlateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,26 +28,19 @@ Route::middleware('auth')->name('admin.')->prefix('admin')->namespace('Admin')->
     Route::get('/restaurants/create', 'RestaurantController@create')->name('restaurants.create');
     Route::post('/restaurants', 'RestaurantController@store')->name('restaurants.store');
     // plates routes
-    // Route::get('/plates', 'PlateController@index')->name('plates.index');
-    // Route::get('/plates/{plate}', 'PlateController@show')->name('plates.show');
-    // Route::get('/plates/create', 'PlateController@create')->name('plates.create');
-    // Route::post('/plates', 'PlateController@store')->name('plates.store');
-    // Route::get('/plates/edit/{plate}', 'PlateController@edit')->name('plates.edit');
-    // Route::patch('/plates/{plate}', 'PlateController@update')->name('plates.update');
-    // Route::delete('/plates/{plate}', 'PlateController@destroy')->name('plates.destroy');
-    
+    Route::resource('plates', 'PlateController');
+
     // orders routes
     Route::get('/orders', 'OrderController@index')->name('orders.index');
     Route::get('/orders/{plate}', 'OrderController@show')->name('orders.show');
     // Rotta SoftDelete
     // Route::delete('/orders/{plate}', 'OrderController@destroy')->name('orders.destroy');
-    
+
     // Dovremo inserire in un secondo momento la rotta delle statistiche ordini MEMO
-    
-    
-    
+
+
+
     Route::resource('plates', 'PlateController');
-    
 });
 
 
