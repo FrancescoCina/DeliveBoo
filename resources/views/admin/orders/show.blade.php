@@ -6,6 +6,9 @@
 
 
 
+<div class="container">
+  <a class="btn btn-outline-secondary" href="{{ route('admin.orders.index') }}">Indietro</a>
+</div>
 <div class="container d-flex justify-content-center align-items-center">
     <div class="card my-5 py-3 font-size-2" style="width: 18rem;">
         <div class="card-body">
