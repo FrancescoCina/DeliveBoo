@@ -2,9 +2,9 @@
 
 @section('content')
 
-@if($restaurant)
+@if(!$restaurant)
 
-    <h2 class="text-danger mt-5 text-center">C'è gia un ristorante associato al tuo profilo!</h2>
+    @include('includes.alert_restaurant')
 
 
 @else

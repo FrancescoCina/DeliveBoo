@@ -4,7 +4,7 @@
     
 
 @if(!$restaurant)
-        <h2 class="text-danger mt-5 text-center">Non ci sono ristornti associato al tuo profilo!</h2>
+  @include('includes.alert_restaurant')
 @else  
 <div class="container">
   <a class="btn btn-outline-secondary" href="{{ route('admin.orders.index') }}">Indietro</a>
