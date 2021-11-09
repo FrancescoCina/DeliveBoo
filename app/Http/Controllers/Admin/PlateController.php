@@ -6,8 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Plate;
 use Illuminate\Http\Request;
-use App\Models\Plate;
-use App\Models\Category;
 
 class PlateController extends Controller
 {
@@ -96,7 +94,7 @@ class PlateController extends Controller
         // taking plate category Ids to verify who is checked
         $categoriesIds = $plate->categories->pluck('id')->toArray();
 
-        return view('admin.plate.edit', compact('post', 'categories', 'categoriesIds'));
+        return view('admin.plates.edit', compact('plate', 'categories', 'categoriesIds'));
     }
 
     /**
