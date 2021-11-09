@@ -140,6 +140,6 @@ class PlateController extends Controller
         $plate->delete();
 
         // result
-        return redirect()->route('admin.posts.index')->with('type', 'success')->with('msg', "$plate->title eliminato con successo");
+        return redirect()->route('admin.plates.index')->with('type', 'success')->with('msg', "$plate->title eliminato con successo");
     }
 }
