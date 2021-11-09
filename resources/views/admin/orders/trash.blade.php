@@ -16,13 +16,15 @@
                 @foreach ($orders as $order)  
                 <tr>
                     <td>{{ $order->id }}</td>
-                    <td>{{ $order->amount }}</td>
+                    <td>€ {{ $order->amount }}</td>
                     <td>{{ $order->is_payed }}</td>
-                    <form action="POST" action="{{ route('admin.orders.restore', $order->id) }}">
-                        @csrf
-                        @method('PATCH')
-                        <button class="btn btn-success" type="submit">Ripristina</button>
-                    </form>
+                    <td>
+                      <form action="POST" action="{{ route('admin.orders.restore', $order->id) }}">
+                          @csrf
+                          @method('PATCH')
+                          <button class="btn btn-success" type="submit">Ripristina</button>
+                      </form>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

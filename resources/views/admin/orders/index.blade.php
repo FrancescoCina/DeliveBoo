@@ -22,13 +22,15 @@
                 <th scope="col">Amount</th>
                 <th scope="col">Paid</th>
                 <th scope="col"></th>
+                <th scope="col"></th>
+
               </tr>
             </thead>
             <tbody>
                 @foreach ($orders as $order)  
                 <tr>
                     <td>{{ $order->id }}</td>
-                    <td>{{ $order->amount }}</td>
+                    <td> € {{ $order->amount }}</td>
                     <td>
                         @if($order->is_payed)
                         <span class="badge badge-pill badge-success">Pagato</span>
@@ -37,21 +39,21 @@
                         @endif
                     </td>
                     <td><a class="btn btn-primary" href="{{ route('admin.orders.show', $order->id) }}">Dettagli</a></td>
-                    {{-- Bottone per cancellare 
-                    <form action="POST" action="{{ route('admin.orders.destroy', $order->id) }}">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-danger" type="submit">Elimina</button>
-                    </form>
-                    --}}
+                    <td>
+                        <form method="POST" action="{{ route('admin.orders.destroy', $order->id) }}">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger" type="submit">Elimina</button>
+                        </form>
+                    </td>
+                   
 
                 </tr>
                 @endforeach
             </tbody>
-            <tfoot>
-                {{-- Link per il cestino                 
+            <tfoot>                
                     <a class="btn btn-info" href="{{ route('admin.orders.trash') }}">Vai agli ordini eliminati</a>
-                --}}
+               
 
                 <div class="d-flex justify-content-end">
                     {{ $orders->links() }}

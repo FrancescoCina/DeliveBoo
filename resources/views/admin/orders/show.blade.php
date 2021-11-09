@@ -23,6 +23,12 @@
             <span class="badge badge-pill badge-danger">Da pagare</span>
             @endif
         </p>
+          <form method="POST" action="{{ route('admin.orders.destroy', $order->id) }}">
+              @csrf
+              @method('DELETE')
+              <button class="btn btn-danger" type="submit">Elimina</button>
+          </form>
+      
     
             
 

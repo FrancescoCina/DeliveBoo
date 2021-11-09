@@ -31,8 +31,15 @@ Route::middleware('auth')->name('admin.')->prefix('admin')->namespace('Admin')->
     Route::resource('plates', 'PlateController');
 
     // orders routes
+    Route::get('/orders/trash', 'OrderController@trash')->name('orders.trash');
     Route::get('/orders', 'OrderController@index')->name('orders.index');
-    Route::get('/orders/{plate}', 'OrderController@show')->name('orders.show');
+    Route::get('/orders/{order}', 'OrderController@show')->name('orders.show');
+    Route::delete('/orders/{order}', 'OrderController@destroy')->name('orders.destroy');
+    Route::patch('/orders/{order}/restore, OrderController@restore')->name('orders.restore');
+
+
+
+
     // Rotta SoftDelete
     // Route::delete('/orders/{plate}', 'OrderController@destroy')->name('orders.destroy');
 

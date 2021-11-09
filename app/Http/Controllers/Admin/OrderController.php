@@ -36,7 +36,7 @@ class OrderController extends Controller
     public function trash()
     {
         $orders = Order::onlyTrashed()->get();
-        return view('admin.orders.show', compact('orders'));
+        return view('admin.orders.trash', compact('orders'));
     }
 
     public function restore($id)
