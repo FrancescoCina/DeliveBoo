@@ -3,32 +3,34 @@
 
 <div class="container">
     <table class="table table-secondary container">
-            <a class="btn btn-success container" href="{{route('admin.plates.create')}}">INSERISCI UN NUOVO PIATTO</a>
+            <a class="btn btn-success container p-3 mb-2" href="{{route('admin.plates.create')}}">INSERISCI UN NUOVO PIATTO</a>
             <thead >
-                <tr class="bg-secondary text-white">
+                <tr class="bg-secondary text-white text-center ">
                     <th scope="col">Id</th>
                     <th scope="col">Anteprima</th>
                     <th scope="col">Name</th>
                     <th scope="col">Portata</th>
                     <th scope="col">Categoria</th>
                     <th scope="col">Prezzo</th>
+                    <th scope="col"></th>
+
                 </tr>
             </thead>
-            <tbody>
+            <tbody >
                 @forelse ($plates as $plate)
-                <tr>
-                    <td>{{$plate->id}}</td>
+                <tr class="text-center">
+                    <td class="align-middle">{{$plate->id}}</td>
                     <td><img class="img-fluid w-25" src="{{$plate->image}}" alt="{{$plate->name}}"></td>
-                    <td>{{$plate->name}}</td>
-                    <td>{{$plate->serving}}</td>
+                    <td class="align-middle">{{$plate->name}}</td>
+                    <td class="align-middle">{{$plate->serving}}</td>
 
-                    <td> 
+                    <td class="align-middle"> 
                         @if ($plate->category)
                         <span class=" badge badge-pill badge-dark">{{$plate->category->name}}</span>
                         @else - 
                         @endif
                     </td>
-                    <td>{{$plate->price}} £</td>
+                    <td class="align-middle">{{$plate->price}} £</td>
                     <td class="d-flex justify-content-end">
                         <a href="{{route('admin.plates.show', $plate->id)}}" class="btn btn-primary ml-2">Vai</a>
                         <a href="{{route('admin.plates.edit', $plate->id)}}" class="btn btn-warning ml-2">Modifica</a>
