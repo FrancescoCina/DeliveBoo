@@ -37,6 +37,9 @@ Route::middleware('auth')->name('admin.')->prefix('admin')->namespace('Admin')->
     Route::delete('/orders/{order}', 'OrderController@destroy')->name('orders.destroy');
     Route::patch('/orders/{order}/restore', 'OrderController@restore')->name('orders.restore');
 
+    // Statistics Route
+    Route::get('/statistics', 'StatisticController@index')->name('orders.statistics.index');
+
 
 
 
