@@ -3,9 +3,9 @@
 @section('content')
     
 
-
-
-
+@if(!$restaurant)
+        <h2 class="text-danger mt-5 text-center">Non ci sono ristornti associato al tuo profilo!</h2>
+@else  
 <div class="container">
   <a class="btn btn-outline-secondary" href="{{ route('admin.orders.index') }}">Indietro</a>
 </div>
@@ -48,27 +48,7 @@
 
 
 {{-- Ingrandire font size??? --}}
-{{-- Modificare parametro dinamico in web.php da plate ad order --}}
-{{-- Devo modificare web.php con l'inserimento della rotta destroy e trash --}}
-{{-- 
-    
 
-    Route::delete('/orders/{order}', 'OrderController@destroy')->name('orders.destroy');
-    Route::get('/orders/trash, OrderController@trash')->name('orders.trash');  
-    Route::patch('/orders/{order}/restore, OrderController@restore')->name('orders.restore');  
-
-    
-    
-        --}}
-
-
-
-
-
-
-
-
-
-
+@endif
 
 @endsection
