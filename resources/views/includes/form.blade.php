@@ -1,5 +1,14 @@
 @extends('layouts.app')
 @section('content')
+@if ($errors->any())
+    <div class="alert alert-danger">
+        @foreach ($errors->all() as $error)
+            <ul>
+              <li>{{$error}}</li>
+            </ul>
+        @endforeach
+    </div>
+@endif
 <section id="form" class="container">
     
     @if ($plate->id)
@@ -13,11 +22,11 @@
         @csrf
        <div class="form-group">
          <label for="name">Nome del piatto</label>
-         <input type="text" class="form-control" id="name" name='name' placeholder="Inserisci il nome del piatto">{{$plate->name}}
+         <input type="text" class="form-control" id="name" name='name' placeholder="Inserisci il nome del piatto" value="{{$plate->name}}">
        </div>
        <div class="form-group">
           <label for="image">Immagine</label>
-          <input type="file" class="form-control" id="image" name='image'>{{$plate->image}}
+          <input type="file" class="form-control" id="image" name='image' value="{{$plate->image}}">
         </div>
         <div class="form-group">
           <label for="Description">Descrizione</label>
@@ -25,7 +34,7 @@
         </div>
         <div class="form-group">
           <label for="price">Prezzo</label>
-          <input type="text" class="form-control" id="price" name='price' placeholder="Inserisci il prezzo del piatto">{{$plate->price}}
+          <input type="text" class="form-control" id="price" name='price' placeholder="Inserisci il prezzo del piatto" value="{{$plate->price}}">
         </div>
         <div class="form-group">
           <label for="serving">Portata</label>
