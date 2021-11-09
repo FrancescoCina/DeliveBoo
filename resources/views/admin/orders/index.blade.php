@@ -11,7 +11,10 @@
 
         @endif
 
-  
+
+        @if(!$restaurant)
+        <h2 class="text-danger mt-5 text-center">Non hai nesssun ristorante associato al tuo profilo!</h2>
+        @else  
         <table class="table">
             <thead>
               <tr>
@@ -59,4 +62,5 @@
           </table>
 
     </section>
+    @endif
 @endsection
