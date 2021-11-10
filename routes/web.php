@@ -38,7 +38,7 @@ Route::middleware('auth')->name('admin.')->prefix('admin')->namespace('Admin')->
     Route::patch('/orders/{order}/restore', 'OrderController@restore')->name('orders.restore');
 
     // Statistics Route
-    Route::get('/statistics', 'StatisticController@index')->name('orders.statistics.index');
+    Route::get('/statistics', 'ChartController@index')->name('orders.statistics.index');;
 
 
 
