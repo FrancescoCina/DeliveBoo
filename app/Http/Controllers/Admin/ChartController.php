@@ -13,18 +13,31 @@ class ChartController extends Controller
 {
     public function index()
     {
-        $record = Order::select(DB::raw("COUNT(*) as count"), DB::raw("DAYNAME(created_at) as day_name"), DB::raw("DAY(created_at) as day"))
-            ->where('created_at', '>', Carbon::today()->subDay(6))
-            ->groupBy('day_name', 'day')
-            ->orderBy('day')
+        $TotOrders = Order::select(DB::raw("COUNT(*) as count"), DB::raw("MONTHNAME(created_at) as month_name"), DB::raw("MONTH(created_at) as month"))
+            ->where('created_at', '<', Carbon::today())
+            ->groupBy('month_name', 'month')
+            ->orderBy('month')
             ->get();
+
+
+
+
 
         $data = [];
 
-        foreach ($record as $row) {
-            $data['label'][] = $row->day_name;
+        foreach ($TotOrders as $row) {
+            $data['label'][] = $row->month_name;
             $data['data'][] = (int)$row->count;
         };
+
+
+        /*    $data = [
+
+            [
+                'label' => ['Prova1', 'prova2', 'prova3', 'prova4'],
+                'data' => [10, 20, 30, 40],
+            ],
+        ]; */
 
         $data['chart_data'] = json_encode($data);
         return view('admin.orders.statistics.index', $data);

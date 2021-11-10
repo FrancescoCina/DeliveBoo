@@ -21,7 +21,8 @@
 
     $(function(){
         const gData = JSON.parse(`<?php echo $chart_data; ?>`);
-        let ctx = document.getElementById('pie-chart');
+        console.log(gData);
+        let ctx = document.getElementById('pie-chart').getContext('2d');
         
         let data = {
             labels: gData.label,
@@ -30,13 +31,16 @@
                     label: 'orderCount',
                     data: gData.data,
                     backgroundColor: [
-                    "#DEB887",
+                    "#ffed4a",
                     "#A9A9A9",
                     "#DC143C",
                     "#F4A460",
                     "#2E8B57",
-                    "#1D7A46",
+                    "#1D7A46", 
                     "#CDA776",
+                    "#DEB887",
+                    "#A9A9A9",
+                    "#DC143C",
                     ],
                     borderColor: [
                     "#CDA776",
@@ -46,8 +50,11 @@
                     "#1D7A46",
                     "#F4A460",
                     "#CDA776",
+                    "#DEB887",
+                    "#A9A9A9",
+                    "#DC143C",
                     ],
-                    borderWidth: [1, 1, 1, 1, 1,1,1]
+                    borderWidth: [1, 1, 1, 1, 1,1,1,1,1,1]
                 }
             ]
         };
@@ -57,7 +64,7 @@
         title: {
           display: true,
           position: "top",
-          text: "Last Week Registered Users -  Day Wise Count",
+          text: "Totale Ordini ricevuti mese per mese",
           fontSize: 18,
           fontColor: "#111"
         },
@@ -68,12 +75,20 @@
             fontColor: "#333",
             fontSize: 16
           }
-        }
+        }, 
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true, 
+                    max: 10,
+                }
+            }],
+        },
       };
     
       //create Pie Chart class object
       let chart1 = new Chart(ctx, {
-        type: "pie",
+        type: "bar",
         data: data,
         options: options
       });
