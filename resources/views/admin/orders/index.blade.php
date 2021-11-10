@@ -15,6 +15,9 @@
         @if(!$restaurant)
         @include('includes.alert_restaurant')
         @else  
+
+          <a href="{{ route('admin.orders.statistics.index') }}" class="btn btn-success">Vai alle statistiche</a>
+
         <table class="table">
             <thead>
               <tr>

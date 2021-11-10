@@ -4,6 +4,7 @@
 
     
 <div class="container">
+    <a href="{{ route('admin.orders.index') }}" class="btn btn-outline-secondary">Torna agli ordini</a>
     <div class="row justify-content-center">
         <div class="col-12">
             <h1 class="text-center">Statistiche Ristorante</h1>
