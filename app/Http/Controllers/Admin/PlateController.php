@@ -21,6 +21,7 @@ class PlateController extends Controller
     {
         $plates = Plate::paginate(5);
         $categories = Category::all();
+        
 
         // take the restaurant id associated at the current user
         $restaurant = Restaurant::where('user_id', Auth::user()->id)->first();
@@ -98,7 +99,8 @@ class PlateController extends Controller
     {
         $plate = Plate::find($id);
 
-        return view('admin.plates.show', compact('plate'));
+        $restaurant = Restaurant::where('user_id', Auth::user()->id)->first();
+        return view('admin.plates.show', compact('plate', 'restaurant'));
     }
 
     /**
@@ -111,11 +113,12 @@ class PlateController extends Controller
     {
         // taking categories
         $categories = Category::all();
+        $restaurant = Restaurant::where('user_id', Auth::user()->id)->first();
 
         // taking plate category Ids to verify who is checked
         $categoriesIds = $plate->categories->pluck('id')->toArray();
 
-        return view('admin.plates.edit', compact('plate', 'categories', 'categoriesIds'));
+        return view('admin.plates.edit', compact('plate', 'categories', 'categoriesIds', 'restaurant'));
     }
 
     /**

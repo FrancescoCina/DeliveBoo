@@ -36,8 +36,9 @@ class OrderController extends Controller
 
     public function trash()
     {
+        $restaurant = Restaurant::where('user_id', Auth::user()->id)->first();
         $orders = Order::onlyTrashed()->get();
-        return view('admin.orders.trash', compact('orders'));
+        return view('admin.orders.trash', compact('orders', 'restaurant'));
     }
 
     public function restore($id)
