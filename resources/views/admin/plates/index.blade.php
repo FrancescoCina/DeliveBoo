@@ -27,7 +27,7 @@
                         <td class="align-middle">{{$plate->serving}}</td>
                         <td class="align-middle"> 
                             @forelse ($plate->categories as $category)
-                             <span class="badge bg-primary">{{$category->name}}</span>
+                             <span class="badge" style="background-color: {{$category->color}}">{{$category->name}}</span>
                             @empty
                             - 
                             @endforelse

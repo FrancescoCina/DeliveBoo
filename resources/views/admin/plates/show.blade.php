@@ -7,6 +7,11 @@
             <h6>Portata: <b>{{$plate->serving}}</b></h6>
             <h6> Categoria: @if ($plate->category) <b>{{ $plate->category->name }}</b> @else <b>nessuna categoria</b> @endif</h6>
             <h6>Prezzo: <b>{{$plate->price}} £</b></h6>
+            <h6>Categories: <b>@forelse ($plate->categories as $category)
+                <span class="badge" style="background-color: {{$category->color}}">{{$category->name}}</span>
+               @empty
+               - 
+               @endforelse </b></h6>
 
         </div>
         <div class="col-6 text-center">
@@ -23,14 +28,14 @@
             <button type="submit" class="btn btn-danger ml-2">Elimina</button>
         </form>
     </div>
-    {{-- <script>
+      {{-- <script>
             const deleteButtons = document.querySelectorAll('.delete-button');
                 deleteButtons.forEach(form => {
                     form.addEventListener('submit', function(e) {
                         e.preventDefault();
-                        const conf = confirm('Sei sicuro di voler cancellare questo piatto?');
+                        const conf = window.confirm('Sei sicuro di voler cancellare questo piatto?');
                         if (conf) this.submit();
                     });
                 });
-        </script> --}}
+        </script>  --}}
 @endsection
