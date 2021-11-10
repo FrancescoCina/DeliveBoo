@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
     <div class="container d-flex ">
         <div class="col-6">
@@ -27,15 +28,6 @@
             @method('DELETE')
             <button type="submit" class="btn btn-danger ml-2">Elimina</button>
         </form>
-    </div>
-      {{-- <script>
-            const deleteButtons = document.querySelectorAll('.delete-button');
-                deleteButtons.forEach(form => {
-                    form.addEventListener('submit', function(e) {
-                        e.preventDefault();
-                        const conf = window.confirm('Sei sicuro di voler cancellare questo piatto?');
-                        if (conf) this.submit();
-                    });
-                });
-        </script>  --}}
-@endsection
+    </div>      
+    @endsection
+

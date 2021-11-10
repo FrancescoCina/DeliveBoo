@@ -30,3 +30,11 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+const deleteButtons = document.querySelectorAll('.delete-button');
+    deleteButtons.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const conf = window.confirm('Sei sicuro di voler cancellare questo piatto?');
+            if (conf) this.submit();
+        });
+    });

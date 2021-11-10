@@ -43,7 +43,7 @@
                     </td>
                     <td><a class="btn btn-primary" href="{{ route('admin.orders.show', $order->id) }}">Dettagli</a></td>
                     <td>
-                        <form method="POST" action="{{ route('admin.orders.destroy', $order->id) }}">
+                        <form class="delete-button" method="POST" action="{{ route('admin.orders.destroy', $order->id) }}">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger" type="submit">Elimina</button>
