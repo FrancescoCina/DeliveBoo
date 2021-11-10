@@ -26,7 +26,7 @@
                         <td><img class="img-fluid w-25" src="{{$plate->image}}" alt="{{$plate->name}}"></td>
                         <td class="align-middle">{{$plate->name}}</td>
                         <td class="align-middle">{{$plate->serving}}</td>
-
+                        @dump($plate->category)
                         <td class="align-middle"> 
                             @if ($plate->category)
                             <span class=" badge badge-pill badge-dark">{{$plate->category->name}}</span>

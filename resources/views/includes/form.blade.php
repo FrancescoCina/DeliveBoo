@@ -25,10 +25,17 @@
          <label for="name">Nome del piatto</label>
          <input type="text" class="form-control" id="name" name='name' placeholder="Inserisci il nome del piatto" value="{{$plate->name}}">
        </div>
-       <div class="form-group">
+       @if ($plate->id)
+        <div class="form-group">
+          <label for="image">Immagine</label>
+          <input type="text" class="form-control" id="image" name='image'value="{{$plate->image}}">
+        </div>
+       @else
+        <div class="form-group">
           <label for="image">Immagine</label>
           <input type="file" class="form-control" id="image" name='image' value="{{$plate->image}}">
         </div>
+       @endif
         <div class="form-group">
           <label for="Description">Descrizione</label>
           <textarea class="form-control" id="Description" name="description" >{{$plate->description}}</textarea>
@@ -40,27 +47,25 @@
         <div class="form-group">
           <label for="serving">Portata</label>
           <select class="form-control" id="serving" name="serving">
-            <option value="ANT">ANT</option>
-            <option value="PRI">PRI</option>
-            <option value="SEC">SEC</option>
-            <option value="DOL">DOL</option>
+            <option @if ($plate->serving == 'ANT') selected @endif value="ANT">ANT</option>
+            <option @if ($plate->serving == 'PRI') selected @endif value="PRI">PRI</option>
+            <option @if ($plate->serving == 'SEC') selected @endif value="SEC">SEC</option>
+            <option @if ($plate->serving == 'DOL') selected @endif value="DOL">DOL</option>
           </select>
         </div>  
-        <div class="d-flex my-2">
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="is_available" id="is_available" value="true">
-            <label class="form-check-label" for="is_available">
-              Disponibile
-            </label>
+
+        <div class="my-2">
+          <h5>Disponibilità</h5>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="is_available" id="availability" value="true" @if($plate->is_available == 1) ? checked @endif>
+            <label class="form-check-label" for="availability">Disponibile</label>
           </div>
-          <div class="form-check ml-2">
-            <input class="form-check-input" type="radio" name="is_available" id="is_available" value="false">
-            <label class="form-check-label" for="is_available">
-              Non disponibile
-            </label>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="is_available" id="availability" value="false" @if($plate->is_available == 0) ? checked @endif>
+            <label class="form-check-label" for="availability">Non disponibile</label>
           </div>
         </div>
- 
+        <h5>Categoria</h5>
         @foreach ($categories as $category) 
           <div class="form-check form-check-inline">
              <input class="form-check-input" type="checkbox" id="{{$category->id}}" value="{{$category->id}}" name="categories[]" @if(in_array($category->id , old('category', $categoriesIds ?? []))) checked @endif>
@@ -71,9 +76,6 @@
          <button class='btn btn-success'type="submit">Salva</button>
          <a class='btn btn-outline-secondary' href="{{route('admin.plates.index')}}">Indietro</a>
        </div>
-       
-      
-
      </form>
    </section>   
 @endsection

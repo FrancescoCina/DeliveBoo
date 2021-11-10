@@ -52,7 +52,6 @@ class PlateController extends Controller
      */
     public function store(Request $request)
     {
-
         // data validation
         $request->validate([
             'name' => 'required|unique:plates|max:255',
@@ -63,6 +62,7 @@ class PlateController extends Controller
 
         // catch the request value
         $data = $request->all();
+
         // transform is_available in a boolean value
         $boolean = filter_var($data['is_available'], FILTER_VALIDATE_BOOLEAN);
         // reinsert in the request
@@ -130,7 +130,7 @@ class PlateController extends Controller
         // data validation
         $request->validate([
             'name' => ['required', 'string', Rule::unique('plates')->ignore($plate->id)],
-            'image' => 'image|nullable',
+            // 'image' => 'image|nullable',
             'price' => 'min:3|max:6'
         ]);
 
@@ -160,7 +160,10 @@ class PlateController extends Controller
      */
     public function destroy(Plate $plate)
     {
-        // deleting plate method
+        // detaching the child first
+        $plate->categories()->detach();
+
+        // deleting plate 
         $plate->delete();
 
         // result
