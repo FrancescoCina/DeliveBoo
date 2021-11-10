@@ -16,22 +16,22 @@
                         <th scope="col">Categoria</th>
                         <th scope="col">Prezzo</th>
                         <th scope="col"></th>
-
                     </tr>
                 </thead>
                 <tbody >
                     @forelse ($plates as $plate)
-                    <tr class="text-center">
+                     <tr class="text-center">
                         <td class="align-middle">{{$plate->id}}</td>
                         <td><img class="img-fluid w-25" src="{{$plate->image}}" alt="{{$plate->name}}"></td>
                         <td class="align-middle">{{$plate->name}}</td>
                         <td class="align-middle">{{$plate->serving}}</td>
                         @dump($plate->category)
                         <td class="align-middle"> 
-                            @if ($plate->category)
-                            <span class=" badge badge-pill badge-dark">{{$plate->category->name}}</span>
-                            @else - 
-                            @endif
+                            @forelse ($plate->categories as $category)
+                             <span class="badge bg-primary">{{$category->name}}</span>
+                            @empty
+                            - 
+                            @endforelse
                         </td>
                         <td class="align-middle">{{$plate->price}} £</td>
                         <td class="d-flex justify-content-end">
@@ -43,12 +43,12 @@
                                 <button type="submit" class="btn btn-danger ml-2">Elimina</button>
                             </form>
                         </td>
-                    </tr>
+                     </tr>
                         
                     @empty
                         <tr>
                             <td colspan="3" class="text-center">
-                                Non ci sono post da visualizzare
+                                Non ci sono piatti da visualizzare
                             </td>
                         </tr>
                         
