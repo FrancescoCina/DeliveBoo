@@ -22,8 +22,10 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
+                <th scope="col">Order Date</th>
                 <th scope="col">Amount</th>
                 <th scope="col">Paid</th>
+                <th scope="col">Customer Address</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
 
