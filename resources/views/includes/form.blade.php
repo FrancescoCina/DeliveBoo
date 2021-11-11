@@ -14,11 +14,11 @@
     
     @if ($plate->id)
         <h1 class="text-center">Modifica Piatto</h1>
-        <form class="w-75 mx-auto" method="POST" action="{{route('admin.plates.update',$plate->id)}}">
+        <form class="w-75 mx-auto" method="POST" action="{{route('admin.plates.update',$plate->id)}}" enctype="multipart/form-data">
         @method('PATCH')
     @else
        <h1 class="text-center">Crea Piatto</h1>
-       <form class="w-75 mx-auto" method="POST" action="{{route('admin.plates.store')}}">
+       <form class="w-75 mx-auto" method="POST" action="{{route('admin.plates.store')}}" enctype="multipart/form-data">
     @endif
         @csrf
        <div class="form-group">
