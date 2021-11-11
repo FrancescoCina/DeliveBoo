@@ -33,6 +33,7 @@
                 @foreach ($orders as $order)  
                 <tr>
                     <td>{{ $order->id }}</td>
+                    <td>{{ $order->created_at }}</td>
                     <td> € {{ $order->amount }}</td>
                     <td>
                         @if($order->is_payed)
@@ -41,7 +42,6 @@
                         <span class="badge badge-pill badge-danger">Da pagare</span>
                         @endif
                     </td>
-                    <td>{{ $order->customer_name }}</td>
                     <td>{{ $order->customer_address }}</td>
 
                     <td><a class="btn btn-primary" href="{{ route('admin.orders.show', $order->id) }}">Dettagli</a></td>
