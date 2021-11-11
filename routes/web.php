@@ -57,6 +57,6 @@ Route::middleware('auth')->name('admin.')->prefix('admin')->namespace('Admin')->
 
 // ROTTE DEL FRONTEND
 
-Route::get('/', function () {
+Route::get('{any?}', function () {
     return view('guests.welcome');
-});
+})->where('any', '.*');
