@@ -29,7 +29,7 @@
         <ul>
           <h6><strong>Piatti nell'ordine:</strong> </h6>
           @foreach ($plates as $plate)
-          <li>{{ $plate->name }}</li>
+          <li>{{$plate->quantity}} - {{ $plate->name }}  </li>
               
           @endforeach
         </ul>

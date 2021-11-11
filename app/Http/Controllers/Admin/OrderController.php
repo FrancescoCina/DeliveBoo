@@ -27,6 +27,16 @@ class OrderController extends Controller
         $restaurant = Restaurant::where('user_id', Auth::user()->id)->first();
         $order = Order::findOrFail($id);
         $plates = $order->plates;
+        // dd($plates);
+        foreach ($plates as $plate) {
+            $plate->quantity = $plate->pivot->quantity;
+            // dd($plate->quantity);
+        }
+
+        // dd($plates);
+
+
+
         return view('admin.orders.show', compact('order', 'restaurant', 'plates'));
     }
 
