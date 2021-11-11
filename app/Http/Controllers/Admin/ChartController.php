@@ -17,14 +17,14 @@ class ChartController extends Controller
     {
         $restaurant = Restaurant::where('user_id', Auth::user()->id)->first();
         $TotOrders = Order::select(DB::raw("COUNT(*) as count"), DB::raw("MONTHNAME(created_at) as month_name"), DB::raw("MONTH(created_at) as month"))
-            // ->where('created_at', '<', Carbon::today())
+            ->where('created_at', '<', Carbon::today())
             ->groupBy('month_name', 'month')
             ->orderBy('month')
             ->get();
             
 
         $amounts = Order::select(DB::raw("SUM(amount) as amount"), DB::raw("MONTHNAME(created_at) as month_name"), DB::raw("MONTH(created_at) as month"))
-            // ->where('created_at', '<', Carbon::today())
+            ->where('created_at', '<', Carbon::today())
             ->groupBy('month_name', 'month')
             ->orderBy('month')
             ->get();

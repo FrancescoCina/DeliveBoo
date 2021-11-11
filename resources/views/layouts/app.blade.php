@@ -33,6 +33,9 @@
                     <div class="d-flex flex-column align-items-center">
                         <a class="text-white" href="{{ url('/') }}">
                             {{ __('Home') }}
+                        <a class="text-white" href="{{ url('/admin') }}">
+                            {{ __('Admin') }}
+                        </a>
                         </a>
                         <a class="text-white" href="{{ url('/admin/plates') }}">
                             {{ __('Plates') }}
