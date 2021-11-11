@@ -2,7 +2,7 @@
 
 @section('content')
 
-@if(!$restaurant)
+@if($restaurant)
 
     @include('includes.alert_restaurant')
 
@@ -47,8 +47,8 @@
         </div>
 
         <div class="my-2 d-flex justify-content-center">
-         <button class='btn btn-success mx-4' type="submit">Crea</button>
-         <a class='btn btn-outline-secondary mx-4' href="{{route('admin.restaurants.index')}}">Indietro</a>
+            <a class='btn btn-outline-secondary mx-4' href="{{route('admin.restaurants.index')}}">Indietro</a>
+            <button class='btn btn-success mx-4' type="submit">Crea</button>
        </div>
     </form>
     </div>

@@ -21,13 +21,21 @@
 </head>
 <body>
     <div class="d-flex" id="app">
-        <div class="p-0 col-1">
-            <nav class="bg-secondary" style="width: 100%; height: 100vh; ">
+        <div class="p-0 col-1 fixed-top">
+            <nav class="custom-navbar" style="width: 100%; height: 100vh; ">
                 <div class=" d-flex flex-column justify-content-between" style="height: 100vh;">
+                    @if($restaurant)
                     <div class="d-flex flex-column align-items-center ">
-                        <img class="mt-3 mb-3 w-50 rounded-circle" src="{{ $restaurant->logo }}" alt="Logo">
-                        <h4 class="text-center">{{ $restaurant->name }}</h4>
+                        <div class="navbar-logo d-flex justify-content-center align-items-center my-3"> 
+                            <img class="img-fluid" src="{{ $restaurant->logo }}" alt="Logo">
+                        </div>
+                        <h4 class="text-center text-white">{{ $restaurant->name }}</h4>
                     </div>
+                    @else
+                    <div class="my-5">
+                        <p class="text-white text-center fs-5">Ricordati di configurare il tuo ristorante!</p>
+                    </div>
+                    @endif
                     <div class="d-flex flex-column align-items-center">
                         <a class="btn btn-light mb-2 px-5" href="{{ url('/admin') }}">
                             {{ __('Admin') }}
@@ -52,7 +60,7 @@
                 </div> 
             </nav>
         </div>
-        <div class="col-11">
+        <div class="col-11 offset-1">
             <main class="py-4" style="height: 100vh;">
                 @yield('content')
             </main>

@@ -2,6 +2,8 @@
 
 @section('content')
     <section id="orders" class="container">
+
+      <h1 class="text-success mb-4 text-center">Ordini Eliminati</h1>
     
         <a class="btn btn-outline-secondary my-3" href="{{ route('admin.orders.index') }}">Indietro</a>
   

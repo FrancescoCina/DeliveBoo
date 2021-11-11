@@ -1,17 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
+
+<h1 class="text-success text-center mb-4">{{$plate->name}}</h1>
+
     <div class="container d-flex ">
-        <div class="col-6">
-            <h2><b>{{$plate->name}}</b></h2>
+        <div class="col-6 pt-5">
             <h5>{{$plate->description}}</h5>
             <h6>Portata: <b>{{$plate->serving}}</b></h6>
-            <h6> Categoria: @if ($plate->category) <b>{{ $plate->category->name }}</b> @else <b>nessuna categoria</b> @endif</h6>
-            <h6>Prezzo: <b>{{$plate->price}} £</b></h6>
-            <h6>Categories: <b>@forelse ($plate->categories as $category)
-                <span class="badge" style="background-color: {{$category->color}}">{{$category->name}}</span>
+            <h6>Prezzo: <b>{{$plate->price}} &euro;</b></h6>
+            <h6>Categorie: <b>
+               @forelse ($plate->categories as $category)
+                <span class="badge" style="background-color: {{$category->color}}">{{$category->name}} </span>
                @empty
-               - 
+               Nessuna
                @endforelse </b></h6>
 
         </div>

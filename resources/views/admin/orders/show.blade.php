@@ -33,21 +33,6 @@
               
           @endforeach
         </ul>
-          <form method="POST" action="{{ route('admin.orders.destroy', $order->id) }}" class="delete-button">
-              @csrf
-              @method('DELETE')
-              <button class="btn btn-danger" type="submit">Elimina</button>
-          </form>
-      
-    
-            
-
-          
-   
-
-
-    
-         {{-- Bottone per softDelete --}}
     
         </div>
       </div>

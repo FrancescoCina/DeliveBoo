@@ -24,8 +24,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+            <div class="card mt-5">
+            <div class="card-header text-center bg-secondary auth-header text-white">{{ __('Reset Password') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -59,7 +59,7 @@
                             </div>
                         </div>
                         {{-- inserisco ritorna a login  --}}
-                            <a id="app" class="d-flex justify-content-end" href="{{ route('login') }}">{{ __('login') }}</a>
+                            <a id="app" class="d-flex justify-content-end" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </form>
                 </div>
             </div>
