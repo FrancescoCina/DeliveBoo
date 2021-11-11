@@ -50305,6 +50305,7 @@ __webpack_require__(/*! C:\Laravel\deliveboo\resources\js\app.js */"./resources/
 module.exports = __webpack_require__(/*! C:\Laravel\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
+
 /***/ })
 
 /******/ });

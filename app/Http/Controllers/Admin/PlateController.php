@@ -8,6 +8,7 @@ use App\Models\Plate;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 class PlateController extends Controller
@@ -56,7 +57,7 @@ class PlateController extends Controller
         // data validation
         $request->validate([
             'name' => 'required|unique:plates|max:255',
-            'image' => 'image|nullable',
+            'image' => 'image|mimes:jpg,png,jpeg,gif,svg|nullable',
             'price' => 'min:3|max:6',
             'is_available' => 'nullable'
         ]);
@@ -75,6 +76,12 @@ class PlateController extends Controller
         // added restaurant_id 
         $restaurantId = Restaurant::where('user_id', Auth::user()->id)->pluck('id')->toArray();
         $new_plate->restaurant_id = $restaurantId[0];
+
+        if (array_key_exists('image', $data)) {
+            // fill the image with the uploaded file
+            $img_path = Storage::put('public', $data['image']);
+            $data['image'] = $img_path;
+        }
 
         // fill the new instance with the request data
         $new_plate->fill($data);
@@ -130,10 +137,11 @@ class PlateController extends Controller
      */
     public function update(Request $request, Plate $plate)
     {
+
         // data validation
         $request->validate([
             'name' => ['required', 'string', Rule::unique('plates')->ignore($plate->id)],
-            // 'image' => 'image|nullable',
+            'image' => 'image|mimes:jpg,png,jpeg,gif,svg|nullable',
             'price' => 'min:1|max:6'
         ]);
 
@@ -147,6 +155,15 @@ class PlateController extends Controller
         // verifyng the checked categories
         if (!array_key_exists('categories', $data)) $plate->categories()->detach();
         else $plate->categories()->sync($data['categories']);
+
+
+        // fill the image with the uploaded file
+        if (array_key_exists('image', $data)) {
+            // fill the image with the uploaded file
+            if ($plate->image) Storage::delete($plate->image);
+            $img_path = Storage::put('public', $data['image']);
+            $data['image'] = $img_path;
+        }
 
         // update 
         $plate->update($data);

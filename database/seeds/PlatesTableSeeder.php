@@ -18,7 +18,6 @@ class PlatesTableSeeder extends Seeder
         $plates = [
             [
                 'name' => 'Lasagna',
-                'image' => 'https://images.unsplash.com/photo-1621510456681-2330135e5871?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1740&q=80',
                 'description' => 'Piatto simbolo italiano, strati di pasta verde all\'uovo, conditi con il classico ragù della tradizione, besciamella e formaggio grattugiato.',
                 'price' => 11.00,
                 'is_available' => true,
@@ -102,7 +101,7 @@ class PlatesTableSeeder extends Seeder
         foreach ($plates as $plate) {
             $new_plate = new Plate();
             $new_plate->name = $plate['name'];
-            $new_plate->image = $plate['image'];
+            // $new_plate->image = $plate['image'];
             $new_plate->description = $plate['description'];
             $new_plate->price = $plate['price'];
             $new_plate->is_available = $plate['is_available'];
