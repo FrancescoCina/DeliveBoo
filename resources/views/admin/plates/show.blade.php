@@ -16,7 +16,7 @@
 
         </div>
         <div class="col-6 text-center">
-            <img class="img-fluid w-75" src="{{$plate->image}}" alt="{{$plate->name}}">
+            <img class="img-fluid w-75" src="{{asset('storage/'.$plate->image)}}" alt="{{$plate->name}}">
         </div>
     </div>
      <hr>

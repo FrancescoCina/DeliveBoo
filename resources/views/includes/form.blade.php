@@ -25,17 +25,11 @@
          <label for="name">Nome del piatto</label>
          <input type="text" class="form-control" id="name" name='name' placeholder="Inserisci il nome del piatto" value="{{$plate->name}}">
        </div>
-       @if ($plate->id)
-        <div class="form-group">
+       <div class="form-group">
           <label for="image">Immagine</label>
-          <input type="text" class="form-control" id="image" name='image'value="{{$plate->image}}">
+          <input type="file" class="form-control" id="image" name='image' value="{{old('image',$plate->image)}}">
         </div>
-       @else
-        <div class="form-group">
-          <label for="image">Immagine</label>
-          <input type="file" class="form-control" id="image" name='image' value="{{$plate->image}}">
-        </div>
-       @endif
+        
         <div class="form-group">
           <label for="Description">Descrizione</label>
           <textarea class="form-control" id="Description" name="description" >{{$plate->description}}</textarea>
