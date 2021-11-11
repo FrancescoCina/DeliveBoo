@@ -28,14 +28,9 @@ Route::namespace('Api')->group(function () {
 
 // Rotte API
 /* 
-    - index dei ristoranti (in RestaurantController)
-    - index dei piatti associati al singolo risorante (in RestaurantController)
+
     - chiamata in post per attribuire quantità a tabella pivot order_plate (in PlateController)
     - chiamata in post per scrivere l'ordine sul DB nella tabella Orders (in OrderController)
     - chiamata in post per attribuire quantità a tabella pivot order_plate (in OrderController) --> dalla pagina del Carrello
-
-
-
-
 
 */
