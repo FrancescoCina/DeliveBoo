@@ -25,8 +25,8 @@
             <nav class="bg-secondary" style="width: 100%; height: 100vh; ">
                 <div class=" d-flex flex-column justify-content-between" style="height: 100vh;">
                     <div class="d-flex flex-column align-items-center ">
-                        {{-- <img class="mt-3 mb-3 w-50 rounded-circle" src="{{ $restaurant->logo }}" alt="Logo">
-                        <h4 class="text-center">{{ $restaurant->name }}</h4> --}}
+                        <img class="mt-3 mb-3 w-50 rounded-circle" src="{{ $restaurant->logo }}" alt="Logo">
+                        <h4 class="text-center">{{ $restaurant->name }}</h4>
                     </div>
 
 
@@ -34,23 +34,23 @@
                         <a class="text-white" href="{{ url('/') }}">
                             {{ __('Home') }}
                         </a>
-                    <a class="text-white" href="{{ url('/admin/plates') }}">
-                        {{ __('Plates') }}
-                    </a>
-                    <a class="text-white" href="{{ url('/admin/orders') }}">
-                        {{ __('Orders') }}
-                    </a>
-                    </div>
-                    <div class="d-flex flex-column align-items-center pb-5">
-                        <a class="text-white" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
+                        <a class="text-white" href="{{ url('/admin/plates') }}">
+                            {{ __('Plates') }}
                         </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" >
-                            @csrf
-                        </form>
+                        <a class="text-white" href="{{ url('/admin/orders') }}">
+                            {{ __('Orders') }}
+                        </a>
                     </div>
+                    <button type="button" class="btn btn-primary m-2 mb-5">
+                        <div class="d-flex flex-column align-items-center">
+                            <a class="text-white" href="{{ route('logout') }} "onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" >
+                                @csrf
+                            </form>
+                        </div>
+                    </button>
                 </div> 
             </nav>
         </div>
