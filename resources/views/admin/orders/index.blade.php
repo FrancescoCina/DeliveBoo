@@ -41,6 +41,9 @@
                         <span class="badge badge-pill badge-danger">Da pagare</span>
                         @endif
                     </td>
+                    <td>{{ $order->customer_name }}</td>
+                    <td>{{ $order->customer_address }}</td>
+
                     <td><a class="btn btn-primary" href="{{ route('admin.orders.show', $order->id) }}">Dettagli</a></td>
                     <td>
                         <form class="delete-button" method="POST" action="{{ route('admin.orders.destroy', $order->id) }}">

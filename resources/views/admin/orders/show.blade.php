@@ -26,6 +26,13 @@
             <span class="badge badge-pill badge-danger">Da pagare</span>
             @endif
         </p>
+        <ul>
+          <h6><strong>Piatti nell'ordine:</strong> </h6>
+          @foreach ($plates as $plate)
+          <li>{{ $plate->name }}</li>
+              
+          @endforeach
+        </ul>
           <form method="POST" action="{{ route('admin.orders.destroy', $order->id) }}" class="delete-button">
               @csrf
               @method('DELETE')

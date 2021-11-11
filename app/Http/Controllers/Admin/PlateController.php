@@ -21,7 +21,7 @@ class PlateController extends Controller
     {
         $plates = Plate::paginate(5);
         $categories = Category::all();
-        
+
 
         // take the restaurant id associated at the current user
         $restaurant = Restaurant::where('user_id', Auth::user()->id)->first();
@@ -134,7 +134,7 @@ class PlateController extends Controller
         $request->validate([
             'name' => ['required', 'string', Rule::unique('plates')->ignore($plate->id)],
             // 'image' => 'image|nullable',
-            'price' => 'min:3|max:6'
+            'price' => 'min:1|max:6'
         ]);
 
         // catch all the data from the request
@@ -151,8 +151,11 @@ class PlateController extends Controller
         // update 
         $plate->update($data);
 
+
+        $restaurant = Restaurant::where('user_id', Auth::user()->id)->first();
+
         // result
-        return view('admin.plates.show', compact('plate'));
+        return view('admin.plates.show', compact('plate', 'restaurant'));
     }
 
     /**
