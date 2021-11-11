@@ -31,16 +31,13 @@
 
 
                     <div class="d-flex flex-column align-items-center">
-                        <a class="text-white" href="{{ url('/') }}">
-                            {{ __('Home') }}
-                        <a class="text-white" href="{{ url('/admin') }}">
+                        <a class="btn btn-light mb-2 px-5" href="{{ url('/admin') }}">
                             {{ __('Admin') }}
                         </a>
-                        </a>
-                        <a class="text-white" href="{{ url('/admin/plates') }}">
+                        <a class="btn btn-light  mb-2 px-5" href="{{ url('/admin/plates') }}">
                             {{ __('Plates') }}
                         </a>
-                        <a class="text-white" href="{{ url('/admin/orders') }}">
+                        <a class="btn btn-light mb-2 px-5" href="{{ url('/admin/orders') }}">
                             {{ __('Orders') }}
                         </a>
                     </div>
