@@ -56,6 +56,10 @@
                                
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     
+                                    <a id="navbarDropdown" class="nav-link" href="{{ route('admin.restaurants.index') }}" role="button">
+                                        Vai al <strong>tuo Ristorante</strong>
+                                    </a>
+                                    
                                     <a id="navbarDropdown" class="nav-link" href="{{ route('admin.plates.index') }}" role="button">
                                         Vai al <strong>Menu</strong>
                                     </a>
