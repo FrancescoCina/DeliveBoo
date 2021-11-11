@@ -2,6 +2,8 @@
 
 @section('content')
     <section id="orders" class="container">
+    
+        <a class="btn btn-outline-secondary my-3" href="{{ route('admin.orders.index') }}">Indietro</a>
   
         <table class="table">
             <thead>

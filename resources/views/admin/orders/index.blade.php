@@ -22,8 +22,10 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
+                <th scope="col">Order Date</th>
                 <th scope="col">Amount</th>
                 <th scope="col">Paid</th>
+                <th scope="col">Customer Address</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
 
@@ -33,6 +35,7 @@
                 @foreach ($orders as $order)  
                 <tr>
                     <td>{{ $order->id }}</td>
+                    <td>{{ $order->created_at }}</td>
                     <td> € {{ $order->amount }}</td>
                     <td>
                         @if($order->is_payed)
@@ -41,6 +44,8 @@
                         <span class="badge badge-pill badge-danger">Da pagare</span>
                         @endif
                     </td>
+                    <td>{{ $order->customer_address }}</td>
+
                     <td><a class="btn btn-primary" href="{{ route('admin.orders.show', $order->id) }}">Dettagli</a></td>
                     <td>
                         <form class="delete-button" method="POST" action="{{ route('admin.orders.destroy', $order->id) }}">
