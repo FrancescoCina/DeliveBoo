@@ -2302,6 +2302,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Cart",
@@ -38674,6 +38676,10 @@ var render = function () {
         }),
         0
       ),
+      _vm._v(" "),
+      _c("a", { attrs: { href: "http://127.0.0.1:8000/welcome" } }, [
+        _vm._v("welcome page"),
+      ]),
       _vm._v(" "),
       _vm.showModal
         ? _c("ModalCart", { attrs: { shoppingCart: _vm.shoppingCart } })

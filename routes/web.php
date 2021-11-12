@@ -61,6 +61,12 @@ Route::get('/checkout', function () {
     return view('guests.checkout');
 });
 
+Route::get('/welcome', function () {
+    return view('guests.welcome')->name('guest.welcome');
+});
+
+
+
 /* 
 Route::get('{any?}', function () {
     return view('guests.welcome');

@@ -25,6 +25,8 @@
       </div>
     </div>
 
+    <a href="http://127.0.0.1:8000/welcome">welcome page</a>
+
     <ModalCart v-if="showModal" :shoppingCart="shoppingCart" />
   </div>
 </template>
