@@ -12,7 +12,7 @@
 
         @forelse ($plates as $plate)
             <div class="card mx-1 my-4" style="width: 18rem;">
-                <img src="{{$plate->image}}" alt="{{$plate->name}}" class="card-img-top card-img-custom">
+                <img src="{{asset('storage/'.$plate->image)}}" alt="{{$plate->name}}" class="card-img-top card-img-custom">
                 <div class="card-body">
                     <h5 class="card-title">{{$plate->name}}</h5>
                     <ul class="plates-card-list">

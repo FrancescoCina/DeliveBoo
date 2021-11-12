@@ -138,10 +138,11 @@ class PlateController extends Controller
     public function update(Request $request, Plate $plate)
     {
 
+
         // data validation
         $request->validate([
             'name' => ['required', 'string', Rule::unique('plates')->ignore($plate->id)],
-            'image' => 'image|mimes:jpg,png,jpeg,gif,svg|nullable',
+            // 'image' => 'image|mimes:jpg,png,jpeg,gif,svg|nullable',
             'price' => 'min:1|max:6'
         ]);
 
@@ -155,7 +156,6 @@ class PlateController extends Controller
         // verifyng the checked categories
         if (!array_key_exists('categories', $data)) $plate->categories()->detach();
         else $plate->categories()->sync($data['categories']);
-
 
         // fill the image with the uploaded file
         if (array_key_exists('image', $data)) {
