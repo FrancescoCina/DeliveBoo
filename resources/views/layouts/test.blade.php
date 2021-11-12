@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <header>Prova</header>
+    {{-- <header>Prova</header> --}}
     <main>
         @yield('content')
     </main>

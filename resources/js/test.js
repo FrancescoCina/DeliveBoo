@@ -8,11 +8,11 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-import Test from "./components/Test.vue";
+import Cart from "./components/Cart.vue";
 import axios from "axios";
 
 const app = new Vue({
     el: '#root',
-    render: h => h(Test)
+    render: h => h(Cart)
 
 });

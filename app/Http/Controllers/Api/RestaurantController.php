@@ -43,7 +43,7 @@ class RestaurantController extends Controller
      */
     public function show($id)
     {
-        $restaurant = Restaurant::find($id)->toArray();
+        $restaurant = Restaurant::find($id);
         $restaurant_plates = Plate::where('restaurant_id', $id)->with('restaurant')->get();
         $filtered_plate = [];
         foreach ($restaurant_plates as $plate) {
@@ -59,11 +59,8 @@ class RestaurantController extends Controller
             ];
         }
 
-        $filtered_restaurant[] = $restaurant;
-
-
         $result = [
-            'restaurant' => $filtered_restaurant,
+            'restaurant' => $restaurant,
             'plates' => $filtered_plate,
         ];
 
