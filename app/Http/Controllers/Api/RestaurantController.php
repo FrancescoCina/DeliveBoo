@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Models\Restaurant;
 use App\Models\Plate;
@@ -42,8 +43,31 @@ class RestaurantController extends Controller
      */
     public function show($id)
     {
-        $restaurant = Restaurant::with('plates')->find($id);
-        return response()->json($restaurant);
+        $restaurant = Restaurant::find($id)->toArray();
+        $restaurant_plates = Plate::where('restaurant_id', $id)->with('restaurant')->get();
+        $filtered_plate = [];
+        foreach ($restaurant_plates as $plate) {
+            $filtered_plate[] = [
+                'id' => $plate->id,
+                'name' => $plate->name,
+                'image' => $plate->image,
+                'description' => $plate->description,
+                'quantity' => 0,
+                'price' => $plate->price,
+                'serving' => $plate->serving,
+                'is_available' => $plate->is_available,
+            ];
+        }
+
+        $filtered_restaurant[] = $restaurant;
+
+
+        $result = [
+            'restaurant' => $filtered_restaurant,
+            'plates' => $filtered_plate,
+        ];
+
+        return response()->json($result);
     }
 
     /**
