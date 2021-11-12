@@ -1,6 +1,6 @@
 <template>
   <div class="bg">
-    <!-- Button trigger modal -->
+    <!-- Button modal -->
     <button
       type="button"
       class="btn btn-primary p-3"
@@ -285,12 +285,6 @@
 <script>
 export default {
   name: "App",
-  // data() {
-  //   return {
-  //     showModal: true,
-  //   };
-  // },
-  // methods: {},
 };
 </script>
 
@@ -541,28 +535,4 @@ export default {
 img {
   width: 200px;
 }
-
-/* modal */
-/* .show-btn {
-  background: #fff;
-  padding: 10px 20px;
-  font-size: 20px;
-  font-weight: 500;
-  color: #3498db;
-  cursor: pointer;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-input[type="checkbox"] {
-  display: none;
-}
-.container {
-  display: none;
-  background: #fff;
-  width: 100vw;
-  padding: 30px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-}
-#show:checked ~ .container {
-  display: block;
-} */
 </style>
