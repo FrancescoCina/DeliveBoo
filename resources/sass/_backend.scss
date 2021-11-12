@@ -1,0 +1,44 @@
+.navbar-logo{
+    height: 100px;
+    width: 100px;
+    margin: auto;
+    overflow: hidden;
+    img{
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    &:hover img{
+        border: 3px solid white;
+    }
+}
+
+.restaurant-title{
+    font-size: 50px;
+    font-family: montserrat, sans-serif;
+}
+
+.restaurant-info{
+    font-size: 20px;
+    line-height: 50px;
+    list-style-type: none;
+}
+
+.custom-divider{
+    border-width: 2px;
+    border-color: gray;
+    width: 90%;
+}
+
+.card-img-custom{
+    height: 200px;
+}
+
+.plates-card-list{
+    list-style-type: none;
+}
+
+.custom-navbar{
+    background: linear-gradient(#aaaaaa, #0c0c0c);
+}

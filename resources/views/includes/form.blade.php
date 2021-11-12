@@ -13,12 +13,14 @@
 @endif
     
     @if ($plate->id)
-        <h1 class="text-center">Modifica Piatto</h1>
-        <form class="w-75 mx-auto" method="POST" action="{{route('admin.plates.update',$plate->id)}}" enctype="multipart/form-data">
+
+        <h1 class="text-success text-center">Modifica Piatto</h1>
+        <form class="w-75 mx-auto" method="POST" action="{{route('admin.plates.update',$plate->id)}}">
         @method('PATCH')
     @else
-       <h1 class="text-center">Crea Piatto</h1>
-       <form class="w-75 mx-auto" method="POST" action="{{route('admin.plates.store')}}" enctype="multipart/form-data">
+       <h1 class="text-success text-center">Crea Piatto</h1>
+       <form class="w-75 mx-auto" method="POST" action="{{route('admin.plates.store')}}">
+
     @endif
         @csrf
        <div class="form-group">
@@ -67,8 +69,8 @@
           </div>   
        @endforeach
        <div class="my-2 d-flex justify-content-between">
-         <button class='btn btn-success'type="submit">Salva</button>
          <a class='btn btn-outline-secondary' href="{{route('admin.plates.index')}}">Indietro</a>
+         <button class='btn btn-success'type="submit">Salva</button>
        </div>
      </form>
    </section>   

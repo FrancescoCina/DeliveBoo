@@ -3,18 +3,18 @@
 @section('content')
 
     
-<div class="container">
+<div class="container-fluid">
     <a href="{{ route('admin.orders.index') }}" class="btn btn-outline-secondary">Torna agli ordini</a>
-    <h1 class="text-center">Statistiche Ristorante</h1>
-    <div class="row justify-content-between">
-        <div class="col-6 ">
-          <div class=" pie-chart-container">
+    <h1 class="text-success mb-4 text-center">Statistiche Ristorante</h1>
+    <div class="row justify-content-around">
+        <div class="col-5 pt-5">
+          <div class=" pie-chart-container pt-5">
             <canvas class="my-5" id="pie-chart"></canvas>
           </div>
         </div>
 
-        <div class="col-6 ">
-          <div class=" pie-chart-container">
+        <div class="col-5 pt-5">
+          <div class=" pie-chart-container pt-5">
             <canvas class="my-5" id="amount-chart"></canvas>
           </div>
         </div>

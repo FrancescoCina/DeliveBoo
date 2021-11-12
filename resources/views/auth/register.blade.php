@@ -24,8 +24,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+            <div class="card mt-5">
+            <div class="card-header text-center bg-secondary auth-header text-white">{{ __('Register') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -90,7 +90,7 @@
                         </div>
                     </form>
                     {{-- inserisco ritorna a login  --}}
-                        <a id="app" class="d-flex justify-content-end" href="{{ route('login') }}">{{ __('login') }}</a>
+                        <a id="app" class="d-flex justify-content-end" href="{{ route('login') }}">{{ __('Login') }}</a>
                 </div>
             </div>
         </div>

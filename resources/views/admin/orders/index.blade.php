@@ -16,6 +16,8 @@
         @include('includes.alert_restaurant')
         @else  
 
+        <h1 class="text-success text-center mb-2">I Tuoi Ordini</h1>
+
           <a href="{{ route('admin.orders.statistics.index') }}" class="btn btn-success">Vai alle statistiche</a>
 
         <table class="table">
@@ -26,7 +28,6 @@
                 <th scope="col">Amount</th>
                 <th scope="col">Paid</th>
                 <th scope="col">Customer Address</th>
-                <th scope="col"></th>
                 <th scope="col"></th>
 
               </tr>
@@ -46,26 +47,18 @@
                     </td>
                     <td>{{ $order->customer_address }}</td>
 
-                    <td><a class="btn btn-primary" href="{{ route('admin.orders.show', $order->id) }}">Dettagli</a></td>
-                    <td>
-                        <form class="delete-button" method="POST" action="{{ route('admin.orders.destroy', $order->id) }}">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger" type="submit">Elimina</button>
-                        </form>
-                    </td>
+                    <td><a class="btn btn-primary" href="{{ route('admin.orders.show', $order->id) }}">Vai</a></td>
                    
 
                 </tr>
                 @endforeach
             </tbody>
             <tfoot>                
-                    <a class="btn btn-info" href="{{ route('admin.orders.trash') }}">Vai agli ordini eliminati</a>
-               
+              <a class="btn btn-primary" href="{{ route('admin.orders.trash') }}">Vai agli ordini eliminati</a>
 
-                <div class="d-flex justify-content-end">
-                    {{ $orders->links() }}
-                </div>
+              <div class="d-flex justify-content-end">
+                  {{ $orders->links() }}
+              </div>
 
 
             </tfoot>
