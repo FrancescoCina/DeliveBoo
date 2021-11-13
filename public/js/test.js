@@ -2312,6 +2312,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Cart",
@@ -2343,33 +2360,51 @@ __webpack_require__.r(__webpack_exports__);
         this.totalPrice += plate.price;
       } else {
         plate.quantity++;
-        this.totalPrice += plate.price * plate.quantity;
+        this.totalPrice += plate.price;
       }
 
-      this.showModal = true;
-      console.log(this.shoppingCart); // localStorage.setItem("cart", this.shoppingCart);
+      this.showModal = true; // console.log(this.shoppingCart);
     },
     removePlateToCart: function removePlateToCart(plate) {
       if (this.shoppingCart.includes(plate) && plate.quantity > 0) {
         plate.quantity--;
         this.totalPrice = this.totalPrice - plate.price;
-      } else if (plate.quantity <= 0) {
-        console.log("rimosso" + this.shoppingCart);
-        return;
-      } else {
-        this.shoppingCart.split(plate, 1);
+      } else if (plate.quantity == 0) {
+        // console.log("rimosso" + this.shoppingCart);
         this.totalPrice = this.totalPrice - plate.price;
       }
-    } // Per cancellare la cache del browser MEMO
+    },
+    // LOCAL STORAGE
+    saveCartInLocalStorage: function saveCartInLocalStorage() {
+      var serializedShoppingCart = JSON.stringify(this.shoppingCart);
+      var serializedTotalPrice = JSON.stringify(this.totalPrice);
+      localStorage.setItem("cart", serializedShoppingCart);
+      localStorage.setItem("amount", serializedTotalPrice);
+    },
+    clearLocalStorage: function clearLocalStorage() {
+      this.shoppingCart = [];
+      this.totalPrice = 0;
+      localStorage.setItem("cart", JSON.stringify(this.shoppingCart));
+      localStorage.setItem("amount", JSON.stringify(this.totalPrice));
+    },
+    // Per cancellare la cache del browser MEMO
 
-    /*   removeLocalStorage() {
+    /* clearLocalStorage() {
       localStorage.removeItem("cart");
+      localStorage.removeItem("amount");
       console.log(this.shoppingCart);
     }, */
-
+    toggleModal: function toggleModal() {
+      this.showModal = !this.showModal;
+    }
   },
   created: function created() {
     this.getRestaurantAndPlatesFromApi();
+
+    if (this.shoppingCart !== null && this.totalPrice !== null) {
+      this.shoppingCart = JSON.parse(localStorage.getItem("cart"));
+      this.totalPrice = JSON.parse(localStorage.getItem("amount"));
+    }
   }
 });
 
@@ -2421,6 +2456,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ModalCart",
   props: ["shoppingCart", "totalPrice"]
+  /*   methods: {
+      removePlateToCart(plate, index) {
+      if (this.shoppingCart.includes(plate) && plate.quantity > 0) {
+        plate.quantity--;
+        this.totalPrice = this.totalPrice - plate.price;
+        this.shoppingCart.split(1, 1);
+      } else if (plate.quantity == 0) {
+        // console.log("rimosso" + this.shoppingCart);
+        this.shoppingCart.split(index, 1);
+        this.totalPrice = this.totalPrice - plate.price;
+        console.log(this.shoppingCart.length);
+      } else if (this.shoppingCart.length == 0) {
+        this.totalPrice = 0;
+        console.log(this.totalPrice);
+        console.log(this.shoppingCart);
+        // this.showModal = false;
+      }
+    },
+  }, */
+
 });
 
 /***/ }),
@@ -38718,11 +38773,11 @@ var render = function () {
       _c(
         "div",
         { staticClass: "cards-container d-flex justify-content-center" },
-        _vm._l(_vm.plates, function (plate) {
+        _vm._l(_vm.plates, function (plate, index) {
           return _c(
             "div",
             {
-              key: plate.id,
+              key: plate.id + index,
               staticClass: "card col-3 my-4",
               staticStyle: { width: "18rem" },
             },
@@ -38752,6 +38807,7 @@ var render = function () {
                 _c(
                   "a",
                   {
+                    staticClass: "btn btn-success",
                     on: {
                       click: function ($event) {
                         return _vm.addPlateToCart(plate)
@@ -38767,25 +38823,48 @@ var render = function () {
                   ? _c(
                       "a",
                       {
+                        staticClass: "btn btn-danger",
                         on: {
                           click: function ($event) {
-                            return _vm.removePlateToCart(plate)
+                            return _vm.removePlateToCart(plate, index)
                           },
                         },
                       },
                       [_vm._v("\n          Rimuovi\n        ")]
                     )
                   : _vm._e(),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-info",
+                    on: { click: _vm.saveCartInLocalStorage },
+                  },
+                  [_vm._v("\n          Local Storage\n        ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-info",
+                    on: { click: _vm.clearLocalStorage },
+                  },
+                  [_vm._v(" Pulisci Tutto ")]
+                ),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c("a", { on: { click: _vm.toggleModal } }, [
+                  _vm._v("Modale si/no"),
+                ]),
               ]),
             ]
           )
         }),
         0
       ),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "http://127.0.0.1:8000/welcome" } }, [
-        _vm._v("welcome page"),
-      ]),
       _vm._v(" "),
       _vm.showModal
         ? _c("ModalCart", {
@@ -51302,7 +51381,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_Cart_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Cart.vue */ "./resources/js/components/Cart.vue");
+/* harmony import */ var _components_Cart_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Cart.vue */ "./resources/js/components/Cart.vue");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /**
@@ -51318,7 +51397,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 var app = new Vue({
   el: '#root',
   render: function render(h) {
-    return h(_components_Cart_vue__WEBPACK_IMPORTED_MODULE_2__["default"]);
+    return h(_components_Cart_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
   }
 });
 

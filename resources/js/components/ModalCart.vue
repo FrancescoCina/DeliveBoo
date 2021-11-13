@@ -36,6 +36,25 @@
 export default {
   name: "ModalCart",
   props: ["shoppingCart", "totalPrice"],
+  /*   methods: {
+      removePlateToCart(plate, index) {
+      if (this.shoppingCart.includes(plate) && plate.quantity > 0) {
+        plate.quantity--;
+        this.totalPrice = this.totalPrice - plate.price;
+        this.shoppingCart.split(1, 1);
+      } else if (plate.quantity == 0) {
+        // console.log("rimosso" + this.shoppingCart);
+        this.shoppingCart.split(index, 1);
+        this.totalPrice = this.totalPrice - plate.price;
+        console.log(this.shoppingCart.length);
+      } else if (this.shoppingCart.length == 0) {
+        this.totalPrice = 0;
+        console.log(this.totalPrice);
+        console.log(this.shoppingCart);
+        // this.showModal = false;
+      }
+    },
+  }, */
 };
 </script>
 

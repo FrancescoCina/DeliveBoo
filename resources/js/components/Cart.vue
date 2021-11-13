@@ -6,8 +6,8 @@
     </div>
     <div class="cards-container d-flex justify-content-center">
       <div
-        v-for="plate in plates"
-        :key="plate.id"
+        v-for="(plate, index) in plates"
+        :key="plate.id + index"
         class="card col-3 my-4"
         style="width: 18rem"
       >
@@ -20,22 +20,39 @@
           <p class="card-text">
             {{ plate.quantity }}
           </p>
-          <a @click="addPlateToCart(plate)">Aggiungi al Carrello</a>
+          <a class="btn btn-success" @click="addPlateToCart(plate)"
+            >Aggiungi al Carrello</a
+          >
           <br />
-          <a v-if="plate.quantity" @click="removePlateToCart(plate)">
+          <a
+            class="btn btn-danger"
+            v-if="plate.quantity"
+            @click="removePlateToCart(plate, index)"
+          >
             Rimuovi
           </a>
+          <br />
+          <a class="btn btn-info" @click="saveCartInLocalStorage">
+            Local Storage
+          </a>
+
+          <a class="btn btn-info" @click="clearLocalStorage"> Pulisci Tutto </a>
+          <br />
+
+          <a @click="toggleModal">Modale si/no</a>
         </div>
       </div>
     </div>
-
-    <a href="http://127.0.0.1:8000/welcome">welcome page</a>
+    <!--  -->
+    <!-- <a href="http://127.0.0.1:8000/welcome">welcome page</a> -->
 
     <ModalCart
       v-if="showModal"
       :shoppingCart="shoppingCart"
       :totalPrice="totalPrice"
     />
+
+    <!-- <a href="{{ route('guest.checkout') }}" class="btn btn-success">Vai al Checkout</a> -->
   </div>
 </template>
 
@@ -71,32 +88,49 @@ export default {
         this.totalPrice += plate.price;
       } else {
         plate.quantity++;
-        this.totalPrice += plate.price * plate.quantity;
+        this.totalPrice += plate.price;
       }
       this.showModal = true;
-      console.log(this.shoppingCart);
-      // localStorage.setItem("cart", this.shoppingCart);
+      // console.log(this.shoppingCart);
     },
     removePlateToCart(plate) {
       if (this.shoppingCart.includes(plate) && plate.quantity > 0) {
         plate.quantity--;
         this.totalPrice = this.totalPrice - plate.price;
-      } else if (plate.quantity <= 0) {
-        console.log("rimosso" + this.shoppingCart);
-        return;
-      } else {
-        this.shoppingCart.split(plate, 1);
+      } else if (plate.quantity == 0) {
+        // console.log("rimosso" + this.shoppingCart);
         this.totalPrice = this.totalPrice - plate.price;
       }
     },
+    // LOCAL STORAGE
+    saveCartInLocalStorage() {
+      let serializedShoppingCart = JSON.stringify(this.shoppingCart);
+      let serializedTotalPrice = JSON.stringify(this.totalPrice);
+      localStorage.setItem("cart", serializedShoppingCart);
+      localStorage.setItem("amount", serializedTotalPrice);
+    },
+    clearLocalStorage() {
+      this.shoppingCart = [];
+      this.totalPrice = 0;
+      localStorage.setItem("cart", JSON.stringify(this.shoppingCart));
+      localStorage.setItem("amount", JSON.stringify(this.totalPrice));
+    },
     // Per cancellare la cache del browser MEMO
-    /*   removeLocalStorage() {
+    /* clearLocalStorage() {
       localStorage.removeItem("cart");
+      localStorage.removeItem("amount");
       console.log(this.shoppingCart);
     }, */
+    toggleModal() {
+      this.showModal = !this.showModal;
+    },
   },
   created() {
     this.getRestaurantAndPlatesFromApi();
+    if (this.shoppingCart !== null && this.totalPrice !== null) {
+      this.shoppingCart = JSON.parse(localStorage.getItem("cart"));
+      this.totalPrice = JSON.parse(localStorage.getItem("amount"));
+    }
   },
 };
 </script>
