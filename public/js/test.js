@@ -2364,6 +2364,8 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       this.showModal = true; // console.log(this.shoppingCart);
+
+      this.saveCartInLocalStorage();
     },
     removePlateToCart: function removePlateToCart(plate) {
       if (this.shoppingCart.includes(plate) && plate.quantity > 0) {
@@ -2396,6 +2398,7 @@ __webpack_require__.r(__webpack_exports__);
     }, */
     toggleModal: function toggleModal() {
       this.showModal = !this.showModal;
+      console.log(this.shoppingCart);
     }
   },
   created: function created() {
@@ -38835,15 +38838,6 @@ var render = function () {
                   : _vm._e(),
                 _vm._v(" "),
                 _c("br"),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "btn btn-info",
-                    on: { click: _vm.saveCartInLocalStorage },
-                  },
-                  [_vm._v("\n          Local Storage\n        ")]
-                ),
                 _vm._v(" "),
                 _c(
                   "a",

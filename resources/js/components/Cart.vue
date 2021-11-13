@@ -32,9 +32,9 @@
             Rimuovi
           </a>
           <br />
-          <a class="btn btn-info" @click="saveCartInLocalStorage">
+          <!--     <a class="btn btn-info" @click="saveCartInLocalStorage">
             Local Storage
-          </a>
+          </a> -->
 
           <a class="btn btn-info" @click="clearLocalStorage"> Pulisci Tutto </a>
           <br />
@@ -92,6 +92,7 @@ export default {
       }
       this.showModal = true;
       // console.log(this.shoppingCart);
+      this.saveCartInLocalStorage();
     },
     removePlateToCart(plate) {
       if (this.shoppingCart.includes(plate) && plate.quantity > 0) {
@@ -123,6 +124,7 @@ export default {
     }, */
     toggleModal() {
       this.showModal = !this.showModal;
+      console.log(this.shoppingCart);
     },
   },
   created() {
