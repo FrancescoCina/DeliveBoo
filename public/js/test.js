@@ -2304,6 +2304,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Cart",
@@ -2315,7 +2319,8 @@ __webpack_require__.r(__webpack_exports__);
       restaurant: [],
       plates: [],
       shoppingCart: [],
-      showModal: false
+      showModal: false,
+      totalPrice: 0
     };
   },
   methods: {
@@ -2329,9 +2334,12 @@ __webpack_require__.r(__webpack_exports__);
     },
     addPlateToCart: function addPlateToCart(plate) {
       if (!this.shoppingCart.includes(plate)) {
-        this.shoppingCart.push(plate); // plate.quantity = 1;
+        this.shoppingCart.push(plate);
+        plate.quantity = 1;
+        this.totalPrice += plate.price;
       } else {
         plate.quantity++;
+        this.totalPrice += plate.price * plate.quantity;
       }
 
       this.showModal = true;
@@ -2377,9 +2385,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ModalCart",
-  props: ["shoppingCart"]
+  props: ["shoppingCart", "totalPrice"]
 });
 
 /***/ }),
@@ -38682,7 +38691,12 @@ var render = function () {
       ]),
       _vm._v(" "),
       _vm.showModal
-        ? _c("ModalCart", { attrs: { shoppingCart: _vm.shoppingCart } })
+        ? _c("ModalCart", {
+            attrs: {
+              shoppingCart: _vm.shoppingCart,
+              totalPrice: _vm.totalPrice,
+            },
+          })
         : _vm._e(),
     ],
     1
@@ -38733,6 +38747,8 @@ var render = function () {
               ]),
             ])
           }),
+          _vm._v(" "),
+          _c("h6", [_vm._v("Totale: € " + _vm._s(_vm.totalPrice))]),
         ],
         2
       ),

@@ -8,6 +8,7 @@
           <p class="card-text">{{ item.name }}</p>
           <p class="card-text">{{ item.quantity }}</p>
         </div>
+        <h6>Totale: € {{ totalPrice }}</h6>
         <!-- <a href="#" class="card-link">Card link</a>
         <a href="#" class="card-link">Another link</a> -->
       </div>
@@ -18,7 +19,7 @@
 <script>
 export default {
   name: "ModalCart",
-  props: ["shoppingCart"],
+  props: ["shoppingCart", "totalPrice"],
 };
 </script>
 

@@ -27,7 +27,11 @@
 
     <a href="http://127.0.0.1:8000/welcome">welcome page</a>
 
-    <ModalCart v-if="showModal" :shoppingCart="shoppingCart" />
+    <ModalCart
+      v-if="showModal"
+      :shoppingCart="shoppingCart"
+      :totalPrice="totalPrice"
+    />
   </div>
 </template>
 
@@ -42,6 +46,7 @@ export default {
       plates: [],
       shoppingCart: [],
       showModal: false,
+      totalPrice: 0,
     };
   },
   methods: {
@@ -58,9 +63,11 @@ export default {
     addPlateToCart(plate) {
       if (!this.shoppingCart.includes(plate)) {
         this.shoppingCart.push(plate);
-        // plate.quantity = 1;
+        plate.quantity = 1;
+        this.totalPrice += plate.price;
       } else {
         plate.quantity++;
+        this.totalPrice += plate.price * plate.quantity;
       }
       this.showModal = true;
       console.log(this.shoppingCart);
