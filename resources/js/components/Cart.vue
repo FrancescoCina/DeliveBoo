@@ -1,77 +1,88 @@
 <template>
   <div class="container">
-    <div class="restaurant-infos text-center">
-      <h1>Nome ristorante: {{ this.restaurant.name }}</h1>
-      <h3>Indirizzo: {{ this.restaurant.address }}</h3>
-    </div>
-    <div class="cards-container d-flex justify-content-center">
-      <div
-        v-for="(plate, index) in plates"
-        :key="plate.id + index"
-        class="card col-3 my-4"
-        style="width: 18rem"
-      >
-        <img :src="plate.image" class="card-img-top" :alt="plate.name" />
-        <div class="card-body">
-          <h5 class="card-title">{{ plate.name }}</h5>
-          <p class="card-text">
-            {{ plate.description }}
-          </p>
-          <p class="card-text">
-            {{ plate.quantity }}
-          </p>
-          <a class="btn btn-success" @click="addPlateToCart(plate)"
-            >Aggiungi al Carrello</a
-          >
-          <br />
-          <a
-            class="btn btn-danger"
-            v-if="plate.quantity"
-            @click="removePlateToCart(plate, index)"
-          >
-            Rimuovi
-          </a>
-          <br />
-          <!--     <a class="btn btn-info" @click="saveCartInLocalStorage">
-            Local Storage
-          </a> -->
-
-          <a class="btn btn-info" @click="clearLocalStorage"> Pulisci Tutto </a>
-          <br />
-
-          <a @click="toggleModal">Modale si/no</a>
+    <Loader v-if="isLoading" />
+    <div v-else>
+      <div v-if="!isCheckout">
+        <div class="restaurant-infos text-center">
+          <h1>Nome ristorante: {{ this.restaurant.name }}</h1>
+          <h3>Indirizzo: {{ this.restaurant.address }}</h3>
         </div>
+        <div class="cards-container d-flex justify-content-center">
+          <div
+            v-for="(plate, index) in plates"
+            :key="plate.id + index"
+            class="card col-3 my-4"
+            style="width: 18rem"
+          >
+            <img :src="plate.image" class="card-img-top" :alt="plate.name" />
+            <div class="card-body">
+              <h5 class="card-title">{{ plate.name }}</h5>
+              <p class="card-text">
+                {{ plate.description }}
+              </p>
+              <p class="card-text">
+                {{ plate.quantity }}
+              </p>
+              <a class="btn btn-success" @click="addPlateToCart(plate)"
+                >Aggiungi al Carrello</a
+              >
+              <br />
+              <a
+                class="btn btn-danger"
+                v-if="plate.quantity"
+                @click="removePlateToCart(plate, index)"
+              >
+                Rimuovi
+              </a>
+              <br />
+              <!--     <a class="btn btn-info" @click="saveCartInLocalStorage">
+                Local Storage
+              </a> -->
+              <a class="btn btn-info" @click="clearLocalStorage">
+                Pulisci Tutto
+              </a>
+              <br />
+              <a @click="toggleModal">Modale si/no</a>
+            </div>
+          </div>
+        </div>
+        <!--  -->
+        <!-- <a href="http://127.0.0.1:8000/welcome">welcome page</a> -->
+        <ModalCart
+          v-if="showModal"
+          :shoppingCart="shoppingCart"
+          :totalPrice="totalPrice"
+        />
+        <a class="btn btn-success" @click="showCheckoutComp">Vai al Checkout</a>
       </div>
     </div>
-    <!--  -->
-    <!-- <a href="http://127.0.0.1:8000/welcome">welcome page</a> -->
 
-    <ModalCart
-      v-if="showModal"
-      :shoppingCart="shoppingCart"
-      :totalPrice="totalPrice"
-    />
-
-    <!-- <a href="{{ route('guest.checkout') }}" class="btn btn-success">Vai al Checkout</a> -->
+    <Checkout v-if="isCheckout" />
   </div>
 </template>
 
 <script>
 import ModalCart from "./ModalCart.vue";
+import Checkout from "./Checkout.vue";
+import Loader from "./Loader.vue";
+
 export default {
   name: "Cart",
-  components: { ModalCart },
+  components: { ModalCart, Checkout, Loader },
   data() {
     return {
       restaurant: [],
       plates: [],
       shoppingCart: [],
       showModal: false,
+      isCheckout: false,
+      isLoading: false,
       totalPrice: 0,
     };
   },
   methods: {
     getRestaurantAndPlatesFromApi() {
+      this.isLoading = true;
       axios
         .get("http://127.0.0.1:8000/api/restaurants/1")
         .then((res) => {
@@ -79,7 +90,12 @@ export default {
           this.plates = res.data.plates;
           // console.log(this.plates);
         })
-        .catch();
+        .catch((err) => {
+          console.error(err);
+        })
+        .then(() => {
+          this.isLoading = false;
+        });
     },
     addPlateToCart(plate) {
       if (!this.shoppingCart.includes(plate)) {
@@ -126,12 +142,20 @@ export default {
       this.showModal = !this.showModal;
       console.log(this.shoppingCart);
     },
+    showCheckoutComp() {
+      if (this.shoppingCart.length > 0) {
+        this.isCheckout = true;
+      }
+    },
   },
   created() {
     this.getRestaurantAndPlatesFromApi();
     if (this.shoppingCart !== null && this.totalPrice !== null) {
       this.shoppingCart = JSON.parse(localStorage.getItem("cart"));
       this.totalPrice = JSON.parse(localStorage.getItem("amount"));
+      if (this.shoppingCart.length > 0) {
+        this.showModal = true;
+      }
     }
   },
 };
