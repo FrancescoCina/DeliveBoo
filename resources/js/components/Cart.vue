@@ -20,7 +20,11 @@
           <p class="card-text">
             {{ plate.quantity }}
           </p>
-          <a @click="addPlateToCart(plate)">+</a>
+          <a @click="addPlateToCart(plate)">Aggiungi al Carrello</a>
+          <br />
+          <a v-if="plate.quantity" @click="removePlateToCart(plate)">
+            Rimuovi
+          </a>
         </div>
       </div>
     </div>
@@ -72,6 +76,18 @@ export default {
       this.showModal = true;
       console.log(this.shoppingCart);
       // localStorage.setItem("cart", this.shoppingCart);
+    },
+    removePlateToCart(plate) {
+      if (this.shoppingCart.includes(plate) && plate.quantity > 0) {
+        plate.quantity--;
+        this.totalPrice = this.totalPrice - plate.price;
+      } else if (plate.quantity <= 0) {
+        console.log("rimosso" + this.shoppingCart);
+        return;
+      } else {
+        this.shoppingCart.split(plate, 1);
+        this.totalPrice = this.totalPrice - plate.price;
+      }
     },
     // Per cancellare la cache del browser MEMO
     /*   removeLocalStorage() {
