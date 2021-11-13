@@ -1,20 +1,22 @@
 <template>
-  <div id="app">
+  <div>
     <Header />
-    <Main />
+
+    <h1>pagina vue</h1>
   </div>
 </template>
 
 <script>
-import Header from "./Home/Header.vue";
-import Main from "./Home/Main.vue";
+import Header from "../Home/Header.vue";
 
 export default {
-  name: "App",
+  name: "Menu",
   data() {},
   components: {
     Header: Header,
-    Main: Main,
   },
 };
 </script>
+
+<style>
+</style>
