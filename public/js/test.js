@@ -84,6 +84,7 @@
 /******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
+
 /******/ ({
 
 /***/ "./node_modules/axios/index.js":
@@ -51792,15 +51793,15 @@ var app = new Vue({
 /***/ }),
 
 /***/ 1:
+
 /*!************************************!*\
   !*** multi ./resources/js/test.js ***!
   \************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Laravel\deliveboo\resources\js\test.js */"./resources/js/test.js");
+!(function webpackMissingModule() { var e = new Error("Cannot find module 'C:\\laravel\\deliveboo\\resources\\js\\test.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
 
 
 /***/ })
-
-/******/ });
+/******/ ]);

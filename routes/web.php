@@ -57,17 +57,17 @@ Route::middleware('auth')->name('admin.')->prefix('admin')->namespace('Admin')->
 
 // ROTTE DEL FRONTEND
 
+
 Route::get('/menu', function () {
     return view('guests.menu');
-});
 
-Route::get('/welcome', function () {
+
+Route::get('/', function () {
     return view('guests.welcome')->name('guest.welcome');
 });
-
-
 
 /* 
 Route::get('{any?}', function () {
     return view('guests.welcome');
 })->where('any', '.*'); */
+
