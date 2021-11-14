@@ -2348,6 +2348,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      baseUri: "http://127.0.0.1:8000/api",
       restaurant: [],
       plates: [],
       shoppingCart: [],
@@ -2358,11 +2359,11 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    getRestaurantAndPlatesFromApi: function getRestaurantAndPlatesFromApi() {
+    getRestaurantAndPlatesFromApi: function getRestaurantAndPlatesFromApi(dinamicParam) {
       var _this = this;
 
       this.isLoading = true;
-      axios.get("http://127.0.0.1:8000/api/restaurants/1").then(function (res) {
+      axios.get("".concat(this.baseUri).concat(dinamicParam)).then(function (res) {
         _this.restaurant = res.data.restaurant;
         _this.plates = res.data.plates; // console.log(this.plates);
       })["catch"](function (err) {
@@ -2425,7 +2426,12 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
-    this.getRestaurantAndPlatesFromApi();
+    var url = window.location.href;
+    url = new URL(url); // console.log(url.pathname);
+
+    var dinamicParam = url.pathname;
+    console.log(dinamicParam);
+    this.getRestaurantAndPlatesFromApi(dinamicParam);
 
     if (this.shoppingCart !== null && this.totalPrice !== null) {
       this.shoppingCart = JSON.parse(localStorage.getItem("cart"));

@@ -71,6 +71,7 @@ export default {
   components: { ModalCart, Checkout, Loader },
   data() {
     return {
+      baseUri: "http://127.0.0.1:8000/api",
       restaurant: [],
       plates: [],
       shoppingCart: [],
@@ -81,10 +82,10 @@ export default {
     };
   },
   methods: {
-    getRestaurantAndPlatesFromApi() {
+    getRestaurantAndPlatesFromApi(dinamicParam) {
       this.isLoading = true;
       axios
-        .get("http://127.0.0.1:8000/api/restaurants/1")
+        .get(`${this.baseUri}${dinamicParam}`)
         .then((res) => {
           this.restaurant = res.data.restaurant;
           this.plates = res.data.plates;
@@ -149,7 +150,12 @@ export default {
     },
   },
   created() {
-    this.getRestaurantAndPlatesFromApi();
+    let url = window.location.href;
+    url = new URL(url);
+    // console.log(url.pathname);
+    let dinamicParam = url.pathname;
+    console.log(dinamicParam);
+    this.getRestaurantAndPlatesFromApi(dinamicParam);
     if (this.shoppingCart !== null && this.totalPrice !== null) {
       this.shoppingCart = JSON.parse(localStorage.getItem("cart"));
       this.totalPrice = JSON.parse(localStorage.getItem("amount"));
