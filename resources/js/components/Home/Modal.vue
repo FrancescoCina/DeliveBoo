@@ -91,7 +91,9 @@
                     <div>
                       <!-- <img src="./img/cake.png" alt="" /> -->
                       <h3>Ristorante Tal dei Tali</h3>
-                      <a href="./menu">Vai al menù</a>
+                      <a href="http://127.0.0.1:8000/restaurants/4"
+                        >Vai al menù</a
+                      >
                     </div>
                   </div>
                 </div>

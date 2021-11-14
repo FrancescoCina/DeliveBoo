@@ -2732,6 +2732,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Modal"
 });
@@ -39708,9 +39710,15 @@ var staticRenderFns = [
                             _c("div", [
                               _c("h3", [_vm._v("Ristorante Tal dei Tali")]),
                               _vm._v(" "),
-                              _c("a", { attrs: { href: "./menu" } }, [
-                                _vm._v("Vai al menù"),
-                              ]),
+                              _c(
+                                "a",
+                                {
+                                  attrs: {
+                                    href: "http://127.0.0.1:8000/restaurants/4",
+                                  },
+                                },
+                                [_vm._v("Vai al menù")]
+                              ),
                             ]),
                           ]),
                         ]),

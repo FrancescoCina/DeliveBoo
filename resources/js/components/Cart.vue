@@ -151,10 +151,11 @@ export default {
   },
   created() {
     let url = window.location.href;
+    // console.log(url);
     url = new URL(url);
     // console.log(url.pathname);
     let dinamicParam = url.pathname;
-    console.log(dinamicParam);
+    // console.log(dinamicParam);
     this.getRestaurantAndPlatesFromApi(dinamicParam);
     if (this.shoppingCart !== null && this.totalPrice !== null) {
       this.shoppingCart = JSON.parse(localStorage.getItem("cart"));
