@@ -57,7 +57,7 @@ class PlateController extends Controller
         // data validation
         $request->validate([
             'name' => 'required|unique:plates|max:255',
-            'image' => 'image|mimes:jpg,png,jpeg,gif,svg|nullable',
+            'image' => 'image|nullable',
             'price' => 'min:3|max:6',
             'is_available' => 'nullable'
         ]);
@@ -142,7 +142,7 @@ class PlateController extends Controller
         // data validation
         $request->validate([
             'name' => ['required', 'string', Rule::unique('plates')->ignore($plate->id)],
-            // 'image' => 'image|mimes:jpg,png,jpeg,gif,svg|nullable',
+            'image' => 'image|nullable',
             'price' => 'min:1|max:6'
         ]);
 
