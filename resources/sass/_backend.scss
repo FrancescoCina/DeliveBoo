@@ -14,21 +14,37 @@
     }
 }
 
+.restaurant-card{
+    margin-top: 150px;
+    height: 500px;
+    background-color: #FF5858;
+    box-shadow: -11px 10px 28px 6px #4D4D4D;
+    padding: 0;
+    box-sizing: border-box;
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    .restaurant-img-container{
+        height: 100%;
+        img{
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
 .restaurant-title{
     font-size: 50px;
     font-family: montserrat, sans-serif;
 }
 
 .restaurant-info{
+    margin-left: 50px;
     font-size: 20px;
-    line-height: 50px;
+    line-height: 60px;
     list-style-type: none;
-}
-
-.custom-divider{
-    border-width: 2px;
-    border-color: gray;
-    width: 90%;
 }
 
 .card-img-custom{
@@ -39,6 +55,6 @@
     list-style-type: none;
 }
 
-.custom-navbar{
-    background: linear-gradient(#aaaaaa, #0c0c0c);
+.custom-navbar, .custom-login-header{
+    background-color: #ff5858;
 }
