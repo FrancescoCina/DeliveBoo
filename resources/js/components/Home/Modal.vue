@@ -47,7 +47,7 @@
             <label
               v-for="type in typesRestaurants"
               :key="type.id"
-              for="tutti"
+              :for="type.name"
               :class="type.name"
             >
               <span class="title" @click="searchRestaurantsByType(type.id)">{{
@@ -102,7 +102,7 @@
               </div>
             </div>
 
-            <div class="slider"></div>
+            <!-- <div class="slider"></div> -->
           </div>
           <div class="text-content">
             <!-- tutti -->
@@ -125,7 +125,24 @@
               </div>
             </div> -->
             <!-- Filtered Restaurants -->
-            <div
+
+            <div>
+              <div class="row">
+                <div
+                  v-for="restaurant in filteredRestaurants"
+                  :key="restaurant.id"
+                  class="col"
+                >
+                  <p>{{ restaurant.name }}</p>
+                  <a
+                    :href="`http://127.0.0.1:8000/restaurants/${restaurant.id}`"
+                    >Vai al menu</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!--  <div
               v-for="restaurant in filteredRestaurants"
               :key="restaurant.id"
               class="col-11 d-flex justify-content-around flex-wrap"
@@ -137,7 +154,6 @@
                   </div>
                   <div class="details">
                     <div>
-                      <!-- <img src="./img/cake.png" alt="" /> -->
                       <h3>{{ restaurant.name }}</h3>
                       <a
                         :href="`http://127.0.0.1:8000/restaurants/${restaurant.id}`"
@@ -147,7 +163,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>

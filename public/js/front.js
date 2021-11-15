@@ -2617,6 +2617,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Modal",
   data: function data() {
@@ -39488,7 +39504,7 @@ var render = function () {
                       {
                         key: type.id,
                         class: type.name,
-                        attrs: { for: "tutti" },
+                        attrs: { for: type.name },
                       },
                       [
                         _c(
@@ -39508,58 +39524,40 @@ var render = function () {
                   }),
                   _vm._v(" "),
                   _vm._m(3),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "slider" }),
                 ],
                 2
               ),
               _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "text-content" },
-                _vm._l(_vm.filteredRestaurants, function (restaurant) {
-                  return _c(
+              _c("div", { staticClass: "text-content" }, [
+                _c("div", [
+                  _c(
                     "div",
-                    {
-                      key: restaurant.id,
-                      staticClass:
-                        "col-11 d-flex justify-content-around flex-wrap",
-                    },
-                    [
-                      _c(
+                    { staticClass: "row" },
+                    _vm._l(_vm.filteredRestaurants, function (restaurant) {
+                      return _c(
                         "div",
-                        { staticClass: "text", class: restaurant.name },
+                        { key: restaurant.id, staticClass: "col" },
                         [
-                          _c("div", { staticClass: "card m-2" }, [
-                            _c("div", { staticClass: "cover" }, [
-                              _c("h5", [_vm._v(_vm._s(restaurant.name))]),
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "details" }, [
-                              _c("div", [
-                                _c("h3", [_vm._v(_vm._s(restaurant.name))]),
-                                _vm._v(" "),
-                                _c(
-                                  "a",
-                                  {
-                                    attrs: {
-                                      href:
-                                        "http://127.0.0.1:8000/restaurants/" +
-                                        restaurant.id,
-                                    },
-                                  },
-                                  [_vm._v("Vai al menù")]
-                                ),
-                              ]),
-                            ]),
-                          ]),
+                          _c("p", [_vm._v(_vm._s(restaurant.name))]),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              attrs: {
+                                href:
+                                  "http://127.0.0.1:8000/restaurants/" +
+                                  restaurant.id,
+                              },
+                            },
+                            [_vm._v("Vai al menu")]
+                          ),
                         ]
-                      ),
-                    ]
-                  )
-                }),
-                0
-              ),
+                      )
+                    }),
+                    0
+                  ),
+                ]),
+              ]),
             ]),
           ]),
         ]
