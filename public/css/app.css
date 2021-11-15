@@ -10065,6 +10065,10 @@ h3 {
   background: linear-gradient(#aaaaaa, #0c0c0c);
 }
 
+.box {
+  background-color: #FF5858;
+}
+
 * {
   margin: 0;
   padding: 0;
