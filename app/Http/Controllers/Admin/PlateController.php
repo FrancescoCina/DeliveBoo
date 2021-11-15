@@ -58,7 +58,7 @@ class PlateController extends Controller
         $request->validate([
             'name' => 'required|unique:plates|max:255',
             'image' => 'image|nullable',
-            'price' => 'min:3|max:6',
+            'price' => 'min:1|max:6',
             'is_available' => 'nullable'
         ]);
 
