@@ -30,11 +30,14 @@
         height: 100%;
         img{
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
         }
     }
 }
-
+.cover{
+    object-fit: cover;
+    height: 100%;
+}
 .restaurant-title{
     font-size: 50px;
     font-family: montserrat, sans-serif;
@@ -56,6 +59,37 @@
 }
 
 
-.custom-navbar, .custom-login-header, .box{
+.custom-navbar, .custom-login-header{
     background-color: #ff5858;
+}
+.box{
+    background-color: #ff5858;
+    box-shadow: -11px 10px 28px 6px #4D4D4D;
+    height: 70vh;
+    overflow: auto;
+    border-radius: 30px;
+}
+
+
+.bottone{
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+    z-index: 10;
+    position: relative;
+    top: 50px;
+    left: -20px;
+    &:hover{
+        border: 3px solid white;
+        transform: scale(1.1);
+    }
+    a{
+        font-size: 50px;
+        text-decoration: none;
+        color: white;
+    }
+}
+.card-statistic{
+border-radius: 20px;
+background-color: white;
 }

@@ -6,10 +6,8 @@
 @if(!$restaurant)
   @include('includes.alert_restaurant')
 @else  
-<div class="container">
-  <a class="btn btn-outline-secondary" href="{{ route('admin.orders.index') }}">Indietro</a>
-</div>
-<div class="container d-flex justify-content-center align-items-center">
+<div class="container box">
+  <div class="container d-flex justify-content-center align-items-center">
     <div class="card my-5 py-3 font-size-2" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title">Ordine n° {{ $order->id }}</h5>
@@ -25,22 +23,22 @@
             @else
             <span class="badge badge-pill badge-danger">Da pagare</span>
             @endif
-        </p>
-        <ul>
-          <h6><strong>Piatti nell'ordine:</strong> </h6>
-          @foreach ($plates as $plate)
-          <li>{{$plate->quantity}} - {{ $plate->name }}  </li>
-              
-          @endforeach
-        </ul>
-    
+          </p>
+          <ul>
+            <h6><strong>Piatti nell'ordine:</strong> </h6>
+            @foreach ($plates as $plate)
+            <li>{{$plate->quantity}} - {{ $plate->name }}  </li>
+            
+            @endforeach
+          </ul>
+          
         </div>
       </div>
-</div>
-
-
-{{-- Ingrandire font size??? --}}
-
+    </div>
+    <div class="d-flex justify-content-center">
+      <a class="btn btn-primary" href="{{ route('admin.orders.index') }}">Torna agli ordini</a>
+    </div>
+  </div>
 @endif
 
 @endsection

@@ -3,22 +3,24 @@
 @section('content')
 
     
-<div class="container-fluid">
-    <a href="{{ route('admin.orders.index') }}" class="btn btn-outline-secondary">Torna agli ordini</a>
-    <h1 class="text-success mb-4 text-center">Statistiche Ristorante</h1>
-    <div class="row justify-content-around">
-        <div class="col-5 pt-5">
-          <div class=" pie-chart-container pt-5">
-            <canvas class="my-5" id="pie-chart"></canvas>
-          </div>
-        </div>
-
-        <div class="col-5 pt-5">
-          <div class=" pie-chart-container pt-5">
-            <canvas class="my-5" id="amount-chart"></canvas>
-          </div>
-        </div>
+<div class="container-fluid container box mt-5">
+  <h1 class="text-white font-weight-bold mt-3 mb-4 text-center">Statistiche Ristorante</h1>
+  <div class="row justify-content-around">
+    <div class="col-5 card-statistic">
+      <div class=" pie-chart-container">
+        <canvas class="my-5" id="pie-chart"></canvas>
+      </div>
     </div>
+    
+    <div class="col-5 card-statistic ">
+      <div class=" pie-chart-container ">
+        <canvas class="my-5" id="amount-chart"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="mt-4 d-flex justify-content-center">
+  <a href="{{ route('admin.orders.index') }}" class="btn btn-primary">Torna agli ordini</a>
+  </div>
 </div>
 
 @endsection

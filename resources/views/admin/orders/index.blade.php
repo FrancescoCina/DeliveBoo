@@ -2,6 +2,7 @@
 
 @section('content')
     <section id="orders" class="container">
+      <div class="box mt-5">
 
         @if(session('alert-msg'))
 
@@ -16,25 +17,22 @@
         @include('includes.alert_restaurant')
         @else  
 
-        <h1 class="text-success text-center mb-2">I Tuoi Ordini</h1>
-
-          <a href="{{ route('admin.orders.statistics.index') }}" class="btn btn-success">Vai alle statistiche</a>
+        <h1 class="text-white mt-3 font-weight-bold text-center mb-2">I Tuoi Ordini</h1>
 
         <table class="table">
             <thead>
-              <tr>
+              <tr class="bg-secondary text-white">
                 <th scope="col">#</th>
                 <th scope="col">Order Date</th>
                 <th scope="col">Amount</th>
                 <th scope="col">Paid</th>
                 <th scope="col">Customer Address</th>
                 <th scope="col"></th>
-                {{-- pasquale --}}
               </tr>
             </thead>
             <tbody>
                 @foreach ($orders as $order)  
-                <tr>
+                <tr class="font-weight-bold bg-white">
                     <td>{{ $order->id }}</td>
                     <td>{{ $order->created_at }}</td>
                     <td> € {{ $order->amount }}</td>
@@ -47,22 +45,20 @@
                     </td>
                     <td>{{ $order->customer_address }}</td>
 
-                    <td><a class="btn btn-primary" href="{{ route('admin.orders.show', $order->id) }}">Vai</a></td>
-                   
-
+                    <td><a class="btn btn-primary" href="{{ route('admin.orders.show', $order->id) }}">Vedi</a></td>
                 </tr>
                 @endforeach
             </tbody>
-            <tfoot>                
-              <a class="btn btn-primary" href="{{ route('admin.orders.trash') }}">Vai agli ordini eliminati</a>
-
-              <div class="d-flex justify-content-end">
-                  {{ $orders->links() }}
-              </div>
-
-
-            </tfoot>
           </table>
+          <tfoot>
+            <div class="mt-4  d-flex justify-content-center">
+            <a href="{{ route('admin.orders.statistics.index') }}" class="btn btn-success">Statistiche</a>           
+            <a class="ml-4 btn btn-primary" href="{{ route('admin.orders.trash') }}">Ordini eliminati</a></div>
+          </tfoot>
+          <div class="mt-4 d-flex justify-content-center">
+              {{ $orders->links() }}
+          </div>
+          </div>
 
     </section>
     @endif
