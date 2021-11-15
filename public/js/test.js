@@ -51815,7 +51815,7 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Laravel\deliveboo\resources\js\test.js */"./resources/js/test.js");
+module.exports = __webpack_require__(/*! C:\laravel\deliveboo\resources\js\test.js */"./resources/js/test.js");
 
 
 /***/ })
