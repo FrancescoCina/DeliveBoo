@@ -41,7 +41,7 @@
 
           <div class="list">
             <label for="tutti" class="tutti">
-              <span class="title">Tutti</span>
+              <span class="title" @click="searchAllRestaurants">Tutti</span>
             </label>
 
             <label
@@ -140,6 +140,15 @@ export default {
         })
         .catch(() => {});
     },
+    searchAllRestaurants() {
+      axios
+        .get(`http://127.0.0.1:8000/api/restaurants`)
+        .then((res) => {
+          this.filteredRestaurants = res.data;
+          console.log(this.filteredRestaurants);
+        })
+        .catch(() => {});
+    },
     searchRestaurantsByType(id) {
       axios
         .get(`http://127.0.0.1:8000/api/types/${id}`)
@@ -152,6 +161,7 @@ export default {
   },
   created() {
     this.getTypesFromApi();
+    this.searchAllRestaurants();
   },
 };
 </script>

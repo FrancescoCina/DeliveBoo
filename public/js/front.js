@@ -2600,17 +2600,26 @@ __webpack_require__.r(__webpack_exports__);
         _this.typesRestaurants = res.data;
       })["catch"](function () {});
     },
-    searchRestaurantsByType: function searchRestaurantsByType(id) {
+    searchAllRestaurants: function searchAllRestaurants() {
       var _this2 = this;
 
-      axios.get("http://127.0.0.1:8000/api/types/".concat(id)).then(function (res) {
+      axios.get("http://127.0.0.1:8000/api/restaurants").then(function (res) {
         _this2.filteredRestaurants = res.data;
         console.log(_this2.filteredRestaurants);
+      })["catch"](function () {});
+    },
+    searchRestaurantsByType: function searchRestaurantsByType(id) {
+      var _this3 = this;
+
+      axios.get("http://127.0.0.1:8000/api/types/".concat(id)).then(function (res) {
+        _this3.filteredRestaurants = res.data;
+        console.log(_this3.filteredRestaurants);
       })["catch"](function () {});
     }
   },
   created: function created() {
     this.getTypesFromApi();
+    this.searchAllRestaurants();
   }
 });
 
@@ -39447,7 +39456,20 @@ var render = function () {
                 "div",
                 { staticClass: "list" },
                 [
-                  _vm._m(2),
+                  _c(
+                    "label",
+                    { staticClass: "tutti", attrs: { for: "tutti" } },
+                    [
+                      _c(
+                        "span",
+                        {
+                          staticClass: "title",
+                          on: { click: _vm.searchAllRestaurants },
+                        },
+                        [_vm._v("Tutti")]
+                      ),
+                    ]
+                  ),
                   _vm._v(" "),
                   _vm._l(_vm.typesRestaurants, function (type) {
                     return _c(
@@ -39577,14 +39599,6 @@ var staticRenderFns = [
         ),
       ]
     )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", { staticClass: "tutti", attrs: { for: "tutti" } }, [
-      _c("span", { staticClass: "title" }, [_vm._v("Tutti")]),
-    ])
   },
 ]
 render._withStripped = true

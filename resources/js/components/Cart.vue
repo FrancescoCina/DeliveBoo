@@ -24,7 +24,6 @@
               <p class="card-text">
                 {{ plate.description }}
               </p>
-              <p>{{ plate.image }}</p>
               <p class="card-text">
                 {{ plate.quantity }}
               </p>
@@ -78,8 +77,10 @@ export default {
     return {
       baseUri: "http://127.0.0.1:8000/api",
       restaurant: [],
+      prevRestaurant: [],
       plates: [],
       shoppingCart: [],
+      paramForCheck: "",
       showModal: false,
       isCheckout: false,
       isLoading: false,
@@ -95,6 +96,10 @@ export default {
           this.restaurant = res.data.restaurant;
           this.plates = res.data.plates;
           // console.log(this.plates);
+          if (this.prevRestaurant.id !== this.restaurant.id) {
+            this.clearLocalStorage();
+            console.log("CANCELLATO");
+          }
         })
         .catch((err) => {
           console.error(err);
@@ -127,14 +132,18 @@ export default {
     },
     // LOCAL STORAGE
     saveCartInLocalStorage() {
+      this.prevRestaurant = this.restaurant;
       let serializedShoppingCart = JSON.stringify(this.shoppingCart);
       let serializedTotalPrice = JSON.stringify(this.totalPrice);
+      let serializedRestaurant = JSON.stringify(this.prevRestaurant);
       localStorage.setItem("cart", serializedShoppingCart);
       localStorage.setItem("amount", serializedTotalPrice);
+      localStorage.setItem("restaurant", serializedRestaurant);
     },
     clearLocalStorage() {
       this.shoppingCart = [];
       this.totalPrice = 0;
+      this.paramForCheck = "";
       localStorage.setItem("cart", JSON.stringify(this.shoppingCart));
       localStorage.setItem("amount", JSON.stringify(this.totalPrice));
     },
@@ -146,7 +155,7 @@ export default {
     }, */
     toggleModal() {
       this.showModal = !this.showModal;
-      console.log(this.shoppingCart);
+      // console.log(this.shoppingCart);
     },
     showCheckoutComp() {
       if (this.shoppingCart.length > 0) {
@@ -160,8 +169,8 @@ export default {
     url = new URL(url);
     // console.log(url.pathname);
     let dinamicParam = url.pathname;
-    // console.log(dinamicParam);
     this.getRestaurantAndPlatesFromApi(dinamicParam);
+    this.prevRestaurant = JSON.parse(localStorage.getItem("restaurant"));
     if (this.shoppingCart !== null && this.totalPrice !== null) {
       this.shoppingCart = JSON.parse(localStorage.getItem("cart"));
       this.totalPrice = JSON.parse(localStorage.getItem("amount"));

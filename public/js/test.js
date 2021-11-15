@@ -2340,7 +2340,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -2355,8 +2354,10 @@ __webpack_require__.r(__webpack_exports__);
     return {
       baseUri: "http://127.0.0.1:8000/api",
       restaurant: [],
+      prevRestaurant: [],
       plates: [],
       shoppingCart: [],
+      paramForCheck: "",
       showModal: false,
       isCheckout: false,
       isLoading: false,
@@ -2371,6 +2372,12 @@ __webpack_require__.r(__webpack_exports__);
       axios.get("".concat(this.baseUri).concat(dinamicParam)).then(function (res) {
         _this.restaurant = res.data.restaurant;
         _this.plates = res.data.plates; // console.log(this.plates);
+
+        if (_this.prevRestaurant.id !== _this.restaurant.id) {
+          _this.clearLocalStorage();
+
+          console.log("CANCELLATO");
+        }
       })["catch"](function (err) {
         console.error(err);
       }).then(function () {
@@ -2402,14 +2409,18 @@ __webpack_require__.r(__webpack_exports__);
     },
     // LOCAL STORAGE
     saveCartInLocalStorage: function saveCartInLocalStorage() {
+      this.prevRestaurant = this.restaurant;
       var serializedShoppingCart = JSON.stringify(this.shoppingCart);
       var serializedTotalPrice = JSON.stringify(this.totalPrice);
+      var serializedRestaurant = JSON.stringify(this.prevRestaurant);
       localStorage.setItem("cart", serializedShoppingCart);
       localStorage.setItem("amount", serializedTotalPrice);
+      localStorage.setItem("restaurant", serializedRestaurant);
     },
     clearLocalStorage: function clearLocalStorage() {
       this.shoppingCart = [];
       this.totalPrice = 0;
+      this.paramForCheck = "";
       localStorage.setItem("cart", JSON.stringify(this.shoppingCart));
       localStorage.setItem("amount", JSON.stringify(this.totalPrice));
     },
@@ -2421,8 +2432,7 @@ __webpack_require__.r(__webpack_exports__);
       console.log(this.shoppingCart);
     }, */
     toggleModal: function toggleModal() {
-      this.showModal = !this.showModal;
-      console.log(this.shoppingCart);
+      this.showModal = !this.showModal; // console.log(this.shoppingCart);
     },
     showCheckoutComp: function showCheckoutComp() {
       if (this.shoppingCart.length > 0) {
@@ -2435,9 +2445,9 @@ __webpack_require__.r(__webpack_exports__);
 
     url = new URL(url); // console.log(url.pathname);
 
-    var dinamicParam = url.pathname; // console.log(dinamicParam);
-
+    var dinamicParam = url.pathname;
     this.getRestaurantAndPlatesFromApi(dinamicParam);
+    this.prevRestaurant = JSON.parse(localStorage.getItem("restaurant"));
 
     if (this.shoppingCart !== null && this.totalPrice !== null) {
       this.shoppingCart = JSON.parse(localStorage.getItem("cart"));
@@ -38953,8 +38963,6 @@ var render = function () {
                                     "\n            "
                                 ),
                               ]),
-                              _vm._v(" "),
-                              _c("p", [_vm._v(_vm._s(plate.image))]),
                               _vm._v(" "),
                               _c("p", { staticClass: "card-text" }, [
                                 _vm._v(
