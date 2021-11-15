@@ -2439,10 +2439,8 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
-    var url = window.location.href; // console.log(url);
-
-    url = new URL(url); // console.log(url.pathname);
-
+    var url = window.location.href;
+    url = new URL(url);
     var dinamicParam = url.pathname;
     this.getRestaurantAndPlatesFromApi(dinamicParam);
     this.prevRestaurant = JSON.parse(localStorage.getItem("restaurant"));
