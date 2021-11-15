@@ -20,7 +20,7 @@ class PlateController extends Controller
      */
     public function index()
     {
-        $plates = Plate::paginate(5);
+        $plates = Plate::where('restaurant_id', Auth::user()->id)->paginate(5);
         $categories = Category::all();
 
 

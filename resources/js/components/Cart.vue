@@ -14,12 +14,17 @@
             class="card col-3 my-4"
             style="width: 18rem"
           >
-            <img :src="plate.image" class="card-img-top" :alt="plate.name" />
+            <img
+              :src="'../storage/' + plate.image"
+              class="card-img-top"
+              :alt="plate.name"
+            />
             <div class="card-body">
               <h5 class="card-title">{{ plate.name }}</h5>
               <p class="card-text">
                 {{ plate.description }}
               </p>
+              <p>{{ plate.image }}</p>
               <p class="card-text">
                 {{ plate.quantity }}
               </p>
