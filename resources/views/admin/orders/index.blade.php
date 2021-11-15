@@ -29,7 +29,7 @@
                 <th scope="col">Paid</th>
                 <th scope="col">Customer Address</th>
                 <th scope="col"></th>
-
+                {{-- pasquale --}}
               </tr>
             </thead>
             <tbody>

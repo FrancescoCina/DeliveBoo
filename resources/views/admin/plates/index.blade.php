@@ -2,15 +2,14 @@
 @section('content')
 
 <div class="container">
-    @if (!$restaurant)
-        <h2 class="text-center text-danger">Inserisci prima un ristorante</h2>
-    @else
-
-        <h1 class="text-success mb-4 text-center" > I Tuoi Piatti</h1>
-        <a class="btn btn-success container p-3 mb-2" href="{{route('admin.plates.create')}}">INSERISCI UN NUOVO PIATTO</a>
-        <div class="d-flex justify-content-around flex-wrap">
-
+    <div class="box">
+        @if (!$restaurant)
+            <h2 class="text-center text-danger">Inserisci prima un ristorante</h2>
+        @else
+            <h1 class="text-success mb-4 text-center" > I Tuoi Piatti</h1>
+                <a class="btn btn-success container p-3 mb-2" href="{{route('admin.plates.create')}}">INSERISCI UN NUOVO PIATTO</a>
         @forelse ($plates as $plate)
+        <div class="d-flex justify-content-around flex-wrap">
             <div class="card mx-1 my-4" style="width: 18rem;">
                 <img src="{{asset('storage/'.$plate->image)}}" alt="{{$plate->name}}" class="card-img-top card-img-custom">
                 <div class="card-body">
@@ -24,11 +23,10 @@
                         </li>
                         <li>
                             <strong>Categorie</strong>: 
-
                             @forelse ($plate->categories as $category)
-                             <span class="badge" style="background-color: {{$category->color}}">{{$category->name}}</span>
-                            @empty
-                            Nessuna 
+                                <span class="badge" style="background-color: {{$category->color}}">{{$category->name}}</span>
+                                @empty
+                                    Nessuna 
                             @endforelse
                         </li>
                     </ul>
@@ -43,11 +41,12 @@
                     </div>
                 </div>
             </div>
-
+        </div>
+    </div>
+</div>
         @empty
             <p class="text-secondary text-center my-3">Non ci sono piatti da visualizzare</p>        
         @endforelse
-        </div>
         
         <div class="d-flex justify-content-center">{{$plates->links()}}</div>
     @endif
