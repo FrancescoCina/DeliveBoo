@@ -2375,8 +2375,6 @@ __webpack_require__.r(__webpack_exports__);
 
         if (_this.prevRestaurant.id !== _this.restaurant.id) {
           _this.clearLocalStorage();
-
-          console.log("CANCELLATO");
         }
       })["catch"](function (err) {
         console.error(err);
@@ -51823,7 +51821,7 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\laravel\deliveboo\resources\js\test.js */"./resources/js/test.js");
+module.exports = __webpack_require__(/*! C:\Laravel\deliveboo\resources\js\test.js */"./resources/js/test.js");
 
 
 /***/ })

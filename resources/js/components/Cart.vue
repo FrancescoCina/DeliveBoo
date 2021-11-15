@@ -98,7 +98,6 @@ export default {
           // console.log(this.plates);
           if (this.prevRestaurant.id !== this.restaurant.id) {
             this.clearLocalStorage();
-            console.log("CANCELLATO");
           }
         })
         .catch((err) => {
@@ -165,9 +164,7 @@ export default {
   },
   created() {
     let url = window.location.href;
-    // console.log(url);
     url = new URL(url);
-    // console.log(url.pathname);
     let dinamicParam = url.pathname;
     this.getRestaurantAndPlatesFromApi(dinamicParam);
     this.prevRestaurant = JSON.parse(localStorage.getItem("restaurant"));
