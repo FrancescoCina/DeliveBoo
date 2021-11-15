@@ -56,34 +56,7 @@
             </label>
             <div class="slider"></div>
           </div>
-          <!-- Filtered Restaurants -->
-          <!--  <div class="text-content">
-            <div
-              class="col-11 d-flex justify-content-around flex-wrap"
-
-              v-for="restaurant in filteredRestaurants"
-              :key="restaurant.id"
-            >
-              <div :class="restaurant.type" class="text">
-                <div class="card m-2">
-                  <div class="cover">
-                    <h5>{{ restaurant.name }}</h5>
-                  </div>
-                  <div class="details">
-                    <div>
-                      <h3>{{ restaurant.name }}</h3>
-                      <a
-                        :href="`http://127.0.0.1:8000/restaurants/${restaurant.id}`"
-                        >Vai al menù</a
-                      >
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div> -->
-
+          <!-- filter restaurant -->
           <div class="text-content">
             <div>
               <div class="row">
@@ -351,9 +324,9 @@ export default {
   transition-delay: 1s;
 }
 
-.card:hover .cover h5 {
+.card:hover .cover img {
   opacity: 0;
-  transition: 1s;
+  transition: 1.5s;
 }
 
 .card:hover .cover::before {
@@ -414,6 +387,7 @@ export default {
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
+    border: 8px solid #ff5858;
   }
 }
 </style>
