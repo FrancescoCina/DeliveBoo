@@ -31,106 +31,39 @@
 
         <div class="content">
           <input type="radio" name="slider" checked id="tutti" />
-          <input type="radio" name="slider" id="French" />
           <input type="radio" name="slider" id="Italian" />
           <input type="radio" name="slider" id="Japanese" />
-          <input type="radio" name="slider" id="Turkish" />
           <input type="radio" name="slider" id="Mexican" />
+          <input type="radio" name="slider" id="French" />
+          <input type="radio" name="slider" id="Turkish" />
 
           <!-- Colonna Tipologie ristoranti -->
 
           <div class="list">
             <label for="tutti" class="tutti">
-              <span class="title"></span>
+              <span class="title">Tutti</span>
             </label>
 
             <label
               v-for="type in typesRestaurants"
               :key="type.id"
-              for="tutti"
+              :for="type.name"
               :class="type.name"
             >
-              <span class="title" @click="searchRestaurantsByType(type.id)">{{
-                type.name
-              }}</span>
+              <span class="title" @click="searchRestaurantsByType(type.id)">
+                {{ type.name }}</span
+              >
             </label>
-
-            <!--  <label for="Italian" class="Italian">
-              <span class="title">Italian</span>
-            </label>
-            <label for="Japanese" class="Japanese">
-              <span class="title">Japanese</span>
-            </label>
-            <label for="Turkish" class="Turkish">
-              <span class="title">Turkish</span>
-            </label>
-            <label for="Mexican" class="Mexican">
-              <span class="title">Mexican</span>
-            </label>
-           
-
-            <!-- Colonna ristoranti -->
-
-            <div class="d-flex justify-content-around">
-              <div class="Japanese text">
-                <div class="card">
-                  <div class="cover">
-                    <h5>Ristorante Tal dei Tali</h5>
-                  </div>
-                  <div class="details">
-                    <div>
-                      <!-- <img src="./img/cake.png" alt="" /> -->
-                      <h3>Ristorante Tal dei Tali</h3>
-                      <a href="./menu">Vai al menù</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="Giapponese text">
-                <div class="card">
-                  <div class="cover">
-                    <h5>Ristorante Tal dei Tali</h5>
-                  </div>
-                  <div class="details">
-                    <div>
-                      <!-- <img src="./img/cake.png" alt="" /> -->
-                      <h3>Ristorante Tal dei Tali</h3>
-                      <a href="./menu">Vai al menù</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
             <div class="slider"></div>
           </div>
+          <!-- Filtered Restaurants -->
           <div class="text-content">
-            <!-- tutti -->
-            <!--   <div class="col-11 d-flex justify-content-around flex-wrap">
-              <div class="tutti text">
-                <div class="card m-2">
-                  <div class="cover">
-                    <h5>Ristorante Tal dei Tali</h5>
-                  </div>
-                  <div class="details">
-                    <div>
-                      <img src="./img/cake.png" alt="" /> 
-                      <h3>Ristorante Tal dei Tali</h3>
-                      <a href="http://127.0.0.1:8000/restaurants/5"
-                        >Vai al menù</a
-                      >
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-            <!-- Filtered Restaurants -->
             <div
+              class="col-11 d-flex justify-content-around flex-wrap"
               v-for="restaurant in filteredRestaurants"
               :key="restaurant.id"
-              class="col-11 d-flex justify-content-around flex-wrap"
             >
-              <div :class="restaurant.name" class="text">
+              <div :class="restaurant.type" class="text">
                 <div class="card m-2">
                   <div class="cover">
                     <h5>{{ restaurant.name }}</h5>
@@ -240,10 +173,10 @@ export default {
   z-index: 12;
 }
 #tutti:checked ~ .list label.tutti,
-#French:checked ~ .list label.French,
 #Italian:checked ~ .list label.Italian,
-#Giapponese:checked ~ .list label.Giapponese,
+#Japanese:checked ~ .list label.Japanese,
 #Mexican:checked ~ .list label.Mexican,
+#French:checked ~ .list label.French,
 #Turkish:checked ~ .list label.Turkish {
   color: #fff;
 }
@@ -263,19 +196,19 @@ export default {
 #tutti:checked ~ .list .slider {
   top: 0;
 }
-#French:checked ~ .list .slider {
+#Italian:checked ~ .list .slider {
   top: 60px;
 }
-#Italian:checked ~ .list .slider {
+#Japanese:checked ~ .list .slider {
   top: 120px;
 }
-#Giapponese:checked ~ .list .slider {
+#Mexican:checked ~ .list .slider {
   top: 180px;
 }
-#Turkish:checked ~ .list .slider {
+#French:checked ~ .list .slider {
   top: 240px;
 }
-#Mexican:checked ~ .list .slider {
+#Turkish:checked ~ .list .slider {
   top: 300px;
 }
 
@@ -298,18 +231,19 @@ export default {
   display: block;
 }
 #tutti:checked ~ .text-content .tutti,
-#French:checked ~ .text-content .French,
 #Italian:checked ~ .text-content .Italian,
 #Japanese:checked ~ .text-content .Japanese,
-#Turkish:checked ~ .text-content .Turkish,
-#Mexican:checked ~ .text-content .Mexican {
+#Mexican:checked ~ .text-content .Mexican,
+#French:checked ~ .text-content .French,
+#Turkish:checked ~ .text-content .Turkish {
   display: block;
 }
-#French:checked ~ .text-content .tutti,
+
 #Italian:checked ~ .text-content .tutti,
 #Japanese:checked ~ .text-content .tutti,
-#Turkish:checked ~ .text-content .tutti,
-#Mexican:checked ~ .text-content .tutti {
+#Mexican:checked ~ .text-content .tutti,
+#French:checked ~ .text-content .tutti,
+#Turkish:checked ~ .text-content .tutti {
   display: none;
 }
 .content input {
