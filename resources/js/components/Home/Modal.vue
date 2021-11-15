@@ -31,41 +31,82 @@
 
         <div class="content">
           <input type="radio" name="slider" checked id="tutti" />
-          <input type="radio" name="slider" id="Francese" />
-          <input type="radio" name="slider" id="Italiano" />
-          <input type="radio" name="slider" id="Giapponese" />
-          <input type="radio" name="slider" id="Marocchino" />
-          <input type="radio" name="slider" id="Messicano" />
-          <input type="radio" name="slider" id="Turco" />
+          <input type="radio" name="slider" id="French" />
+          <input type="radio" name="slider" id="Italian" />
+          <input type="radio" name="slider" id="Japanese" />
+          <input type="radio" name="slider" id="Turkish" />
+          <input type="radio" name="slider" id="Mexican" />
+
+          <!-- Colonna Tipologie ristoranti -->
 
           <div class="list">
             <label for="tutti" class="tutti">
-              <span class="title">Tutti</span>
+              <span class="title"></span>
             </label>
-            <label for="Francese" class="Francese">
-              <span class="title">Francese</span>
+
+            <label
+              v-for="type in typesRestaurants"
+              :key="type.id"
+              for="tutti"
+              :class="type.name"
+            >
+              <span class="title" @click="searchRestaurantsByType(type.id)">{{
+                type.name
+              }}</span>
             </label>
-            <label for="Italiano" class="Italiano">
-              <span class="title">Italiano</span>
+
+            <!--  <label for="Italian" class="Italian">
+              <span class="title">Italian</span>
             </label>
-            <label for="Giapponese" class="Giapponese">
-              <span class="title">Giapponese</span>
+            <label for="Japanese" class="Japanese">
+              <span class="title">Japanese</span>
             </label>
-            <label for="Marocchino" class="Marocchino">
-              <span class="title">Marocchino</span>
+            <label for="Turkish" class="Turkish">
+              <span class="title">Turkish</span>
             </label>
-            <label for="Messicano" class="Messicano">
-              <span class="title">Messicano</span>
+            <label for="Mexican" class="Mexican">
+              <span class="title">Mexican</span>
             </label>
-            <label for="Turco" class="Turco">
-              <span class="title">Turco</span>
-            </label>
+           
+
+            <!-- Colonna ristoranti -->
+
+            <div class="d-flex justify-content-around">
+              <div class="Japanese text">
+                <div class="card">
+                  <div class="cover">
+                    <h5>Ristorante Tal dei Tali</h5>
+                  </div>
+                  <div class="details">
+                    <div>
+                      <!-- <img src="./img/cake.png" alt="" /> -->
+                      <h3>Ristorante Tal dei Tali</h3>
+                      <a href="./menu">Vai al menù</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="Giapponese text">
+                <div class="card">
+                  <div class="cover">
+                    <h5>Ristorante Tal dei Tali</h5>
+                  </div>
+                  <div class="details">
+                    <div>
+                      <!-- <img src="./img/cake.png" alt="" /> -->
+                      <h3>Ristorante Tal dei Tali</h3>
+                      <a href="./menu">Vai al menù</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
             <div class="slider"></div>
           </div>
           <div class="text-content">
             <!-- tutti -->
-            <div class="col-11 d-flex justify-content-around flex-wrap">
+            <!--   <div class="col-11 d-flex justify-content-around flex-wrap">
               <div class="tutti text">
                 <div class="card m-2">
                   <div class="cover">
@@ -73,7 +114,7 @@
                   </div>
                   <div class="details">
                     <div>
-                      <!-- <img src="./img/cake.png" alt="" /> -->
+                      <img src="./img/cake.png" alt="" /> 
                       <h3>Ristorante Tal dei Tali</h3>
                       <a href="http://127.0.0.1:8000/restaurants/5"
                         >Vai al menù</a
@@ -82,184 +123,26 @@
                   </div>
                 </div>
               </div>
-              <div class="tutti text">
+            </div> -->
+            <!-- Filtered Restaurants -->
+            <div
+              v-for="restaurant in filteredRestaurants"
+              :key="restaurant.id"
+              class="col-11 d-flex justify-content-around flex-wrap"
+            >
+              <div :class="restaurant.name" class="text">
                 <div class="card m-2">
                   <div class="cover">
-                    <h5>Ristorante Tal dei Tali</h5>
+                    <h5>{{ restaurant.name }}</h5>
                   </div>
                   <div class="details">
                     <div>
                       <!-- <img src="./img/cake.png" alt="" /> -->
-                      <h3>Ristorante Tal dei Tali</h3>
-                      <a href="http://127.0.0.1:8000/restaurants/4"
+                      <h3>{{ restaurant.name }}</h3>
+                      <a
+                        :href="`http://127.0.0.1:8000/restaurants/${restaurant.id}`"
                         >Vai al menù</a
                       >
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="tutti text">
-                <div class="card">
-                  <div class="cover m-2">
-                    <h5>Ristorante Tal dei Tali</h5>
-                  </div>
-                  <div class="details">
-                    <div>
-                      <!-- <img src="./img/cake.png" alt="" /> -->
-                      <h3>Ristorante Tal dei Tali</h3>
-                      <a href="./menu">Vai al menù</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="tutti text">
-                <div class="card">
-                  <div class="cover m-2">
-                    <h5>Ristorante Tal dei Tali</h5>
-                  </div>
-                  <div class="details">
-                    <div>
-                      <!-- <img src="./img/cake.png" alt="" /> -->
-                      <h3>Ristorante Tal dei Tali</h3>
-                      <a href="./menu">Vai al menù</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Francese -->
-            <div class="col-11 d-flex justify-content-around flex-wrap">
-              <div class="Francese text">
-                <div class="Francese text">
-                  <div class="card">
-                    <div class="cover m-2">
-                      <h5>Ristorante Tal dei Tali</h5>
-                    </div>
-                    <div class="details">
-                      <div>
-                        <!-- <img src="./img/cake.png" alt="" /> -->
-                        <h3>Ristorante Tal dei Tali</h3>
-                        <a href="./menu">Vai al menù</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Italiano -->
-            <div class="col-11 d-flex justify-content-around flex-wrap">
-              <div class="Italiano text">
-                <div class="Italiano text">
-                  <div class="card">
-                    <div class="cover m-2">
-                      <h5>Ristorante Tal dei Tali</h5>
-                    </div>
-                    <div class="details">
-                      <div>
-                        <!-- <img src="./img/cake.png" alt="" /> -->
-                        <h3>Ristorante Tal dei Tali</h3>
-                        <a href="./menu">Vai al menù</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Giapponese -->
-            <div class="d-flex justify-content-around">
-              <div class="Giapponese text">
-                <div class="card">
-                  <div class="cover">
-                    <h5>Ristorante Tal dei Tali</h5>
-                  </div>
-                  <div class="details">
-                    <div>
-                      <!-- <img src="./img/cake.png" alt="" /> -->
-                      <h3>Ristorante Tal dei Tali</h3>
-                      <a href="./menu">Vai al menù</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="Giapponese text">
-                <div class="card">
-                  <div class="cover">
-                    <h5>Ristorante Tal dei Tali</h5>
-                  </div>
-                  <div class="details">
-                    <div>
-                      <!-- <img src="./img/cake.png" alt="" /> -->
-                      <h3>Ristorante Tal dei Tali</h3>
-                      <a href="./menu">Vai al menù</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Marocchino -->
-            <div class="col-11 d-flex justify-content-around flex-wrap">
-              <div class="Marocchino text">
-                <div class="Marocchino text">
-                  <div class="card">
-                    <div class="cover m-2">
-                      <h5>Ristorante Tal dei Tali</h5>
-                    </div>
-                    <div class="details">
-                      <div>
-                        <!-- <img src="./img/cake.png" alt="" /> -->
-                        <h3>Ristorante Tal dei Tali</h3>
-                        <a href="./menu">Vai al menù</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Messicano -->
-            <div class="d-flex justify-content-around">
-              <div class="Messicano text">
-                <div class="card">
-                  <div class="cover">
-                    <h5>Ristorante Tal dei Tali</h5>
-                  </div>
-                  <div class="details">
-                    <div>
-                      <!-- <img src="./img/cake.png" alt="" /> -->
-                      <h3>Ristorante Tal dei Tali</h3>
-                      <a href="./menu">Vai al menù</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="Messicano text">
-                <div class="card">
-                  <div class="cover">
-                    <h5>Ristorante Tal dei Tali</h5>
-                  </div>
-                  <div class="details">
-                    <div>
-                      <!-- <img src="./img/cake.png" alt="" /> -->
-                      <h3>Ristorante Tal dei Tali</h3>
-                      <a href="./menu">Vai al menù</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Turco -->
-            <div class="col-11 d-flex justify-content-around flex-wrap">
-              <div class="Turco text">
-                <div class="Turco text">
-                  <div class="card">
-                    <div class="cover m-2">
-                      <h5>Ristorante Tal dei Tali</h5>
-                    </div>
-                    <div class="details">
-                      <div>
-                        <!-- <img src="./img/cake.png" alt="" /> -->
-                        <h3>Ristorante Tal dei Tali</h3>
-                        <a href="./menu">Vai al menù</a>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -275,6 +158,34 @@
 <script>
 export default {
   name: "Modal",
+  data() {
+    return {
+      typesRestaurants: [],
+      filteredRestaurants: [],
+    };
+  },
+  methods: {
+    getTypesFromApi() {
+      axios
+        .get("http://127.0.0.1:8000/api/types")
+        .then((res) => {
+          this.typesRestaurants = res.data;
+        })
+        .catch(() => {});
+    },
+    searchRestaurantsByType(id) {
+      axios
+        .get(`http://127.0.0.1:8000/api/types/${id}`)
+        .then((res) => {
+          this.filteredRestaurants = res.data;
+          console.log(this.filteredRestaurants);
+        })
+        .catch(() => {});
+    },
+  },
+  created() {
+    this.getTypesFromApi();
+  },
 };
 </script>
 
@@ -329,12 +240,11 @@ export default {
   z-index: 12;
 }
 #tutti:checked ~ .list label.tutti,
-#Francese:checked ~ .list label.Francese,
-#Italiano:checked ~ .list label.Italiano,
+#French:checked ~ .list label.French,
+#Italian:checked ~ .list label.Italian,
 #Giapponese:checked ~ .list label.Giapponese,
-#Messicano:checked ~ .list label.Messicano,
-#Turco:checked ~ .list label.Turco,
-#Marocchino:checked ~ .list label.Marocchino {
+#Mexican:checked ~ .list label.Mexican,
+#Turkish:checked ~ .list label.Turkish {
   color: #fff;
 }
 .content .list label:hover {
@@ -353,24 +263,22 @@ export default {
 #tutti:checked ~ .list .slider {
   top: 0;
 }
-#Francese:checked ~ .list .slider {
+#French:checked ~ .list .slider {
   top: 60px;
 }
-#Italiano:checked ~ .list .slider {
+#Italian:checked ~ .list .slider {
   top: 120px;
 }
 #Giapponese:checked ~ .list .slider {
   top: 180px;
 }
-#Marocchino:checked ~ .list .slider {
+#Turkish:checked ~ .list .slider {
   top: 240px;
 }
-#Messicano:checked ~ .list .slider {
+#Mexican:checked ~ .list .slider {
   top: 300px;
 }
-#Turco:checked ~ .list .slider {
-  top: 360px;
-}
+
 .content .text-content {
   width: 80%;
   height: 100%;
@@ -390,20 +298,18 @@ export default {
   display: block;
 }
 #tutti:checked ~ .text-content .tutti,
-#Francese:checked ~ .text-content .Francese,
-#Italiano:checked ~ .text-content .Italiano,
-#Giapponese:checked ~ .text-content .Giapponese,
-#Marocchino:checked ~ .text-content .Marocchino,
-#Messicano:checked ~ .text-content .Messicano,
-#Turco:checked ~ .text-content .Turco {
+#French:checked ~ .text-content .French,
+#Italian:checked ~ .text-content .Italian,
+#Japanese:checked ~ .text-content .Japanese,
+#Turkish:checked ~ .text-content .Turkish,
+#Mexican:checked ~ .text-content .Mexican {
   display: block;
 }
-#Francese:checked ~ .text-content .tutti,
-#Italiano:checked ~ .text-content .tutti,
-#Giapponese:checked ~ .text-content .tutti,
-#Marocchino:checked ~ .text-content .tutti,
-#Messicano:checked ~ .text-content .tutti,
-#Turco:checked ~ .text-content .tutti {
+#French:checked ~ .text-content .tutti,
+#Italian:checked ~ .text-content .tutti,
+#Japanese:checked ~ .text-content .tutti,
+#Turkish:checked ~ .text-content .tutti,
+#Mexican:checked ~ .text-content .tutti {
   display: none;
 }
 .content input {

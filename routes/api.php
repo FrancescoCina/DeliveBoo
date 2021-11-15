@@ -23,7 +23,10 @@ Route::namespace('Api')->group(function () {
 
     Route::get('/restaurants', 'RestaurantController@index');
     Route::get('/restaurants/{restaurant}', 'RestaurantController@show');
+    Route::get('/types', 'TypeController@index');
+    Route::get('/types/{type}', 'TypeController@show');
 });
+
 
 
 // Rotte API

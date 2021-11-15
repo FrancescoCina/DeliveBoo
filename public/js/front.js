@@ -2617,125 +2617,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Modal"
+  name: "Modal",
+  data: function data() {
+    return {
+      typesRestaurants: [],
+      filteredRestaurants: []
+    };
+  },
+  methods: {
+    getTypesFromApi: function getTypesFromApi() {
+      var _this = this;
+
+      axios.get("http://127.0.0.1:8000/api/types").then(function (res) {
+        _this.typesRestaurants = res.data;
+      })["catch"](function () {});
+    },
+    searchRestaurantsByType: function searchRestaurantsByType(id) {
+      var _this2 = this;
+
+      axios.get("http://127.0.0.1:8000/api/types/".concat(id)).then(function (res) {
+        _this2.filteredRestaurants = res.data;
+        console.log(_this2.filteredRestaurants);
+      })["catch"](function () {});
+    }
+  },
+  created: function created() {
+    this.getTypesFromApi();
+  }
 });
 
 /***/ }),
@@ -7223,7 +7132,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap);", ""]);
 
 // module
-exports.push([module.i, "/* format */\n*[data-v-e0a7d0f0] {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n  font-family: \"Poppins\", sans-serif;\n}\n.box[data-v-e0a7d0f0] {\n  max-width: 950px;\n  width: 100%;\n  padding: 40px 50px 40px 40px;\n  background: #fff;\n  margin: 0 20px;\n  border-radius: 12px;\n  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);\n}\n.box .topic[data-v-e0a7d0f0] {\n  font-size: 30px;\n  font-weight: 500;\n  margin-bottom: 20px;\n}\n.content[data-v-e0a7d0f0] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n.content .list[data-v-e0a7d0f0] {\n  display: flex;\n  flex-direction: column;\n  width: 20%;\n  margin-right: 50px;\n  position: relative;\n}\n.content .list label[data-v-e0a7d0f0] {\n  height: 60px;\n  font-size: 22px;\n  font-weight: 500;\n  line-height: 60px;\n  cursor: pointer;\n  padding-left: 25px;\n  transition: all 0.5s ease;\n  color: #333;\n  z-index: 12;\n}\n#tutti:checked ~ .list label.tutti[data-v-e0a7d0f0],\n#Francese:checked ~ .list label.Francese[data-v-e0a7d0f0],\n#Italiano:checked ~ .list label.Italiano[data-v-e0a7d0f0],\n#Giapponese:checked ~ .list label.Giapponese[data-v-e0a7d0f0],\n#Messicano:checked ~ .list label.Messicano[data-v-e0a7d0f0],\n#Turco:checked ~ .list label.Turco[data-v-e0a7d0f0],\n#Marocchino:checked ~ .list label.Marocchino[data-v-e0a7d0f0] {\n  color: #fff;\n}\n.content .list label[data-v-e0a7d0f0]:hover {\n  color: #ff5858;\n}\n.content .slider[data-v-e0a7d0f0] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  height: 60px;\n  width: 100%;\n  border-radius: 12px;\n  background: #ff5858;\n  transition: all 0.4s ease;\n}\n#tutti:checked ~ .list .slider[data-v-e0a7d0f0] {\n  top: 0;\n}\n#Francese:checked ~ .list .slider[data-v-e0a7d0f0] {\n  top: 60px;\n}\n#Italiano:checked ~ .list .slider[data-v-e0a7d0f0] {\n  top: 120px;\n}\n#Giapponese:checked ~ .list .slider[data-v-e0a7d0f0] {\n  top: 180px;\n}\n#Marocchino:checked ~ .list .slider[data-v-e0a7d0f0] {\n  top: 240px;\n}\n#Messicano:checked ~ .list .slider[data-v-e0a7d0f0] {\n  top: 300px;\n}\n#Turco:checked ~ .list .slider[data-v-e0a7d0f0] {\n  top: 360px;\n}\n.content .text-content[data-v-e0a7d0f0] {\n  width: 80%;\n  height: 100%;\n}\n.content .text[data-v-e0a7d0f0] {\n  display: none;\n}\n.content .text .title[data-v-e0a7d0f0] {\n  font-size: 25px;\n  margin-bottom: 10px;\n  font-weight: 500;\n}\n.content .text p[data-v-e0a7d0f0] {\n  text-align: justify;\n}\n.content .text-content .tutti[data-v-e0a7d0f0] {\n  display: block;\n}\n#tutti:checked ~ .text-content .tutti[data-v-e0a7d0f0],\n#Francese:checked ~ .text-content .Francese[data-v-e0a7d0f0],\n#Italiano:checked ~ .text-content .Italiano[data-v-e0a7d0f0],\n#Giapponese:checked ~ .text-content .Giapponese[data-v-e0a7d0f0],\n#Marocchino:checked ~ .text-content .Marocchino[data-v-e0a7d0f0],\n#Messicano:checked ~ .text-content .Messicano[data-v-e0a7d0f0],\n#Turco:checked ~ .text-content .Turco[data-v-e0a7d0f0] {\n  display: block;\n}\n#Francese:checked ~ .text-content .tutti[data-v-e0a7d0f0],\n#Italiano:checked ~ .text-content .tutti[data-v-e0a7d0f0],\n#Giapponese:checked ~ .text-content .tutti[data-v-e0a7d0f0],\n#Marocchino:checked ~ .text-content .tutti[data-v-e0a7d0f0],\n#Messicano:checked ~ .text-content .tutti[data-v-e0a7d0f0],\n#Turco:checked ~ .text-content .tutti[data-v-e0a7d0f0] {\n  display: none;\n}\n.content input[data-v-e0a7d0f0] {\n  display: none;\n}\n\n/* CARD */\n.card[data-v-e0a7d0f0] {\n  position: relative;\n  width: 200px;\n  height: 200px;\n  background-color: white;\n  transform-style: preserve-3d;\n  transform: perspective 2000px;\n  transition: 1s;\n  box-shadow: inset 300px 0 20px rgba(0, 0, 0, 0.15), 0 20px 20px rgba(0, 0, 0, 0.15);\n}\n.card[data-v-e0a7d0f0]:hover {\n  transform: perspective 2000px translate(50%);\n  box-shadow: inset 20px 0 50px rgba(0, 0, 0, 0.15), 0 10px 10px rgba(0, 0, 0, 0.15);\n}\n.card .cover[data-v-e0a7d0f0] {\n  position: relative;\n  width: 100%;\n  height: 100%;\n  background-color: white;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  transform-style: preserve-3d;\n  overflow: hidden;\n  z-index: 2;\n  transition: 0.8s ease-in-out;\n  transform-origin: left;\n}\n.card:hover .cover[data-v-e0a7d0f0] {\n  transform: rotateY(-100deg);\n}\n.card .cover h5[data-v-e0a7d0f0] {\n  background-color: white;\n  max-width: 100%;\n  z-index: 1;\n  padding: 10px;\n}\n.card .cover[data-v-e0a7d0f0]::before {\n  content: \"\";\n  position: absolute;\n  width: 10px;\n  height: 150%;\n  background: white;\n  transform: rotate(120deg);\n  box-shadow: 0 0 0 20px #ff5858;\n  transition: 0.5s;\n  transition-delay: 1s;\n}\n.card:hover .cover h5[data-v-e0a7d0f0] {\n  opacity: 0;\n  transition: 1s;\n}\n.card:hover .cover[data-v-e0a7d0f0]::before {\n  width: 0;\n  box-shadow: 0 0 0 250px #ff5858;\n  transform: rotate(120deg);\n}\n.card .details[data-v-e0a7d0f0] {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 0;\n  background-color: white;\n  transform-style: preserve-3d;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  overflow: hidden;\n  text-align: center;\n  z-index: 1;\n}\n.card .details h3[data-v-e0a7d0f0] {\n  font-weight: 500;\n  margin: 5px 0;\n}\n.card .details h2[data-v-e0a7d0f0] {\n  font-weight: 600;\n  font-size: 1.5rem;\n  color: #2a5fa5;\n}\n.card .details a[data-v-e0a7d0f0] {\n  display: inline-block;\n  padding: 8px 20px;\n  background: #2a5fa5;\n  color: white;\n  margin-top: 5px;\n  letter-spacing: 1px;\n  border-radius: 25px;\n  text-decoration: none;\n  font-weight: 500;\n  text-decoration: none;\n}\nimg[data-v-e0a7d0f0] {\n  width: 200px;\n}", ""]);
+exports.push([module.i, "/* format */\n*[data-v-e0a7d0f0] {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n  font-family: \"Poppins\", sans-serif;\n}\n.box[data-v-e0a7d0f0] {\n  max-width: 950px;\n  width: 100%;\n  padding: 40px 50px 40px 40px;\n  background: #fff;\n  margin: 0 20px;\n  border-radius: 12px;\n  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);\n}\n.box .topic[data-v-e0a7d0f0] {\n  font-size: 30px;\n  font-weight: 500;\n  margin-bottom: 20px;\n}\n.content[data-v-e0a7d0f0] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n.content .list[data-v-e0a7d0f0] {\n  display: flex;\n  flex-direction: column;\n  width: 20%;\n  margin-right: 50px;\n  position: relative;\n}\n.content .list label[data-v-e0a7d0f0] {\n  height: 60px;\n  font-size: 22px;\n  font-weight: 500;\n  line-height: 60px;\n  cursor: pointer;\n  padding-left: 25px;\n  transition: all 0.5s ease;\n  color: #333;\n  z-index: 12;\n}\n#tutti:checked ~ .list label.tutti[data-v-e0a7d0f0],\n#French:checked ~ .list label.French[data-v-e0a7d0f0],\n#Italian:checked ~ .list label.Italian[data-v-e0a7d0f0],\n#Giapponese:checked ~ .list label.Giapponese[data-v-e0a7d0f0],\n#Mexican:checked ~ .list label.Mexican[data-v-e0a7d0f0],\n#Turkish:checked ~ .list label.Turkish[data-v-e0a7d0f0] {\n  color: #fff;\n}\n.content .list label[data-v-e0a7d0f0]:hover {\n  color: #ff5858;\n}\n.content .slider[data-v-e0a7d0f0] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  height: 60px;\n  width: 100%;\n  border-radius: 12px;\n  background: #ff5858;\n  transition: all 0.4s ease;\n}\n#tutti:checked ~ .list .slider[data-v-e0a7d0f0] {\n  top: 0;\n}\n#French:checked ~ .list .slider[data-v-e0a7d0f0] {\n  top: 60px;\n}\n#Italian:checked ~ .list .slider[data-v-e0a7d0f0] {\n  top: 120px;\n}\n#Giapponese:checked ~ .list .slider[data-v-e0a7d0f0] {\n  top: 180px;\n}\n#Turkish:checked ~ .list .slider[data-v-e0a7d0f0] {\n  top: 240px;\n}\n#Mexican:checked ~ .list .slider[data-v-e0a7d0f0] {\n  top: 300px;\n}\n.content .text-content[data-v-e0a7d0f0] {\n  width: 80%;\n  height: 100%;\n}\n.content .text[data-v-e0a7d0f0] {\n  display: none;\n}\n.content .text .title[data-v-e0a7d0f0] {\n  font-size: 25px;\n  margin-bottom: 10px;\n  font-weight: 500;\n}\n.content .text p[data-v-e0a7d0f0] {\n  text-align: justify;\n}\n.content .text-content .tutti[data-v-e0a7d0f0] {\n  display: block;\n}\n#tutti:checked ~ .text-content .tutti[data-v-e0a7d0f0],\n#French:checked ~ .text-content .French[data-v-e0a7d0f0],\n#Italian:checked ~ .text-content .Italian[data-v-e0a7d0f0],\n#Japanese:checked ~ .text-content .Japanese[data-v-e0a7d0f0],\n#Turkish:checked ~ .text-content .Turkish[data-v-e0a7d0f0],\n#Mexican:checked ~ .text-content .Mexican[data-v-e0a7d0f0] {\n  display: block;\n}\n#French:checked ~ .text-content .tutti[data-v-e0a7d0f0],\n#Italian:checked ~ .text-content .tutti[data-v-e0a7d0f0],\n#Japanese:checked ~ .text-content .tutti[data-v-e0a7d0f0],\n#Turkish:checked ~ .text-content .tutti[data-v-e0a7d0f0],\n#Mexican:checked ~ .text-content .tutti[data-v-e0a7d0f0] {\n  display: none;\n}\n.content input[data-v-e0a7d0f0] {\n  display: none;\n}\n\n/* CARD */\n.card[data-v-e0a7d0f0] {\n  position: relative;\n  width: 200px;\n  height: 200px;\n  background-color: white;\n  transform-style: preserve-3d;\n  transform: perspective 2000px;\n  transition: 1s;\n  box-shadow: inset 300px 0 20px rgba(0, 0, 0, 0.15), 0 20px 20px rgba(0, 0, 0, 0.15);\n}\n.card[data-v-e0a7d0f0]:hover {\n  transform: perspective 2000px translate(50%);\n  box-shadow: inset 20px 0 50px rgba(0, 0, 0, 0.15), 0 10px 10px rgba(0, 0, 0, 0.15);\n}\n.card .cover[data-v-e0a7d0f0] {\n  position: relative;\n  width: 100%;\n  height: 100%;\n  background-color: white;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  transform-style: preserve-3d;\n  overflow: hidden;\n  z-index: 2;\n  transition: 0.8s ease-in-out;\n  transform-origin: left;\n}\n.card:hover .cover[data-v-e0a7d0f0] {\n  transform: rotateY(-100deg);\n}\n.card .cover h5[data-v-e0a7d0f0] {\n  background-color: white;\n  max-width: 100%;\n  z-index: 1;\n  padding: 10px;\n}\n.card .cover[data-v-e0a7d0f0]::before {\n  content: \"\";\n  position: absolute;\n  width: 10px;\n  height: 150%;\n  background: white;\n  transform: rotate(120deg);\n  box-shadow: 0 0 0 20px #ff5858;\n  transition: 0.5s;\n  transition-delay: 1s;\n}\n.card:hover .cover h5[data-v-e0a7d0f0] {\n  opacity: 0;\n  transition: 1s;\n}\n.card:hover .cover[data-v-e0a7d0f0]::before {\n  width: 0;\n  box-shadow: 0 0 0 250px #ff5858;\n  transform: rotate(120deg);\n}\n.card .details[data-v-e0a7d0f0] {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 0;\n  background-color: white;\n  transform-style: preserve-3d;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  overflow: hidden;\n  text-align: center;\n  z-index: 1;\n}\n.card .details h3[data-v-e0a7d0f0] {\n  font-weight: 500;\n  margin: 5px 0;\n}\n.card .details h2[data-v-e0a7d0f0] {\n  font-weight: 600;\n  font-size: 1.5rem;\n  color: #2a5fa5;\n}\n.card .details a[data-v-e0a7d0f0] {\n  display: inline-block;\n  padding: 8px 20px;\n  background: #2a5fa5;\n  color: white;\n  margin-top: 5px;\n  letter-spacing: 1px;\n  border-radius: 25px;\n  text-decoration: none;\n  font-weight: 500;\n  text-decoration: none;\n}\nimg[data-v-e0a7d0f0] {\n  width: 200px;\n}", ""]);
 
 // exports
 
@@ -39511,455 +39420,238 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    {
+      staticClass: "modal fade",
+      attrs: {
+        id: "staticBackdrop",
+        "data-backdrop": "static",
+        "data-keyboard": "false",
+        tabindex: "-1",
+        "aria-labelledby": "staticBackdropLabel",
+        "aria-hidden": "true",
+      },
+    },
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "modal-body d-flex justify-content-center align-items-center mt-5",
+        },
+        [
+          _c("div", { staticClass: "container box" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c("div", { staticClass: "content" }, [
+              _c("input", {
+                attrs: {
+                  type: "radio",
+                  name: "slider",
+                  checked: "",
+                  id: "tutti",
+                },
+              }),
+              _vm._v(" "),
+              _c("input", {
+                attrs: { type: "radio", name: "slider", id: "French" },
+              }),
+              _vm._v(" "),
+              _c("input", {
+                attrs: { type: "radio", name: "slider", id: "Italian" },
+              }),
+              _vm._v(" "),
+              _c("input", {
+                attrs: { type: "radio", name: "slider", id: "Japanese" },
+              }),
+              _vm._v(" "),
+              _c("input", {
+                attrs: { type: "radio", name: "slider", id: "Turkish" },
+              }),
+              _vm._v(" "),
+              _c("input", {
+                attrs: { type: "radio", name: "slider", id: "Mexican" },
+              }),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "list" },
+                [
+                  _vm._m(2),
+                  _vm._v(" "),
+                  _vm._l(_vm.typesRestaurants, function (type) {
+                    return _c(
+                      "label",
+                      {
+                        key: type.id,
+                        class: type.name,
+                        attrs: { for: "tutti" },
+                      },
+                      [
+                        _c(
+                          "span",
+                          {
+                            staticClass: "title",
+                            on: {
+                              click: function ($event) {
+                                return _vm.searchRestaurantsByType(type.id)
+                              },
+                            },
+                          },
+                          [_vm._v(_vm._s(type.name))]
+                        ),
+                      ]
+                    )
+                  }),
+                  _vm._v(" "),
+                  _vm._m(3),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "slider" }),
+                ],
+                2
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "text-content" },
+                _vm._l(_vm.filteredRestaurants, function (restaurant) {
+                  return _c(
+                    "div",
+                    {
+                      key: restaurant.id,
+                      staticClass:
+                        "col-11 d-flex justify-content-around flex-wrap",
+                    },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "text", class: restaurant.name },
+                        [
+                          _c("div", { staticClass: "card m-2" }, [
+                            _c("div", { staticClass: "cover" }, [
+                              _c("h5", [_vm._v(_vm._s(restaurant.name))]),
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "details" }, [
+                              _c("div", [
+                                _c("h3", [_vm._v(_vm._s(restaurant.name))]),
+                                _vm._v(" "),
+                                _c(
+                                  "a",
+                                  {
+                                    attrs: {
+                                      href:
+                                        "http://127.0.0.1:8000/restaurants/" +
+                                        restaurant.id,
+                                    },
+                                  },
+                                  [_vm._v("Vai al menù")]
+                                ),
+                              ]),
+                            ]),
+                          ]),
+                        ]
+                      ),
+                    ]
+                  )
+                }),
+                0
+              ),
+            ]),
+          ]),
+        ]
+      ),
+    ]
+  )
 }
 var staticRenderFns = [
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-dialog" }, [
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close",
+          },
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } })]
+      ),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c(
       "div",
-      {
-        staticClass: "modal fade",
-        attrs: {
-          id: "staticBackdrop",
-          "data-backdrop": "static",
-          "data-keyboard": "false",
-          tabindex: "-1",
-          "aria-labelledby": "staticBackdropLabel",
-          "aria-hidden": "true",
-        },
-      },
+      { staticClass: "topic text-center d-flex justify-content-around" },
       [
-        _c("div", { staticClass: "modal-dialog" }, [
-          _c(
-            "button",
-            {
-              staticClass: "close",
-              attrs: {
-                type: "button",
-                "data-dismiss": "modal",
-                "aria-label": "Close",
-              },
-            },
-            [_c("span", { attrs: { "aria-hidden": "true" } })]
-          ),
-        ]),
-        _vm._v(" "),
+        _vm._v("\n        Cerca il ristorante che preferisci!\n        "),
         _c(
-          "div",
+          "button",
           {
-            staticClass:
-              "modal-body d-flex justify-content-center align-items-center mt-5",
+            staticClass: "btn",
+            attrs: { type: "button", "data-dismiss": "modal" },
           },
-          [
-            _c("div", { staticClass: "container box" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "topic text-center d-flex justify-content-around",
-                },
-                [
-                  _vm._v(
-                    "\n        Cerca il ristorante che preferisci!\n        "
-                  ),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn",
-                      attrs: { type: "button", "data-dismiss": "modal" },
-                    },
-                    [_vm._v("Chiudi")]
-                  ),
-                ]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "content" }, [
-                _c("input", {
-                  attrs: {
-                    type: "radio",
-                    name: "slider",
-                    checked: "",
-                    id: "tutti",
-                  },
-                }),
-                _vm._v(" "),
-                _c("input", {
-                  attrs: { type: "radio", name: "slider", id: "Francese" },
-                }),
-                _vm._v(" "),
-                _c("input", {
-                  attrs: { type: "radio", name: "slider", id: "Italiano" },
-                }),
-                _vm._v(" "),
-                _c("input", {
-                  attrs: { type: "radio", name: "slider", id: "Giapponese" },
-                }),
-                _vm._v(" "),
-                _c("input", {
-                  attrs: { type: "radio", name: "slider", id: "Marocchino" },
-                }),
-                _vm._v(" "),
-                _c("input", {
-                  attrs: { type: "radio", name: "slider", id: "Messicano" },
-                }),
-                _vm._v(" "),
-                _c("input", {
-                  attrs: { type: "radio", name: "slider", id: "Turco" },
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "list" }, [
-                  _c(
-                    "label",
-                    { staticClass: "tutti", attrs: { for: "tutti" } },
-                    [_c("span", { staticClass: "title" }, [_vm._v("Tutti")])]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "label",
-                    { staticClass: "Francese", attrs: { for: "Francese" } },
-                    [_c("span", { staticClass: "title" }, [_vm._v("Francese")])]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "label",
-                    { staticClass: "Italiano", attrs: { for: "Italiano" } },
-                    [_c("span", { staticClass: "title" }, [_vm._v("Italiano")])]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "label",
-                    { staticClass: "Giapponese", attrs: { for: "Giapponese" } },
-                    [
-                      _c("span", { staticClass: "title" }, [
-                        _vm._v("Giapponese"),
-                      ]),
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "label",
-                    { staticClass: "Marocchino", attrs: { for: "Marocchino" } },
-                    [
-                      _c("span", { staticClass: "title" }, [
-                        _vm._v("Marocchino"),
-                      ]),
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "label",
-                    { staticClass: "Messicano", attrs: { for: "Messicano" } },
-                    [
-                      _c("span", { staticClass: "title" }, [
-                        _vm._v("Messicano"),
-                      ]),
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "label",
-                    { staticClass: "Turco", attrs: { for: "Turco" } },
-                    [_c("span", { staticClass: "title" }, [_vm._v("Turco")])]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "slider" }),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "text-content" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "col-11 d-flex justify-content-around flex-wrap",
-                    },
-                    [
-                      _c("div", { staticClass: "tutti text" }, [
-                        _c("div", { staticClass: "card m-2" }, [
-                          _c("div", { staticClass: "cover" }, [
-                            _c("h5", [_vm._v("Ristorante Tal dei Tali")]),
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "details" }, [
-                            _c("div", [
-                              _c("h3", [_vm._v("Ristorante Tal dei Tali")]),
-                              _vm._v(" "),
-                              _c(
-                                "a",
-                                {
-                                  attrs: {
-                                    href: "http://127.0.0.1:8000/restaurants/5",
-                                  },
-                                },
-                                [_vm._v("Vai al menù")]
-                              ),
-                            ]),
-                          ]),
-                        ]),
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "tutti text" }, [
-                        _c("div", { staticClass: "card m-2" }, [
-                          _c("div", { staticClass: "cover" }, [
-                            _c("h5", [_vm._v("Ristorante Tal dei Tali")]),
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "details" }, [
-                            _c("div", [
-                              _c("h3", [_vm._v("Ristorante Tal dei Tali")]),
-                              _vm._v(" "),
-                              _c(
-                                "a",
-                                {
-                                  attrs: {
-                                    href: "http://127.0.0.1:8000/restaurants/4",
-                                  },
-                                },
-                                [_vm._v("Vai al menù")]
-                              ),
-                            ]),
-                          ]),
-                        ]),
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "tutti text" }, [
-                        _c("div", { staticClass: "card" }, [
-                          _c("div", { staticClass: "cover m-2" }, [
-                            _c("h5", [_vm._v("Ristorante Tal dei Tali")]),
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "details" }, [
-                            _c("div", [
-                              _c("h3", [_vm._v("Ristorante Tal dei Tali")]),
-                              _vm._v(" "),
-                              _c("a", { attrs: { href: "./menu" } }, [
-                                _vm._v("Vai al menù"),
-                              ]),
-                            ]),
-                          ]),
-                        ]),
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "tutti text" }, [
-                        _c("div", { staticClass: "card" }, [
-                          _c("div", { staticClass: "cover m-2" }, [
-                            _c("h5", [_vm._v("Ristorante Tal dei Tali")]),
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "details" }, [
-                            _c("div", [
-                              _c("h3", [_vm._v("Ristorante Tal dei Tali")]),
-                              _vm._v(" "),
-                              _c("a", { attrs: { href: "./menu" } }, [
-                                _vm._v("Vai al menù"),
-                              ]),
-                            ]),
-                          ]),
-                        ]),
-                      ]),
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "col-11 d-flex justify-content-around flex-wrap",
-                    },
-                    [
-                      _c("div", { staticClass: "Francese text" }, [
-                        _c("div", { staticClass: "Francese text" }, [
-                          _c("div", { staticClass: "card" }, [
-                            _c("div", { staticClass: "cover m-2" }, [
-                              _c("h5", [_vm._v("Ristorante Tal dei Tali")]),
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "details" }, [
-                              _c("div", [
-                                _c("h3", [_vm._v("Ristorante Tal dei Tali")]),
-                                _vm._v(" "),
-                                _c("a", { attrs: { href: "./menu" } }, [
-                                  _vm._v("Vai al menù"),
-                                ]),
-                              ]),
-                            ]),
-                          ]),
-                        ]),
-                      ]),
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "col-11 d-flex justify-content-around flex-wrap",
-                    },
-                    [
-                      _c("div", { staticClass: "Italiano text" }, [
-                        _c("div", { staticClass: "Italiano text" }, [
-                          _c("div", { staticClass: "card" }, [
-                            _c("div", { staticClass: "cover m-2" }, [
-                              _c("h5", [_vm._v("Ristorante Tal dei Tali")]),
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "details" }, [
-                              _c("div", [
-                                _c("h3", [_vm._v("Ristorante Tal dei Tali")]),
-                                _vm._v(" "),
-                                _c("a", { attrs: { href: "./menu" } }, [
-                                  _vm._v("Vai al menù"),
-                                ]),
-                              ]),
-                            ]),
-                          ]),
-                        ]),
-                      ]),
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "d-flex justify-content-around" }, [
-                    _c("div", { staticClass: "Giapponese text" }, [
-                      _c("div", { staticClass: "card" }, [
-                        _c("div", { staticClass: "cover" }, [
-                          _c("h5", [_vm._v("Ristorante Tal dei Tali")]),
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "details" }, [
-                          _c("div", [
-                            _c("h3", [_vm._v("Ristorante Tal dei Tali")]),
-                            _vm._v(" "),
-                            _c("a", { attrs: { href: "./menu" } }, [
-                              _vm._v("Vai al menù"),
-                            ]),
-                          ]),
-                        ]),
-                      ]),
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "Giapponese text" }, [
-                      _c("div", { staticClass: "card" }, [
-                        _c("div", { staticClass: "cover" }, [
-                          _c("h5", [_vm._v("Ristorante Tal dei Tali")]),
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "details" }, [
-                          _c("div", [
-                            _c("h3", [_vm._v("Ristorante Tal dei Tali")]),
-                            _vm._v(" "),
-                            _c("a", { attrs: { href: "./menu" } }, [
-                              _vm._v("Vai al menù"),
-                            ]),
-                          ]),
-                        ]),
-                      ]),
-                    ]),
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "col-11 d-flex justify-content-around flex-wrap",
-                    },
-                    [
-                      _c("div", { staticClass: "Marocchino text" }, [
-                        _c("div", { staticClass: "Marocchino text" }, [
-                          _c("div", { staticClass: "card" }, [
-                            _c("div", { staticClass: "cover m-2" }, [
-                              _c("h5", [_vm._v("Ristorante Tal dei Tali")]),
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "details" }, [
-                              _c("div", [
-                                _c("h3", [_vm._v("Ristorante Tal dei Tali")]),
-                                _vm._v(" "),
-                                _c("a", { attrs: { href: "./menu" } }, [
-                                  _vm._v("Vai al menù"),
-                                ]),
-                              ]),
-                            ]),
-                          ]),
-                        ]),
-                      ]),
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "d-flex justify-content-around" }, [
-                    _c("div", { staticClass: "Messicano text" }, [
-                      _c("div", { staticClass: "card" }, [
-                        _c("div", { staticClass: "cover" }, [
-                          _c("h5", [_vm._v("Ristorante Tal dei Tali")]),
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "details" }, [
-                          _c("div", [
-                            _c("h3", [_vm._v("Ristorante Tal dei Tali")]),
-                            _vm._v(" "),
-                            _c("a", { attrs: { href: "./menu" } }, [
-                              _vm._v("Vai al menù"),
-                            ]),
-                          ]),
-                        ]),
-                      ]),
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "Messicano text" }, [
-                      _c("div", { staticClass: "card" }, [
-                        _c("div", { staticClass: "cover" }, [
-                          _c("h5", [_vm._v("Ristorante Tal dei Tali")]),
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "details" }, [
-                          _c("div", [
-                            _c("h3", [_vm._v("Ristorante Tal dei Tali")]),
-                            _vm._v(" "),
-                            _c("a", { attrs: { href: "./menu" } }, [
-                              _vm._v("Vai al menù"),
-                            ]),
-                          ]),
-                        ]),
-                      ]),
-                    ]),
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "col-11 d-flex justify-content-around flex-wrap",
-                    },
-                    [
-                      _c("div", { staticClass: "Turco text" }, [
-                        _c("div", { staticClass: "Turco text" }, [
-                          _c("div", { staticClass: "card" }, [
-                            _c("div", { staticClass: "cover m-2" }, [
-                              _c("h5", [_vm._v("Ristorante Tal dei Tali")]),
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "details" }, [
-                              _c("div", [
-                                _c("h3", [_vm._v("Ristorante Tal dei Tali")]),
-                                _vm._v(" "),
-                                _c("a", { attrs: { href: "./menu" } }, [
-                                  _vm._v("Vai al menù"),
-                                ]),
-                              ]),
-                            ]),
-                          ]),
-                        ]),
-                      ]),
-                    ]
-                  ),
-                ]),
-              ]),
-            ]),
-          ]
+          [_vm._v("Chiudi")]
         ),
       ]
     )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "tutti", attrs: { for: "tutti" } }, [
+      _c("span", { staticClass: "title" }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "d-flex justify-content-around" }, [
+      _c("div", { staticClass: "Japanese text" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "cover" }, [
+            _c("h5", [_vm._v("Ristorante Tal dei Tali")]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "details" }, [
+            _c("div", [
+              _c("h3", [_vm._v("Ristorante Tal dei Tali")]),
+              _vm._v(" "),
+              _c("a", { attrs: { href: "./menu" } }, [_vm._v("Vai al menù")]),
+            ]),
+          ]),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "Giapponese text" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "cover" }, [
+            _c("h5", [_vm._v("Ristorante Tal dei Tali")]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "details" }, [
+            _c("div", [
+              _c("h3", [_vm._v("Ristorante Tal dei Tali")]),
+              _vm._v(" "),
+              _c("a", { attrs: { href: "./menu" } }, [_vm._v("Vai al menù")]),
+            ]),
+          ]),
+        ]),
+      ]),
+    ])
   },
 ]
 render._withStripped = true

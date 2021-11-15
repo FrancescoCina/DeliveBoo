@@ -2336,6 +2336,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -38930,7 +38935,10 @@ var render = function () {
                           [
                             _c("img", {
                               staticClass: "card-img-top",
-                              attrs: { src: plate.image, alt: plate.name },
+                              attrs: {
+                                src: "../storage/" + plate.image,
+                                alt: plate.name,
+                              },
                             }),
                             _vm._v(" "),
                             _c("div", { staticClass: "card-body" }, [
@@ -38945,6 +38953,8 @@ var render = function () {
                                     "\n            "
                                 ),
                               ]),
+                              _vm._v(" "),
+                              _c("p", [_vm._v(_vm._s(plate.image))]),
                               _vm._v(" "),
                               _c("p", { staticClass: "card-text" }, [
                                 _vm._v(
