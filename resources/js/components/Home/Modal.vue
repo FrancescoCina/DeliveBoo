@@ -57,7 +57,7 @@
             <div class="slider"></div>
           </div>
           <!-- Filtered Restaurants -->
-          <div class="text-content">
+          <!--  <div class="text-content">
             <div
               class="col-11 d-flex justify-content-around flex-wrap"
               v-for="restaurant in filteredRestaurants"
@@ -70,12 +70,45 @@
                   </div>
                   <div class="details">
                     <div>
-                      <!-- <img src="./img/cake.png" alt="" /> -->
+
                       <h3>{{ restaurant.name }}</h3>
                       <a
                         :href="`http://127.0.0.1:8000/restaurants/${restaurant.id}`"
                         >Vai al menù</a
                       >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+          <div class="text-content">
+            <div>
+              <div class="row">
+                <div
+                  v-for="restaurant in filteredRestaurants"
+                  :key="restaurant.id"
+                  class="col-11 d-flex justify-content-around flex-wrap"
+                >
+                  <div class="card m-2">
+                    <div class="cover">
+                      <div class="img-container">
+                        <img
+                          class="img-fluid"
+                          :src="restaurant.logo"
+                          :alt="restaurant.name"
+                        />
+                      </div>
+                    </div>
+                    <div class="details">
+                      <h3>{{ restaurant.name }}</h3>
+                      <div>
+                        <a
+                          :href="`http://127.0.0.1:8000/restaurants/${restaurant.id}`"
+                          >Vai al menù</a
+                        >
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -327,6 +360,7 @@ export default {
   background-color: rgb(255, 255, 255);
   transform-style: preserve-3d;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow: hidden;
@@ -358,7 +392,17 @@ export default {
   text-decoration: none;
 }
 
-img {
-  width: 200px;
+.img-container {
+  height: 150px;
+  width: 150px;
+  margin: auto;
+  overflow: hidden;
+  z-index: 20;
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
 }
 </style>

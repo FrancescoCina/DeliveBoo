@@ -2583,40 +2583,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Modal",
   data: function data() {
@@ -7132,7 +7098,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap);", ""]);
 
 // module
-exports.push([module.i, "/* format */\n*[data-v-e0a7d0f0] {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n  font-family: \"Poppins\", sans-serif;\n}\n.box[data-v-e0a7d0f0] {\n  max-width: 950px;\n  width: 100%;\n  padding: 40px 50px 40px 40px;\n  background: #fff;\n  margin: 0 20px;\n  border-radius: 12px;\n  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);\n}\n.box .topic[data-v-e0a7d0f0] {\n  font-size: 30px;\n  font-weight: 500;\n  margin-bottom: 20px;\n}\n.content[data-v-e0a7d0f0] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n.content .list[data-v-e0a7d0f0] {\n  display: flex;\n  flex-direction: column;\n  width: 20%;\n  margin-right: 50px;\n  position: relative;\n}\n.content .list label[data-v-e0a7d0f0] {\n  height: 60px;\n  font-size: 22px;\n  font-weight: 500;\n  line-height: 60px;\n  cursor: pointer;\n  padding-left: 25px;\n  transition: all 0.5s ease;\n  color: #333;\n  z-index: 12;\n}\n#tutti:checked ~ .list label.tutti[data-v-e0a7d0f0],\n#French:checked ~ .list label.French[data-v-e0a7d0f0],\n#Italian:checked ~ .list label.Italian[data-v-e0a7d0f0],\n#Giapponese:checked ~ .list label.Giapponese[data-v-e0a7d0f0],\n#Mexican:checked ~ .list label.Mexican[data-v-e0a7d0f0],\n#Turkish:checked ~ .list label.Turkish[data-v-e0a7d0f0] {\n  color: #fff;\n}\n.content .list label[data-v-e0a7d0f0]:hover {\n  color: #ff5858;\n}\n.content .slider[data-v-e0a7d0f0] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  height: 60px;\n  width: 100%;\n  border-radius: 12px;\n  background: #ff5858;\n  transition: all 0.4s ease;\n}\n#tutti:checked ~ .list .slider[data-v-e0a7d0f0] {\n  top: 0;\n}\n#French:checked ~ .list .slider[data-v-e0a7d0f0] {\n  top: 60px;\n}\n#Italian:checked ~ .list .slider[data-v-e0a7d0f0] {\n  top: 120px;\n}\n#Giapponese:checked ~ .list .slider[data-v-e0a7d0f0] {\n  top: 180px;\n}\n#Turkish:checked ~ .list .slider[data-v-e0a7d0f0] {\n  top: 240px;\n}\n#Mexican:checked ~ .list .slider[data-v-e0a7d0f0] {\n  top: 300px;\n}\n.content .text-content[data-v-e0a7d0f0] {\n  width: 80%;\n  height: 100%;\n}\n.content .text[data-v-e0a7d0f0] {\n  display: none;\n}\n.content .text .title[data-v-e0a7d0f0] {\n  font-size: 25px;\n  margin-bottom: 10px;\n  font-weight: 500;\n}\n.content .text p[data-v-e0a7d0f0] {\n  text-align: justify;\n}\n.content .text-content .tutti[data-v-e0a7d0f0] {\n  display: block;\n}\n#tutti:checked ~ .text-content .tutti[data-v-e0a7d0f0],\n#French:checked ~ .text-content .French[data-v-e0a7d0f0],\n#Italian:checked ~ .text-content .Italian[data-v-e0a7d0f0],\n#Japanese:checked ~ .text-content .Japanese[data-v-e0a7d0f0],\n#Turkish:checked ~ .text-content .Turkish[data-v-e0a7d0f0],\n#Mexican:checked ~ .text-content .Mexican[data-v-e0a7d0f0] {\n  display: block;\n}\n#French:checked ~ .text-content .tutti[data-v-e0a7d0f0],\n#Italian:checked ~ .text-content .tutti[data-v-e0a7d0f0],\n#Japanese:checked ~ .text-content .tutti[data-v-e0a7d0f0],\n#Turkish:checked ~ .text-content .tutti[data-v-e0a7d0f0],\n#Mexican:checked ~ .text-content .tutti[data-v-e0a7d0f0] {\n  display: none;\n}\n.content input[data-v-e0a7d0f0] {\n  display: none;\n}\n\n/* CARD */\n.card[data-v-e0a7d0f0] {\n  position: relative;\n  width: 200px;\n  height: 200px;\n  background-color: white;\n  transform-style: preserve-3d;\n  transform: perspective 2000px;\n  transition: 1s;\n  box-shadow: inset 300px 0 20px rgba(0, 0, 0, 0.15), 0 20px 20px rgba(0, 0, 0, 0.15);\n}\n.card[data-v-e0a7d0f0]:hover {\n  transform: perspective 2000px translate(50%);\n  box-shadow: inset 20px 0 50px rgba(0, 0, 0, 0.15), 0 10px 10px rgba(0, 0, 0, 0.15);\n}\n.card .cover[data-v-e0a7d0f0] {\n  position: relative;\n  width: 100%;\n  height: 100%;\n  background-color: white;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  transform-style: preserve-3d;\n  overflow: hidden;\n  z-index: 2;\n  transition: 0.8s ease-in-out;\n  transform-origin: left;\n}\n.card:hover .cover[data-v-e0a7d0f0] {\n  transform: rotateY(-100deg);\n}\n.card .cover h5[data-v-e0a7d0f0] {\n  background-color: white;\n  max-width: 100%;\n  z-index: 1;\n  padding: 10px;\n}\n.card .cover[data-v-e0a7d0f0]::before {\n  content: \"\";\n  position: absolute;\n  width: 10px;\n  height: 150%;\n  background: white;\n  transform: rotate(120deg);\n  box-shadow: 0 0 0 20px #ff5858;\n  transition: 0.5s;\n  transition-delay: 1s;\n}\n.card:hover .cover h5[data-v-e0a7d0f0] {\n  opacity: 0;\n  transition: 1s;\n}\n.card:hover .cover[data-v-e0a7d0f0]::before {\n  width: 0;\n  box-shadow: 0 0 0 250px #ff5858;\n  transform: rotate(120deg);\n}\n.card .details[data-v-e0a7d0f0] {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 0;\n  background-color: white;\n  transform-style: preserve-3d;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  overflow: hidden;\n  text-align: center;\n  z-index: 1;\n}\n.card .details h3[data-v-e0a7d0f0] {\n  font-weight: 500;\n  margin: 5px 0;\n}\n.card .details h2[data-v-e0a7d0f0] {\n  font-weight: 600;\n  font-size: 1.5rem;\n  color: #2a5fa5;\n}\n.card .details a[data-v-e0a7d0f0] {\n  display: inline-block;\n  padding: 8px 20px;\n  background: #2a5fa5;\n  color: white;\n  margin-top: 5px;\n  letter-spacing: 1px;\n  border-radius: 25px;\n  text-decoration: none;\n  font-weight: 500;\n  text-decoration: none;\n}\nimg[data-v-e0a7d0f0] {\n  width: 200px;\n}", ""]);
+exports.push([module.i, "/* format */\n*[data-v-e0a7d0f0] {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n  font-family: \"Poppins\", sans-serif;\n}\n.box[data-v-e0a7d0f0] {\n  max-width: 950px;\n  width: 100%;\n  padding: 40px 50px 40px 40px;\n  background: #fff;\n  margin: 0 20px;\n  border-radius: 12px;\n  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);\n}\n.box .topic[data-v-e0a7d0f0] {\n  font-size: 30px;\n  font-weight: 500;\n  margin-bottom: 20px;\n}\n.content[data-v-e0a7d0f0] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n.content .list[data-v-e0a7d0f0] {\n  display: flex;\n  flex-direction: column;\n  width: 20%;\n  margin-right: 50px;\n  position: relative;\n}\n.content .list label[data-v-e0a7d0f0] {\n  height: 60px;\n  font-size: 22px;\n  font-weight: 500;\n  line-height: 60px;\n  cursor: pointer;\n  padding-left: 25px;\n  transition: all 0.5s ease;\n  color: #333;\n  z-index: 12;\n}\n#tutti:checked ~ .list label.tutti[data-v-e0a7d0f0],\n#Italian:checked ~ .list label.Italian[data-v-e0a7d0f0],\n#Japanese:checked ~ .list label.Japanese[data-v-e0a7d0f0],\n#Mexican:checked ~ .list label.Mexican[data-v-e0a7d0f0],\n#French:checked ~ .list label.French[data-v-e0a7d0f0],\n#Turkish:checked ~ .list label.Turkish[data-v-e0a7d0f0] {\n  color: #fff;\n}\n.content .list label[data-v-e0a7d0f0]:hover {\n  color: #ff5858;\n}\n.content .slider[data-v-e0a7d0f0] {\n  position: absolute;\n  left: 0;\n  top: 0;\n  height: 60px;\n  width: 100%;\n  border-radius: 12px;\n  background: #ff5858;\n  transition: all 0.4s ease;\n}\n#tutti:checked ~ .list .slider[data-v-e0a7d0f0] {\n  top: 0;\n}\n#Italian:checked ~ .list .slider[data-v-e0a7d0f0] {\n  top: 60px;\n}\n#Japanese:checked ~ .list .slider[data-v-e0a7d0f0] {\n  top: 120px;\n}\n#Mexican:checked ~ .list .slider[data-v-e0a7d0f0] {\n  top: 180px;\n}\n#French:checked ~ .list .slider[data-v-e0a7d0f0] {\n  top: 240px;\n}\n#Turkish:checked ~ .list .slider[data-v-e0a7d0f0] {\n  top: 300px;\n}\n.content .text-content[data-v-e0a7d0f0] {\n  width: 80%;\n  height: 100%;\n}\n.content .text[data-v-e0a7d0f0] {\n  display: none;\n}\n.content .text .title[data-v-e0a7d0f0] {\n  font-size: 25px;\n  margin-bottom: 10px;\n  font-weight: 500;\n}\n.content .text p[data-v-e0a7d0f0] {\n  text-align: justify;\n}\n.content .text-content .tutti[data-v-e0a7d0f0] {\n  display: block;\n}\n#tutti:checked ~ .text-content .tutti[data-v-e0a7d0f0],\n#Italian:checked ~ .text-content .Italian[data-v-e0a7d0f0],\n#Japanese:checked ~ .text-content .Japanese[data-v-e0a7d0f0],\n#Mexican:checked ~ .text-content .Mexican[data-v-e0a7d0f0],\n#French:checked ~ .text-content .French[data-v-e0a7d0f0],\n#Turkish:checked ~ .text-content .Turkish[data-v-e0a7d0f0] {\n  display: block;\n}\n#Italian:checked ~ .text-content .tutti[data-v-e0a7d0f0],\n#Japanese:checked ~ .text-content .tutti[data-v-e0a7d0f0],\n#Mexican:checked ~ .text-content .tutti[data-v-e0a7d0f0],\n#French:checked ~ .text-content .tutti[data-v-e0a7d0f0],\n#Turkish:checked ~ .text-content .tutti[data-v-e0a7d0f0] {\n  display: none;\n}\n.content input[data-v-e0a7d0f0] {\n  display: none;\n}\n\n/* CARD */\n.card[data-v-e0a7d0f0] {\n  position: relative;\n  width: 200px;\n  height: 200px;\n  background-color: white;\n  transform-style: preserve-3d;\n  transform: perspective 2000px;\n  transition: 1s;\n  box-shadow: inset 300px 0 20px rgba(0, 0, 0, 0.15), 0 20px 20px rgba(0, 0, 0, 0.15);\n}\n.card[data-v-e0a7d0f0]:hover {\n  transform: perspective 2000px translate(50%);\n  box-shadow: inset 20px 0 50px rgba(0, 0, 0, 0.15), 0 10px 10px rgba(0, 0, 0, 0.15);\n}\n.card .cover[data-v-e0a7d0f0] {\n  position: relative;\n  width: 100%;\n  height: 100%;\n  background-color: white;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  transform-style: preserve-3d;\n  overflow: hidden;\n  z-index: 2;\n  transition: 0.8s ease-in-out;\n  transform-origin: left;\n}\n.card:hover .cover[data-v-e0a7d0f0] {\n  transform: rotateY(-100deg);\n}\n.card .cover h5[data-v-e0a7d0f0] {\n  background-color: white;\n  max-width: 100%;\n  z-index: 1;\n  padding: 10px;\n}\n.card .cover[data-v-e0a7d0f0]::before {\n  content: \"\";\n  position: absolute;\n  width: 10px;\n  height: 150%;\n  background: white;\n  transform: rotate(120deg);\n  box-shadow: 0 0 0 20px #ff5858;\n  transition: 0.5s;\n  transition-delay: 1s;\n}\n.card:hover .cover h5[data-v-e0a7d0f0] {\n  opacity: 0;\n  transition: 1s;\n}\n.card:hover .cover[data-v-e0a7d0f0]::before {\n  width: 0;\n  box-shadow: 0 0 0 250px #ff5858;\n  transform: rotate(120deg);\n}\n.card .details[data-v-e0a7d0f0] {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 0;\n  background-color: white;\n  transform-style: preserve-3d;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  overflow: hidden;\n  text-align: center;\n  z-index: 1;\n}\n.card .details h3[data-v-e0a7d0f0] {\n  font-weight: 500;\n  margin: 5px 0;\n}\n.card .details h2[data-v-e0a7d0f0] {\n  font-weight: 600;\n  font-size: 1.5rem;\n  color: #2a5fa5;\n}\n.card .details a[data-v-e0a7d0f0] {\n  display: inline-block;\n  padding: 8px 20px;\n  background: #2a5fa5;\n  color: white;\n  margin-top: 5px;\n  letter-spacing: 1px;\n  border-radius: 25px;\n  text-decoration: none;\n  font-weight: 500;\n  text-decoration: none;\n}\n.img-container[data-v-e0a7d0f0] {\n  height: 150px;\n  width: 150px;\n  margin: auto;\n  overflow: hidden;\n  z-index: 20;\n}\n.img-container img[data-v-e0a7d0f0] {\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}", ""]);
 
 // exports
 
@@ -39457,10 +39423,6 @@ var render = function () {
               }),
               _vm._v(" "),
               _c("input", {
-                attrs: { type: "radio", name: "slider", id: "French" },
-              }),
-              _vm._v(" "),
-              _c("input", {
                 attrs: { type: "radio", name: "slider", id: "Italian" },
               }),
               _vm._v(" "),
@@ -39469,11 +39431,15 @@ var render = function () {
               }),
               _vm._v(" "),
               _c("input", {
-                attrs: { type: "radio", name: "slider", id: "Turkish" },
+                attrs: { type: "radio", name: "slider", id: "Mexican" },
               }),
               _vm._v(" "),
               _c("input", {
-                attrs: { type: "radio", name: "slider", id: "Mexican" },
+                attrs: { type: "radio", name: "slider", id: "French" },
+              }),
+              _vm._v(" "),
+              _c("input", {
+                attrs: { type: "radio", name: "slider", id: "Turkish" },
               }),
               _vm._v(" "),
               _c(
@@ -39488,7 +39454,7 @@ var render = function () {
                       {
                         key: type.id,
                         class: type.name,
-                        attrs: { for: "tutti" },
+                        attrs: { for: type.name },
                       },
                       [
                         _c(
@@ -39501,44 +39467,48 @@ var render = function () {
                               },
                             },
                           },
-                          [_vm._v(_vm._s(type.name))]
+                          [_vm._v("\n              " + _vm._s(type.name))]
                         ),
                       ]
                     )
                   }),
-                  _vm._v(" "),
-                  _vm._m(3),
                   _vm._v(" "),
                   _c("div", { staticClass: "slider" }),
                 ],
                 2
               ),
               _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "text-content" },
-                _vm._l(_vm.filteredRestaurants, function (restaurant) {
-                  return _c(
+              _c("div", { staticClass: "text-content" }, [
+                _c("div", [
+                  _c(
                     "div",
-                    {
-                      key: restaurant.id,
-                      staticClass:
-                        "col-11 d-flex justify-content-around flex-wrap",
-                    },
-                    [
-                      _c(
+                    { staticClass: "row" },
+                    _vm._l(_vm.filteredRestaurants, function (restaurant) {
+                      return _c(
                         "div",
-                        { staticClass: "text", class: restaurant.name },
+                        {
+                          key: restaurant.id,
+                          staticClass:
+                            "col-11 d-flex justify-content-around flex-wrap",
+                        },
                         [
                           _c("div", { staticClass: "card m-2" }, [
                             _c("div", { staticClass: "cover" }, [
-                              _c("h5", [_vm._v(_vm._s(restaurant.name))]),
+                              _c("div", { staticClass: "img-container" }, [
+                                _c("img", {
+                                  staticClass: "img-fluid",
+                                  attrs: {
+                                    src: restaurant.logo,
+                                    alt: restaurant.name,
+                                  },
+                                }),
+                              ]),
                             ]),
                             _vm._v(" "),
                             _c("div", { staticClass: "details" }, [
+                              _c("h3", [_vm._v(_vm._s(restaurant.name))]),
+                              _vm._v(" "),
                               _c("div", [
-                                _c("h3", [_vm._v(_vm._s(restaurant.name))]),
-                                _vm._v(" "),
                                 _c(
                                   "a",
                                   {
@@ -39554,12 +39524,12 @@ var render = function () {
                             ]),
                           ]),
                         ]
-                      ),
-                    ]
-                  )
-                }),
-                0
-              ),
+                      )
+                    }),
+                    0
+                  ),
+                ]),
+              ]),
             ]),
           ]),
         ]
@@ -39612,45 +39582,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "tutti", attrs: { for: "tutti" } }, [
-      _c("span", { staticClass: "title" }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "d-flex justify-content-around" }, [
-      _c("div", { staticClass: "Japanese text" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "cover" }, [
-            _c("h5", [_vm._v("Ristorante Tal dei Tali")]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "details" }, [
-            _c("div", [
-              _c("h3", [_vm._v("Ristorante Tal dei Tali")]),
-              _vm._v(" "),
-              _c("a", { attrs: { href: "./menu" } }, [_vm._v("Vai al menù")]),
-            ]),
-          ]),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "Giapponese text" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "cover" }, [
-            _c("h5", [_vm._v("Ristorante Tal dei Tali")]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "details" }, [
-            _c("div", [
-              _c("h3", [_vm._v("Ristorante Tal dei Tali")]),
-              _vm._v(" "),
-              _c("a", { attrs: { href: "./menu" } }, [_vm._v("Vai al menù")]),
-            ]),
-          ]),
-        ]),
-      ]),
+      _c("span", { staticClass: "title" }, [_vm._v("Tutti")]),
     ])
   },
 ]
