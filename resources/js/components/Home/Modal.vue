@@ -60,6 +60,7 @@
           <!--  <div class="text-content">
             <div
               class="col-11 d-flex justify-content-around flex-wrap"
+
               v-for="restaurant in filteredRestaurants"
               :key="restaurant.id"
             >
@@ -70,7 +71,6 @@
                   </div>
                   <div class="details">
                     <div>
-
                       <h3>{{ restaurant.name }}</h3>
                       <a
                         :href="`http://127.0.0.1:8000/restaurants/${restaurant.id}`"
@@ -80,6 +80,7 @@
                   </div>
                 </div>
               </div>
+
             </div>
           </div> -->
 
