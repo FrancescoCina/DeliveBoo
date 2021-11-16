@@ -23,7 +23,7 @@
         <input type="email" class="form-control" id="customer_email" aria-describedby="emailHelp" v-model="customer_email">
         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <div class="btn btn-primary" @click="createOrder">Crea Ordine</div>
 </form>
   </div>
 </template>
@@ -35,6 +35,7 @@ export default {
   data(){
     return{
       token:'',
+      order_id:'',
       customer_name: '',
       customer_surname:'',
       customer_phone_number:'',
@@ -49,7 +50,8 @@ export default {
       console.log(cart);
       console.log(amount);
     },
-    crateOrder(){
+    createOrder(){
+      // user info 
         const order = {
         customer_name: this.customer_name,
         customer_surname: this.customer_surname,
@@ -59,7 +61,8 @@ export default {
         total: this.amount,
       };
 
-      
+      // order complete
+      this.order = order;   
     }
   },
   created() {

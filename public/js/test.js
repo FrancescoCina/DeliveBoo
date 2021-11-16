@@ -2493,6 +2493,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       token: '',
+      order_id: '',
       customer_name: '',
       customer_surname: '',
       customer_phone_number: '',
@@ -2507,7 +2508,8 @@ __webpack_require__.r(__webpack_exports__);
       console.log(cart);
       console.log(amount);
     },
-    crateOrder: function crateOrder() {
+    createOrder: function createOrder() {
+      // user info 
       var order = {
         customer_name: this.customer_name,
         customer_surname: this.customer_surname,
@@ -2515,7 +2517,9 @@ __webpack_require__.r(__webpack_exports__);
         customer_phone_number: this.customer_phone_number,
         customer_email: this.customer_email,
         total: this.amount
-      };
+      }; // order food info 
+
+      this.order = order;
     }
   },
   created: function created() {
@@ -62633,9 +62637,9 @@ var render = function () {
       ]),
       _vm._v(" "),
       _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Submit")]
+        "div",
+        { staticClass: "btn btn-primary", on: { click: _vm.createOrder } },
+        [_vm._v("Crea Ordine")]
       ),
     ]),
   ])
