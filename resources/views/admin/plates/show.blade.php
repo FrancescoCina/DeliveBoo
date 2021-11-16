@@ -5,21 +5,21 @@
 
 <div class="container mt-5">
         <div class="row restaurant-card">
-            <div class="col-md-7 col-sm-12 ">
-                <img class="cover img-fluid" src="{{asset('storage/'.$plate->image)}}" alt="{{$plate->name}}">
+            <div class="col-md-6 col-12 text-center text-lg-start d-flex justify-content-center align-items-center my-5 my-md-0 plate-img-container">
+                <img src="{{asset('storage/'.$plate->image)}}" alt="{{$plate->name}}">
             </div>
-            <div class="col-md-5 col-sm-12 restaurant-info-container">
-            <h2 class="text-white mt-3 mb-5 restaurant-title text-center" > {{$plate->name}}</h2>
-            <ul class="text-white restaurant-info ">
-                    <h5 class="mb-3" >{{$plate->description}}</h5>
-            <h6>Portata: <b>{{$plate->serving}}</b></h6>
-            <h6>Prezzo: <b>{{$plate->price}} &euro;</b></h6>
-            <h6>Categorie: <b>
-               @forelse ($plate->categories as $category)
-                <span class="badge" style="background-color: {{$category->color}}">{{$category->name}} </span>
-               @empty
-               Nessuna
-               @endforelse </b></h6>
+            <div class="col-md-6 col-12">
+                <h2 class="text-white mt-3 mb-5 restaurant-title text-center" > {{$plate->name}}</h2>
+                <ul class="text-white plate-info ">
+                    <li class="plate-description">{{$plate->description}}</li>
+                    <li><i class="fas fa-drumstick-bite"></i> Portata: <b>{{$plate->serving}}</b></li>
+                    <li><i class="fas fa-money-bill-wave"></i> Prezzo: <b>{{$plate->price}} &euro;</b></li>
+                    <li><i class="fas fa-list-ul"></i> Categorie: <b>
+                    @forelse ($plate->categories as $category)
+                        <span class="badge" style="background-color: {{$category->color}}">{{$category->name}} </span>
+                    @empty
+                        Nessuna
+                    @endforelse </b></li>
                 </ul>
             </div>
         </div>

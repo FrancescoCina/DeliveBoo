@@ -21,8 +21,42 @@
 </head>
 <body>
     <div class="d-flex bgt" id="app">
-        <div class="p-0 col-1 fixed-top">
-            <nav class="custom-navbar" style="width: 100%; height: 100vh; ">
+        <div class="p-0 col-md-1 fixed-top">
+            <div class="custom-navbar-small pl-1 d-md-none d-flex flex-column justify-content-start">
+            @if($restaurant)
+                <div class="navbar-logo-small my-3"> 
+                    <img class="img-fluid small-nav-logo" src="{{ $restaurant->logo }}" alt="Logo">
+                </div>
+                <div class="small-nav-link d-flex justify-content-center align-items-center">
+                    <a class="btn my-1 text-white small-nav-btn" href="{{ url('/admin') }}">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </div>
+                <div class="small-nav-link d-flex justify-content-center align-items-center">
+                    <a class="btn my-1 text-white small-nav-btn" href="{{ url('/admin/plates') }}">
+                        <i class="fas fa-utensils"></i>
+                    </a>
+                </div>
+                <div class="small-nav-link d-flex justify-content-center align-items-center">
+                    <a class="btn my-1 text-white small-nav-btn" href="{{ url('/admin/orders') }}">
+                        <i class="far fa-calendar-alt"></i>
+                    </a>
+                </div>
+                @endif
+                <div class="small-nav-logout d-flex justify-content-center align-items-center">
+                    <button type="button" class="btn btn-primary small-nav-logout-btn">
+                        <div class="d-flex flex-column align-items-center">
+                            <a class="text-white" href="{{ route('logout') }} "onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <i class="fas fa-sign-out-alt"></i>
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" >
+                                @csrf
+                            </form>
+                        </div>
+                    </button>
+                </div>
+            </div>
+            <nav class="custom-navbar d-none d-md-inline-block" style="width: 100%; height: 100vh; ">
                 <div class=" d-flex flex-column justify-content-between" style="height: 100vh;">
                     @if($restaurant)
                     <div class="d-flex flex-column align-items-center ">
@@ -31,22 +65,22 @@
                         </div>
                         <h4 class="text-center text-white">{{ $restaurant->name }}</h4>
                     </div>
+                    <div class="d-flex flex-column align-items-center">
+                        <a class="btn btn-light my-3 px-1 px-md-2 px-lg-3 px-xl-4" href="{{ url('/admin') }}">
+                            {{ __('Admin') }}
+                        </a>
+                        <a class="btn btn-light  my-3 px-1 px-md-2 px-lg-3 px-xl-4" href="{{ url('/admin/plates') }}">
+                            {{ __('Plates') }}
+                        </a>
+                        <a class="btn btn-light my-3 px-1 px-md-2 px-lg-3 px-xl-4" href="{{ url('/admin/orders') }}">
+                            {{ __('Orders') }}
+                        </a>
+                    </div>
                     @else
                     <div class="my-5">
                         <p class="text-white text-center fs-5">Ricordati di configurare il tuo ristorante!</p>
                     </div>
                     @endif
-                    <div class="d-flex flex-column align-items-center">
-                        <a class="btn btn-light mb-2 px-5" href="{{ url('/admin') }}">
-                            {{ __('Admin') }}
-                        </a>
-                        <a class="btn btn-light  mb-2 px-5" href="{{ url('/admin/plates') }}">
-                            {{ __('Plates') }}
-                        </a>
-                        <a class="btn btn-light mb-2 px-5" href="{{ url('/admin/orders') }}">
-                            {{ __('Orders') }}
-                        </a>
-                    </div>
                     <button type="button" class="btn btn-primary m-2 mb-5">
                         <div class="d-flex flex-column align-items-center">
                             <a class="text-white" href="{{ route('logout') }} "onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -60,7 +94,7 @@
                 </div> 
             </nav>
         </div>
-        <div class="col-11 offset-1">
+        <div class="col-12 col-md-11 offset-md-1">
             <main class="py-4" style="height: 100vh;">
                 @yield('content')
             </main>

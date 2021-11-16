@@ -4,6 +4,23 @@
 }
 
 
+.custom-navbar-small{
+    .navbar-logo-small{
+        height: 100px;
+        width: 100px;
+        overflow: hidden;
+        .small-nav-logo{
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            &:hover{
+                border: 3px solid #FF5858;
+            }
+        }
+    }
+}
+
 .navbar-logo{
     height: 100px;
     width: 100px;
@@ -18,6 +35,25 @@
     &:hover img{
         border: 3px solid white;
     }
+}
+
+.small-nav-link, .small-nav-logout{
+    width: 100px;
+    height: 65px;
+    min-width: 100px;
+}
+
+.small-nav-btn{
+    border-radius: 50%;
+    font-size: 20px;
+    padding: 10px 18px;
+    background-color: #FF5858;
+}
+
+.small-nav-logout-btn{
+    border-radius: 50%;
+    font-size: 20px;
+    padding: 10px 17px;
 }
 
 .restaurant-card{
@@ -42,6 +78,14 @@
     }
 }
 
+.plate-img-container{
+    overflow: hidden;
+    img{
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
 .bot{
     border-color: transparent;
 }
@@ -62,6 +106,18 @@
     list-style-type: none;
 }
 
+.plate-info{
+    margin-left: 15%;
+    width: 75%;
+    font-size: 20px;
+    line-height: 60px;
+    list-style-type: none;
+}
+
+.plate-description{
+    line-height: 25px;
+}
+
 .card-img-custom{
     height: 200px;
 }
@@ -74,14 +130,20 @@
 .custom-navbar, .custom-login-header{
     background-color: #ff5858;
 }
+
+.custom-navbar{
+    min-width: 110px;
+}
+
 .box{
     background-color: #ff5858;
     box-shadow: -11px 10px 28px 6px #4D4D4D;
     height: 70vh;
+    width: 90%;
+    margin: auto;
     overflow: auto;
     border-radius: 30px;
 }
-
 
 .bottone{
     border-radius: 50%;
@@ -90,7 +152,6 @@
     z-index: 10;
     position: relative;
     top: 50px;
-    left: -20px;
     &:hover{
         border: 3px solid white;
         transform: scale(1.1);
@@ -101,7 +162,12 @@
         color: white;
     }
 }
+
 .card-statistic{
 border-radius: 20px;
 background-color: white;
+}
+
+.plate-card{
+    height: 400px;
 }

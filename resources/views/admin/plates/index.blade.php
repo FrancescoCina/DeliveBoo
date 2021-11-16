@@ -6,12 +6,12 @@
         <h2 class="text-center text-danger">Inserisci prima un ristorante</h2>
     @else
         <h1 class="text-success text-center font-weight-bold" > I Tuoi Piatti</h1>
-        <div class="bottone btn-success d-flex justify-content-center align-items-center">
+        <div class="bottone btn-success d-flex justify-content-center align-items-center ml-md-4 ml-lg-0">
         <a class="p-3" href="{{route('admin.plates.create')}}">+</a></div>
         <div class="box d-flex justify-content-around flex-wrap">
 
         @forelse ($plates as $plate)
-            <div class="card mx-1 my-4" style="width: 18rem;">
+            <div class="card mx-1 my-4 plate-card" style="width: 18rem;">
                 <img src="{{asset('storage/'.$plate->image)}}" alt="{{$plate->name}}" class="card-img-top card-img-custom">
                 <div class="card-body text-center">
                     <h5 class="card-title">{{$plate->name}}</h5>
