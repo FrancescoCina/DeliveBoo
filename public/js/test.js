@@ -2335,15 +2335,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -2431,9 +2422,6 @@ __webpack_require__.r(__webpack_exports__);
       localStorage.removeItem("amount");
       console.log(this.shoppingCart);
     }, */
-    toggleModal: function toggleModal() {
-      this.showModal = !this.showModal; // console.log(this.shoppingCart);
-    },
     showCheckoutComp: function showCheckoutComp() {
       if (this.shoppingCart.length > 0) {
         this.isCheckout = true;
@@ -38980,6 +38968,10 @@ var render = function () {
                                 ),
                               ]),
                               _vm._v(" "),
+                              _c("p", { staticClass: "card-text" }, [
+                                _vm._v(_vm._s(plate.price) + " €"),
+                              ]),
+                              _vm._v(" "),
                               _c(
                                 "a",
                                 {
@@ -38990,7 +38982,7 @@ var render = function () {
                                     },
                                   },
                                 },
-                                [_vm._v("Aggiungi al Carrello")]
+                                [_vm._v("+")]
                               ),
                               _vm._v(" "),
                               _c("br"),
@@ -39016,27 +39008,6 @@ var render = function () {
                                     ]
                                   )
                                 : _vm._e(),
-                              _vm._v(" "),
-                              _c("br"),
-                              _vm._v(" "),
-                              _c(
-                                "a",
-                                {
-                                  staticClass: "btn btn-info",
-                                  on: { click: _vm.clearLocalStorage },
-                                },
-                                [
-                                  _vm._v(
-                                    "\n              Pulisci Tutto\n            "
-                                  ),
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("br"),
-                              _vm._v(" "),
-                              _c("a", { on: { click: _vm.toggleModal } }, [
-                                _vm._v("Modale si/no"),
-                              ]),
                             ]),
                           ]
                         )
@@ -51838,7 +51809,7 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Laravel\deliveboo\resources\js\test.js */"./resources/js/test.js");
+module.exports = __webpack_require__(/*! C:\laravel\deliveboo\resources\js\test.js */"./resources/js/test.js");
 
 
 /***/ })
