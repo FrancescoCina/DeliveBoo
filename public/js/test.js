@@ -2517,7 +2517,7 @@ __webpack_require__.r(__webpack_exports__);
         customer_phone_number: this.customer_phone_number,
         customer_email: this.customer_email,
         total: this.amount
-      }; // order food info 
+      }; // order complete
 
       this.order = order;
     }
