@@ -21,8 +21,9 @@
 }
 
 .restaurant-card{
-    margin-top: 150px;
-    height: 500px;
+    margin: 150px 0;
+    min-height: 500px;
+    min-width: 475px;
     background-color: #FF5858;
     box-shadow: -11px 10px 28px 6px #4D4D4D;
     padding: 0;
@@ -40,6 +41,11 @@
         }
     }
 }
+
+.bot{
+    border-color: transparent;
+}
+
 .cover{
     object-fit: cover;
     height: 100%;
@@ -50,7 +56,7 @@
 }
 
 .restaurant-info{
-    margin-left: 50px;
+    margin-left: 22%;
     font-size: 20px;
     line-height: 60px;
     list-style-type: none;
