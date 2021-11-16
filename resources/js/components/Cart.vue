@@ -61,7 +61,11 @@
       </div>
     </div>
 
-    <Checkout v-if="isCheckout" />
+    <Checkout
+      v-if="isCheckout"
+      :shoppingCart="shoppingCart"
+      :totalPrice="totalPrice"
+    />
   </div>
 </template>
 

@@ -2340,6 +2340,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -2472,7 +2476,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Checkout"
+  name: "Checkout",
+  props: ["shoppingCart", "totalPrice"],
+  methods: {
+    showConsoleLog: function showConsoleLog(cart, amount) {
+      console.log(cart);
+      console.log(amount);
+    }
+  },
+  created: function created() {
+    this.showConsoleLog(this.shoppingCart, this.totalPrice);
+  }
 });
 
 /***/ }),
@@ -39053,7 +39067,14 @@ var render = function () {
               : _vm._e(),
           ]),
       _vm._v(" "),
-      _vm.isCheckout ? _c("Checkout") : _vm._e(),
+      _vm.isCheckout
+        ? _c("Checkout", {
+            attrs: {
+              shoppingCart: _vm.shoppingCart,
+              totalPrice: _vm.totalPrice,
+            },
+          })
+        : _vm._e(),
     ],
     1
   )
