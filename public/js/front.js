@@ -2557,6 +2557,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Modal",
   data: function data() {
@@ -39479,50 +39484,62 @@ var render = function () {
                   _c(
                     "div",
                     { staticClass: "row" },
-                    _vm._l(_vm.filteredRestaurants, function (restaurant) {
-                      return _c(
-                        "div",
-                        {
-                          key: restaurant.id,
-                          staticClass:
-                            "col-11 d-flex justify-content-around flex-wrap",
-                        },
-                        [
-                          _c("div", { staticClass: "card m-2" }, [
-                            _c("div", { staticClass: "cover" }, [
-                              _c("div", { staticClass: "img-container" }, [
-                                _c("img", {
-                                  staticClass: "img-fluid",
-                                  attrs: {
-                                    src: restaurant.logo,
-                                    alt: restaurant.name,
-                                  },
-                                }),
-                              ]),
+                    [
+                      _vm.filteredRestaurants.length < 1
+                        ? _c("div", [
+                            _c("p", { staticClass: "text-center" }, [
+                              _vm._v(
+                                "\n                  Non ci sono Ristoranti corrispondenti a questa categoria!\n                "
+                              ),
                             ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "details" }, [
-                              _c("h3", [_vm._v(_vm._s(restaurant.name))]),
-                              _vm._v(" "),
-                              _c("div", [
-                                _c(
-                                  "a",
-                                  {
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm._l(_vm.filteredRestaurants, function (restaurant) {
+                        return _c(
+                          "div",
+                          {
+                            key: restaurant.id,
+                            staticClass:
+                              "col-11 d-flex justify-content-around flex-wrap",
+                          },
+                          [
+                            _c("div", { staticClass: "card m-2" }, [
+                              _c("div", { staticClass: "cover" }, [
+                                _c("div", { staticClass: "img-container" }, [
+                                  _c("img", {
+                                    staticClass: "img-fluid",
                                     attrs: {
-                                      href:
-                                        "http://127.0.0.1:8000/restaurants/" +
-                                        restaurant.id,
+                                      src: restaurant.logo,
+                                      alt: restaurant.name,
                                     },
-                                  },
-                                  [_vm._v("Vai al menù")]
-                                ),
+                                  }),
+                                ]),
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "details" }, [
+                                _c("h3", [_vm._v(_vm._s(restaurant.name))]),
+                                _vm._v(" "),
+                                _c("div", [
+                                  _c(
+                                    "a",
+                                    {
+                                      attrs: {
+                                        href:
+                                          "http://127.0.0.1:8000/restaurants/" +
+                                          restaurant.id,
+                                      },
+                                    },
+                                    [_vm._v("Vai al menù")]
+                                  ),
+                                ]),
                               ]),
                             ]),
-                          ]),
-                        ]
-                      )
-                    }),
-                    0
+                          ]
+                        )
+                      }),
+                    ],
+                    2
                   ),
                 ]),
               ]),
