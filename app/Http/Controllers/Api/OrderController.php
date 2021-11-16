@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -25,7 +26,25 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $data = $request->all();
+        $order = new Order();
+        $order->name = $data['customer_name'];
+        $order->surname = $data['customer_lastname'];
+        $order->address = $data['customer_address'];
+        $order->mail = $data['customer_mail'];
+        $order->amount = $data['amount'];
+        $order->is_payed = $data['isPayed'];
+        $order->save();
+
+        foreach ($data['order_plate'] as $key => $detail) {
+            $order->plates()->attach($key, ['quantity' => $detail]);
+        }
+
+        return response()->json([
+            'Message' => 'Order was successfully created',
+            'Order_number' => $order->id
+        ], 200);
     }
 
     /**

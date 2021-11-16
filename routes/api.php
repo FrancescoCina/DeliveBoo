@@ -26,6 +26,8 @@ Route::namespace('Api')->group(function () {
     Route::get('/types', 'TypeController@index');
     Route::get('/types/{type}', 'TypeController@show');
     Route::get('/payments', 'PaymentController@generate');
+    Route::post('/payments', 'PaymentController@makepayment');
+    Route::post('/orders', 'OrderController@store');
 });
 
 

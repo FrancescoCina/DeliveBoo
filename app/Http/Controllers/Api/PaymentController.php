@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\OrderRequest;
+use App\Http\Requests\Orders\OrderRequest;
 use Illuminate\Http\Request;
 use Braintree\Gateway;
 use App\Models\Order;
@@ -22,7 +22,7 @@ class PaymentController extends Controller
         ], 200);
     }
 
-    /*   public function makepayment(OrderRequest $request, Gateway $gateway)
+    public function makepayment(OrderRequest $request, Gateway $gateway)
     {
         $order = Order::find($request->id);
 
@@ -50,5 +50,5 @@ class PaymentController extends Controller
             ];
             return response()->json(compact('data'), 401);
         }
-    } */
+    }
 }
