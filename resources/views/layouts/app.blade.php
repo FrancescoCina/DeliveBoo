@@ -20,7 +20,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div class="d-flex" id="app">
+    <div class="d-flex bgt" id="app">
         <div class="p-0 col-1 fixed-top">
             <nav class="custom-navbar" style="width: 100%; height: 100vh; ">
                 <div class=" d-flex flex-column justify-content-between" style="height: 100vh;">
