@@ -11,6 +11,10 @@ window.Vue = require('vue');
 import Cart from "./components/Cart.vue";
 import axios from "axios";
 
+import vueBraintree from 'vue-braintree';
+
+Vue.use(vueBraintree)
+
 const app = new Vue({
     el: '#root',
     render: h => h(Cart)
