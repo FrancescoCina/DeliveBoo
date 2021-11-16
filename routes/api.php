@@ -25,6 +25,7 @@ Route::namespace('Api')->group(function () {
     Route::get('/restaurants/{restaurant}', 'RestaurantController@show');
     Route::get('/types', 'TypeController@index');
     Route::get('/types/{type}', 'TypeController@show');
+    // client token geenration route
 });
 
 

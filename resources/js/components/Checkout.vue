@@ -24,7 +24,7 @@
         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
       </div>
       <div class="btn btn-primary" @click="createOrder">Crea Ordine</div>
-</form>
+    </form>
   </div>
 </template>
 
