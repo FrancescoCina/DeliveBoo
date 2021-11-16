@@ -37,6 +37,7 @@
               >
                 Rimuovi
               </a>
+
               <!-- <a class="btn btn-info" @click="clearLocalStorage">
                 Pulisci Tutto
               </a> -->
