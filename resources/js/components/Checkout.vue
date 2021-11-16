@@ -8,6 +8,9 @@
 export default {
   name: "Checkout",
   props: ["shoppingCart", "totalPrice"],
+  data() {
+    return {};
+  },
   methods: {
     showConsoleLog(cart, amount) {
       console.log(cart);
