@@ -27,9 +27,8 @@
               <p class="card-text">
                 {{ plate.quantity }}
               </p>
-              <a class="btn btn-success" @click="addPlateToCart(plate)"
-                >Aggiungi al Carrello</a
-              >
+              <p class="card-text">{{ plate.price }} €</p>
+              <a class="btn btn-success" @click="addPlateToCart(plate)">+</a>
               <br />
               <a
                 class="btn btn-danger"
@@ -38,20 +37,12 @@
               >
                 Rimuovi
               </a>
-              <br />
-              <!--     <a class="btn btn-info" @click="saveCartInLocalStorage">
-                Local Storage
-              </a> -->
-              <a class="btn btn-info" @click="clearLocalStorage">
+              <!-- <a class="btn btn-info" @click="clearLocalStorage">
                 Pulisci Tutto
-              </a>
-              <br />
-              <a @click="toggleModal">Modale si/no</a>
+              </a> -->
             </div>
           </div>
         </div>
-        <!--  -->
-        <!-- <a href="http://127.0.0.1:8000/welcome">welcome page</a> -->
         <ModalCart
           v-if="showModal"
           :shoppingCart="shoppingCart"
@@ -61,7 +52,11 @@
       </div>
     </div>
 
-    <Checkout v-if="isCheckout" />
+    <Checkout
+      v-if="isCheckout"
+      :shoppingCart="shoppingCart"
+      :totalPrice="totalPrice"
+    />
   </div>
 </template>
 
@@ -80,7 +75,6 @@ export default {
       prevRestaurant: [],
       plates: [],
       shoppingCart: [],
-      paramForCheck: "",
       showModal: false,
       isCheckout: false,
       isLoading: false,
@@ -142,7 +136,6 @@ export default {
     clearLocalStorage() {
       this.shoppingCart = [];
       this.totalPrice = 0;
-      this.paramForCheck = "";
       localStorage.setItem("cart", JSON.stringify(this.shoppingCart));
       localStorage.setItem("amount", JSON.stringify(this.totalPrice));
     },
@@ -152,10 +145,6 @@ export default {
       localStorage.removeItem("amount");
       console.log(this.shoppingCart);
     }, */
-    toggleModal() {
-      this.showModal = !this.showModal;
-      // console.log(this.shoppingCart);
-    },
     showCheckoutComp() {
       if (this.shoppingCart.length > 0) {
         this.isCheckout = true;

@@ -7,6 +7,16 @@
 <script>
 export default {
   name: "Checkout",
+  props: ["shoppingCart", "totalPrice"],
+  methods: {
+    showConsoleLog(cart, amount) {
+      console.log(cart);
+      console.log(amount);
+    },
+  },
+  created() {
+    this.showConsoleLog(this.shoppingCart, this.totalPrice);
+  },
 };
 </script>
 

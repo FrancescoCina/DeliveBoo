@@ -2,6 +2,7 @@
 @section('content')
 
 <section id="form" class="container">
+  <div class="box mt-5">
   @if ($errors->any())
     <div class="alert alert-danger">
         @foreach ($errors->all() as $error)
@@ -13,11 +14,11 @@
 @endif
     
     @if ($plate->id)
-        <h1 class="text-success text-center">Modifica Piatto</h1>
-        <form class="w-75 mx-auto" method="POST" action="{{route('admin.plates.update',$plate->id)}}" enctype="multipart/form-data">
+        <h1 class="text-center text-white mt-3 font-weight-bold">Modifica Piatto</h1>
+        <form class="w-75 mt-3 mx-auto" method="POST" action="{{route('admin.plates.update',$plate->id)}}" enctype="multipart/form-data">
         @method('PATCH')
     @else
-       <h1 class="text-success text-center">Crea Piatto</h1>
+       <h1 class="text-white mt-3 text-center">Crea Piatto</h1>
        <form class="w-75 mx-auto" method="POST" action="{{route('admin.plates.store')}}" enctype="multipart/form-data">
 
     @endif
@@ -67,10 +68,11 @@
              <label class="form-check-label" for="{{$category->id}}" >{{$category->name}}</label>
           </div>   
        @endforeach
-       <div class="my-2 d-flex justify-content-between">
-         <a class='btn btn-outline-secondary' href="{{route('admin.plates.index')}}">Indietro</a>
+       </div>
+       <div class="mt-5 d-flex justify-content-center">
+         <a class='btn btn-primary mx-3' href="{{route('admin.plates.index')}}">Indietro</a>
          <button class='btn btn-success'type="submit">Salva</button>
        </div>
-     </form>
+      </form>
    </section>   
 @endsection

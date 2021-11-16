@@ -25,7 +25,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card mt-5">
-            <div class="card-header text-center bg-secondary auth-header text-white">{{ __('Verify Your Email Address') }}</div>
+            <div class="card-header text-center custom-login-header auth-header text-white">{{ __('Verify Your Email Address') }}</div>
 
                 <div class="card-body">
                     @if (session('resent'))

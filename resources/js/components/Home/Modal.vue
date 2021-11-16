@@ -60,6 +60,11 @@
           <div class="text-content">
             <div>
               <div class="row">
+                <div v-if="filteredRestaurants.length < 1">
+                  <p class="text-center">
+                    Non ci sono Ristoranti corrispondenti a questa categoria!
+                  </p>
+                </div>
                 <div
                   v-for="restaurant in filteredRestaurants"
                   :key="restaurant.id"
