@@ -80,7 +80,6 @@ export default {
       prevRestaurant: [],
       plates: [],
       shoppingCart: [],
-      paramForCheck: "",
       showModal: false,
       isCheckout: false,
       isLoading: false,
@@ -142,7 +141,6 @@ export default {
     clearLocalStorage() {
       this.shoppingCart = [];
       this.totalPrice = 0;
-      this.paramForCheck = "";
       localStorage.setItem("cart", JSON.stringify(this.shoppingCart));
       localStorage.setItem("amount", JSON.stringify(this.totalPrice));
     },

@@ -2357,7 +2357,6 @@ __webpack_require__.r(__webpack_exports__);
       prevRestaurant: [],
       plates: [],
       shoppingCart: [],
-      paramForCheck: "",
       showModal: false,
       isCheckout: false,
       isLoading: false,
@@ -2418,7 +2417,6 @@ __webpack_require__.r(__webpack_exports__);
     clearLocalStorage: function clearLocalStorage() {
       this.shoppingCart = [];
       this.totalPrice = 0;
-      this.paramForCheck = "";
       localStorage.setItem("cart", JSON.stringify(this.shoppingCart));
       localStorage.setItem("amount", JSON.stringify(this.totalPrice));
     },
@@ -51819,7 +51817,7 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\laravel\deliveboo\resources\js\test.js */"./resources/js/test.js");
+module.exports = __webpack_require__(/*! C:\Laravel\deliveboo\resources\js\test.js */"./resources/js/test.js");
 
 
 /***/ })
