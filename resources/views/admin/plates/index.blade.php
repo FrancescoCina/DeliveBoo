@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="container ">
+<div class="container  ">
     @if (!$restaurant)
         <h2 class="text-center text-danger">Inserisci prima un ristorante</h2>
     @else
