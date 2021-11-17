@@ -2614,7 +2614,7 @@ __webpack_require__.r(__webpack_exports__);
           _this2.form = false;
           _this2.payment = true;
         })["catch"](function (error) {
-          console.log(error.response.data); // console.log("Non deve entrare");
+          console.log(error.response.data);
         }).then(function () {// this.isLoading = false;
         });
       }, 2500); // order complete
@@ -75518,7 +75518,7 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Laravel\deliveboo\resources\js\test.js */"./resources/js/test.js");
+module.exports = __webpack_require__(/*! /Users/daniele/deliveboo/resources/js/test.js */"./resources/js/test.js");
 
 
 /***/ })
