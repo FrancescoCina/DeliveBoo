@@ -69,10 +69,6 @@ Route::get('/', function () {
     return view('guests.welcome');
 });
 
-
-
-/* 
-Route::get('{any?}', function () {
+/* Route::get('{any?}', function () {
     return view('guests.welcome');
-})->where('any', '.*'); 
-*/
+})->where('any', '.*'); */

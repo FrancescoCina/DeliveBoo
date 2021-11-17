@@ -11,6 +11,6 @@
     <main>
         @yield('content')
     </main>
-    <script src="{{ asset('js/test.js') }}"></script>
+    <script src="{{ asset('js/test.js') }}"></script>    
 </body>
 </html>

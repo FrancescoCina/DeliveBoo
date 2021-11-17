@@ -9,5 +9,5 @@ import App from "./components/App.vue";
 
 const app = new Vue({
     el: "#root",
-    render: h=> h(App)
+    render: h => h(App)
 });
