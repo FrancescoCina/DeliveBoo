@@ -7,18 +7,25 @@
       <div v-else>
         <div v-if="!isCheckout" class="container-fluid">
           <div class="row w-100">
-
-            <div class="col-12 col-lg-9 d-flex justify-content-around flex-wrap">
+            <div
+              class="col-12 col-lg-9 d-flex justify-content-around flex-wrap"
+            >
               <div
-              class="card col-10 col-md-5 d-flex flex-wrap justify-content-around"
-              v-for="(plate, index) in plates"
-              :key="plate.id + index"
+                class="
+                  card
+                  col-10 col-md-5
+                  d-flex
+                  flex-wrap
+                  justify-content-around
+                "
+                v-for="(plate, index) in plates"
+                :key="plate.id + index"
               >
                 <div
-                class="pro-pic"
-                v-bind:style="{
-                  'background-image': 'url(' + imgURL + plate.image + ')',
-                }"
+                  class="pro-pic"
+                  v-bind:style="{
+                    'background-image': 'url(' + imgURL + plate.image + ')',
+                  }"
                 ></div>
                 <div class="description-wrap mw-100 text-center">
                   <div class="description text-white">
@@ -26,7 +33,9 @@
                     <p>{{ plate.description }}</p>
                     <p>{{ plate.quantity }}</p>
                     <p>{{ plate.price }} €</p>
-                    <a class="btn btn-success" @click="addPlateToCart(plate)">+</a>
+                    <a class="btn btn-success" @click="addPlateToCart(plate)"
+                      >+</a
+                    >
                     <a
                       class="btn btn-danger"
                       v-if="plate.quantity"
@@ -42,24 +51,23 @@
             <div class="col-12 col-lg-3 d-flex flex-column align-items-center">
               <div class="mt-5 pt-5 mw-100 text-center">
                 <ModalCart
-                v-if="showModal"
-                :shoppingCart="shoppingCart"
-                :totalPrice="totalPrice"
+                  v-if="showModal"
+                  :shoppingCart="shoppingCart"
+                  :totalPrice="totalPrice"
                 />
                 <a class="btn btn-success mt-3" @click="showCheckoutComp">
                   Vai al Checkout
                 </a>
               </div>
             </div>
-
           </div>
-          <div>
-            <Checkout
-              v-if="isCheckout"
-              :shoppingCart="shoppingCart"
-              :totalPrice="totalPrice"
-            />
-          </div>
+        </div>
+        <div>
+          <Checkout
+            v-if="isCheckout"
+            :shoppingCart="shoppingCart"
+            :totalPrice="totalPrice"
+          />
         </div>
       </div>
     </div>
@@ -185,7 +193,9 @@ export default {
 <style lang="scss">
 @import "../../sass/app.scss";
 
-body { margin: 0 !important;}
+body {
+  margin: 0 !important;
+}
 
 .card {
   margin-top: 100px;
