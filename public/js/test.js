@@ -2614,7 +2614,7 @@ __webpack_require__.r(__webpack_exports__);
           _this2.form = false;
           _this2.payment = true;
         })["catch"](function (error) {
-          console.log(error.response.data); // console.log("Non deve entrare");
+          console.log(error.response.data);
         }).then(function () {// this.isLoading = false;
         });
       }, 2500); // order complete
