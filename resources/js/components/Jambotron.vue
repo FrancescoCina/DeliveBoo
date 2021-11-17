@@ -26,14 +26,12 @@ export default {
   font-family: "Poppins", sans-serif;
 }
 .img-bg-restaurant {
-  margin-top: 0;
-  margin-left: -8px;
-  margin-right: 0;
   background-image: url("/img/bg-restaurant.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   height: 200px;
-  width: 100vw;
+  width: 100%;
+  min-width: 100%;
   background-position: bottom;
 }
 </style>

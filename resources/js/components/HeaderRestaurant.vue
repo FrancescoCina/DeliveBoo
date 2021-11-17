@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="header-container">
     <div class="bgt d-flex justify-content-between align-items-center">
       <a href="http://127.0.0.1:8000"
         ><img class="logo" src="/img/logo.png" alt="logo"
@@ -47,6 +47,11 @@ export default {
   font-family: "Poppins", sans-serif;
 }
 
+.header-container{
+  width: 100%;
+  min-width: 100%;
+  }
+
 .btnlogin {
   font-size: 13px;
 }
@@ -55,12 +60,8 @@ export default {
 }
 .bgt {
   background-color: #ff5858;
-  margin-top: -10px;
-  margin-left: -8px;
-  margin-right: -8px;
-  padding: 8px 70px 8px 70px;
   -webkit-box-shadow: 0px 9px 7px 1px #d8d8d8;
   box-shadow: 0px 9px 7px 1px #d8d8d8;
-  z-index: 99;
+  padding: 5px 70px;
 }
 </style>

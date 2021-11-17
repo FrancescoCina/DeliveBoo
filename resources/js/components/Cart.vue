@@ -2,15 +2,15 @@
   <div>
     <HeaderRestaurant />
     <Jambotron />
-    <div class="container-fluid px-5">
+    <div class="container-fluid px-md-5">
       <Loader v-if="isLoading" />
       <div v-else>
         <div v-if="!isCheckout" class="container-fluid">
-          <div class="row">
+          <div class="row w-100">
 
-            <div class="col-9 d-flex justify-content-around flex-wrap">
+            <div class="col-12 col-lg-9 d-flex justify-content-around flex-wrap">
               <div
-              class="card col-5 d-flex flex-wrap justify-content-around"
+              class="card col-10 col-md-5 d-flex flex-wrap justify-content-around"
               v-for="(plate, index) in plates"
               :key="plate.id + index"
               >
@@ -20,8 +20,8 @@
                   'background-image': 'url(' + imgURL + plate.image + ')',
                 }"
                 ></div>
-                <div class="description-wrap">
-                  <div class="description">
+                <div class="description-wrap mw-100 text-center">
+                  <div class="description text-white">
                     <h5>{{ plate.name }}</h5>
                     <p>{{ plate.description }}</p>
                     <p>{{ plate.quantity }}</p>
@@ -39,14 +39,14 @@
               </div>
             </div>
 
-            <div class="col-3">
-              <div class="mt-5 pt-5">
+            <div class="col-12 col-lg-3 d-flex flex-column align-items-center">
+              <div class="mt-5 pt-5 mw-100 text-center">
                 <ModalCart
                 v-if="showModal"
                 :shoppingCart="shoppingCart"
                 :totalPrice="totalPrice"
                 />
-                <a class="btn btn-success" @click="showCheckoutComp">
+                <a class="btn btn-success mt-3" @click="showCheckoutComp">
                   Vai al Checkout
                 </a>
               </div>
@@ -182,8 +182,10 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import "../../sass/app.scss";
+
+body { margin: 0 !important;}
 
 .card {
   margin-top: 100px;
