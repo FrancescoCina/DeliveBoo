@@ -2541,7 +2541,7 @@ __webpack_require__.r(__webpack_exports__);
       token: "",
       order_id: "",
       customer_name: "",
-      customer_surname: "",
+      customer_lastname: "",
       customer_phone_number: "",
       customer_email: "",
       customer_address: "",
@@ -2588,31 +2588,33 @@ __webpack_require__.r(__webpack_exports__);
       // user info
       var order = {
         customer_name: this.customer_name,
-        customer_surname: this.customer_lastname,
+        customer_lastname: this.customer_lastname,
         customer_address: this.customer_address,
         customer_email: this.customer_email,
         amount: this.totalPrice,
         isPayed: false
       };
-      var obj = {};
+      var ogg = {};
       this.shoppingCart.forEach(function (el) {
-        obj[el.plate_id] = el.quantity;
+        ogg[el.id] = el.quantity;
       });
-      order.order_plate = obj;
-      this.order = order; //  this.isLoading = true;
+      console.log(ogg);
+      order.order_details = ogg;
+      this.order = order;
+      console.log("ordine:  ", this.order); //  this.isLoading = true;
 
       setTimeout(function () {
+        axios;
         axios({
           method: "post",
           url: "http://127.0.0.1:8000/api/orders",
           data: _this2.order
         }).then(function (res) {
-          console.log(res);
-          _this2.orderId = res.data.Order_number;
+          // this.orderId = res.data.Order_number;
           _this2.form = false;
           _this2.payment = true;
-        })["catch"](function (res) {
-          console.log(res);
+        })["catch"](function (error) {
+          console.log(error.response.data); // console.log("Non deve entrare");
         }).then(function () {// this.isLoading = false;
         });
       }, 2500); // order complete
@@ -62648,19 +62650,19 @@ var render = function () {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.customer_surname,
-                  expression: "customer_surname",
+                  value: _vm.customer_lastname,
+                  expression: "customer_lastname",
                 },
               ],
               staticClass: "form-control",
               attrs: { type: "text", placeholder: "Cognome", id: "Surname" },
-              domProps: { value: _vm.customer_surname },
+              domProps: { value: _vm.customer_lastname },
               on: {
                 input: function ($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.customer_surname = $event.target.value
+                  _vm.customer_lastname = $event.target.value
                 },
               },
             }),

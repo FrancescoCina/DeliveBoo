@@ -26,18 +26,18 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-
+        // dd($request->all());
         $data = $request->all();
         $order = new Order();
-        $order->name = $data['customer_name'];
-        $order->surname = $data['customer_lastname'];
-        $order->address = $data['customer_address'];
-        $order->mail = $data['customer_mail'];
+        $order->customer_name = $data['customer_name'];
+        $order->customer_lastname = $data['customer_lastname'];
+        $order->customer_address = $data['customer_address'];
+        $order->customer_email = $data['customer_email'];
         $order->amount = $data['amount'];
-        $order->is_payed = $data['isPayed'];
+        $order->is_payed = 1;
         $order->save();
 
-        foreach ($data['order_plate'] as $key => $detail) {
+        foreach ($data['order_details'] as $key => $detail) {
             $order->plates()->attach($key, ['quantity' => $detail]);
         }
 

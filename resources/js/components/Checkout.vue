@@ -18,7 +18,7 @@
           class="form-control"
           placeholder="Cognome"
           id="Surname"
-          v-model="customer_surname"
+          v-model="customer_lastname"
         />
       </div>
       <div class="mb-3">
@@ -71,7 +71,7 @@ export default {
       token: "",
       order_id: "",
       customer_name: "",
-      customer_surname: "",
+      customer_lastname: "",
       customer_phone_number: "",
       customer_email: "",
       customer_address: "",
@@ -112,36 +112,37 @@ export default {
     },
     createOrder() {
       // user info
-      const order = {
+      let order = {
         customer_name: this.customer_name,
-        customer_surname: this.customer_lastname,
+        customer_lastname: this.customer_lastname,
         customer_address: this.customer_address,
         customer_email: this.customer_email,
         amount: this.totalPrice,
         isPayed: false,
       };
-      let obj = {};
+      let ogg = {};
       this.shoppingCart.forEach((el) => {
-        obj[el.plate_id] = el.quantity;
+        ogg[el.id] = el.quantity;
       });
-
-      order.order_plate = obj;
+      console.log(ogg);
+      order.order_details = ogg;
       this.order = order;
+      console.log("ordine:  ", this.order);
       //  this.isLoading = true;
       setTimeout(() => {
+        axios;
         axios({
           method: "post",
           url: "http://127.0.0.1:8000/api/orders",
           data: this.order,
         })
           .then((res) => {
-            console.log(res);
-            this.orderId = res.data.Order_number;
+            // this.orderId = res.data.Order_number;
             this.form = false;
             this.payment = true;
           })
-          .catch((res) => {
-            console.log(res);
+          .catch((error) => {
+            console.log(error.response.data);
           })
           .then(() => {
             // this.isLoading = false;
