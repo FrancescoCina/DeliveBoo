@@ -57,18 +57,18 @@
             <div class="slider"></div>
           </div>
           <!-- filter restaurant -->
-          <div class="text-content">
+          <div class="text-content w-100">
             <div>
-              <div class="row">
+              <div class="row w-100 justify-content-around">
                 <div v-if="filteredRestaurants.length < 1">
-                  <p class="text-center">
+                  <p class="text-center w-100">
                     Non ci sono Ristoranti corrispondenti a questa categoria!
                   </p>
                 </div>
                 <div
                   v-for="restaurant in filteredRestaurants"
                   :key="restaurant.id"
-                  class="col-11 d-flex justify-content-around flex-wrap"
+                  class="d-flex justify-content-between flex-wrap"
                 >
                   <div class="card m-2">
                     <div class="cover">
@@ -175,12 +175,16 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-height: 450px;
+  min-height: 450px;
 }
 .content .list {
   display: flex;
   flex-direction: column;
+  max-height: 400px;
   width: 20%;
-  margin-right: 50px;
+  margin-right: 20px;
+  padding-right: 20px;
   position: relative;
 }
 .content .list label {
@@ -236,7 +240,9 @@ export default {
 
 .content .text-content {
   width: 80%;
-  height: 100%;
+  max-height: 450px;
+  overflow: auto;
+  padding-bottom: 15px;
 }
 .content .text {
   display: none;
@@ -282,13 +288,13 @@ export default {
   transform: perspective (2000px);
   transition: 1s;
   box-shadow: inset 300px 0 20px rgba(0, 0, 0, 0.15),
-    0 20px 20px rgba(0, 0, 0, 0.15);
+    0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
 .card:hover {
   transform: perspective (2000px) translate(50%);
   box-shadow: inset 20px 0 50px rgba(0, 0, 0, 0.15),
-    0 10px 10px rgba(0, 0, 0, 0.15);
+    0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
 .card .cover {
@@ -307,7 +313,7 @@ export default {
 }
 
 .card:hover .cover {
-  transform: rotateY(-100deg);
+  transform: rotateY(-95deg);
 }
 
 .card .cover h5 {
