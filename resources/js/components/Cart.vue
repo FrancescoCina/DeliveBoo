@@ -1,63 +1,58 @@
 <template>
-  <div class="container">
-    <Loader v-if="isLoading" />
-    <div v-else>
-      <div v-if="!isCheckout">
-        <div class="restaurant-infos text-center">
-          <h1>Nome ristorante: {{ this.restaurant.name }}</h1>
-          <h3>Indirizzo: {{ this.restaurant.address }}</h3>
-        </div>
-        <div class="cards-container d-flex justify-content-center">
+  <div>
+    <HeaderRestaurant />
+    <Jambotron />
+    <div class="container">
+      <Loader v-if="isLoading" />
+      <div v-else>
+        <div v-if="!isCheckout">
           <div
+            class="card col-12 d-flex flex-wrap justify-content-around"
             v-for="(plate, index) in plates"
             :key="plate.id + index"
-            class="card col-3 my-4"
-            style="width: 18rem"
           >
-            <img
-              :src="'../storage/' + plate.image"
-              class="card-img-top"
-              :alt="plate.name"
-            />
-            <div class="card-body">
-              <h5 class="card-title">{{ plate.name }}</h5>
-              <p class="card-text">
-                {{ plate.description }}
-              </p>
-              <p class="card-text">
-                {{ plate.quantity }}
-              </p>
-              <p class="card-text">{{ plate.price }} €</p>
-              <a class="btn btn-success" @click="addPlateToCart(plate)">+</a>
-              <br />
-              <a
-                class="btn btn-danger"
-                v-if="plate.quantity"
-                @click="removePlateToCart(plate, index)"
-              >
-                Rimuovi
-              </a>
-
-              <!-- <a class="btn btn-info" @click="clearLocalStorage">
-                Pulisci Tutto
-              </a> -->
+            <div
+              class="pro-pic"
+              v-bind:style="{
+                'background-image': 'url(' + imgurl + plate.image + ')',
+              }"
+            ></div>
+            <div class="description-wrap">
+              <div class="description">
+                <h5>{{ plate.name }}</h5>
+                <p>{{ plate.description }}</p>
+                <p>{{ plate.quantity }}</p>
+                <p>{{ plate.price }} €</p>
+                <a class="btn btn-success" @click="addPlateToCart(plate)">+</a>
+                <a
+                  class="btn btn-danger"
+                  v-if="plate.quantity"
+                  @click="removePlateToCart(plate, index)"
+                >
+                  Rimuovi
+                </a>
+              </div>
             </div>
           </div>
+
+          <ModalCart
+            v-if="showModal"
+            :shoppingCart="shoppingCart"
+            :totalPrice="totalPrice"
+          />
+          <a class="btn btn-success" @click="showCheckoutComp"
+            >Vai al Checkout</a
+          >
+          <div>
+            <Checkout
+              v-if="isCheckout"
+              :shoppingCart="shoppingCart"
+              :totalPrice="totalPrice"
+            />
+          </div>
         </div>
-        <ModalCart
-          v-if="showModal"
-          :shoppingCart="shoppingCart"
-          :totalPrice="totalPrice"
-        />
-        <a class="btn btn-success" @click="showCheckoutComp">Vai al Checkout</a>
       </div>
     </div>
-
-    <Checkout
-      v-if="isCheckout"
-      :shoppingCart="shoppingCart"
-      :totalPrice="totalPrice"
-    />
   </div>
 </template>
 
@@ -65,10 +60,17 @@
 import ModalCart from "./ModalCart.vue";
 import Checkout from "./Checkout.vue";
 import Loader from "./Loader.vue";
-
+import HeaderRestaurant from "./HeaderRestaurant.vue";
+import Jambotron from "./Jambotron.vue";
 export default {
   name: "Cart",
-  components: { ModalCart, Checkout, Loader },
+  components: {
+    ModalCart,
+    Checkout,
+    Loader,
+    HeaderRestaurant,
+    Jambotron,
+  },
   data() {
     return {
       baseUri: "http://127.0.0.1:8000/api",
@@ -80,6 +82,7 @@ export default {
       isCheckout: false,
       isLoading: false,
       totalPrice: 0,
+      imgurl: "../storage/",
     };
   },
   methods: {
@@ -142,10 +145,10 @@ export default {
     },
     // Per cancellare la cache del browser MEMO
     /* clearLocalStorage() {
-      localStorage.removeItem("cart");
-      localStorage.removeItem("amount");
-      console.log(this.shoppingCart);
-    }, */
+                      localStorage.removeItem("cart");
+                      localStorage.removeItem("amount");
+                      console.log(this.shoppingCart);
+                    }, */
     showCheckoutComp() {
       if (this.shoppingCart.length > 0) {
         this.isCheckout = true;
@@ -171,4 +174,67 @@ export default {
 
 <style scoped lang="scss">
 @import "../../sass/app.scss";
+
+.card {
+  min-height: 100%;
+  position: relative;
+  background: #ff5858;
+  transition: all 0.3s ease-out;
+}
+.card .description-wrap {
+  padding: 105px 30px;
+  position: relative;
+  overflow: hidden;
+}
+.card .description {
+  color: black;
+  text-align: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  font-size: 20px;
+  line-height: 1.4;
+  transition: all 0.5s ease-out;
+  overflow-x: auto;
+  transform: translateY(100%);
+  opacity: 0;
+}
+.card .description > * {
+  width: 100%;
+}
+.card .description h3 {
+  margin: 0;
+  font-size: 26px;
+}
+.card .description h4 {
+  margin: 0;
+}
+.pro-pic {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transform: translatex(-50%);
+  background-size: cover;
+  background-position: center center;
+  transition: all 0.5s ease-out;
+}
+.card:hover .pro-pic {
+  transform: translate(-50%, -50%);
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 3px solid;
+}
+.card:hover {
+  border-radius: 50px;
+}
+.card:hover .description {
+  transform: translateY(0%);
+  opacity: 1;
+}
 </style>

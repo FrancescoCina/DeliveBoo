@@ -53,6 +53,7 @@ export default {
 }
 
 // background
+
 .bg {
   height: 100vh;
   width: 100vw;
