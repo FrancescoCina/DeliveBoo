@@ -37711,8 +37711,8 @@ throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Laravel\deliveboo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Laravel\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/daniele/deliveboo/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/daniele/deliveboo/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

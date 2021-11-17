@@ -2466,9 +2466,177 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Checkout.vue?vue&type=script&lang=js& ***!
   \*******************************************************************************************************************************************************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\Laravel\\deliveboo\\package.json: Error while parsing JSON - Unexpected token < in JSON at position 1219\n    at JSON.parse (<anonymous>)\n    at C:\\Laravel\\deliveboo\\node_modules\\@babel\\core\\lib\\config\\files\\package.js:55:20\n    at C:\\Laravel\\deliveboo\\node_modules\\@babel\\core\\lib\\config\\files\\utils.js:30:12\n    at Generator.next (<anonymous>)\n    at Function.<anonymous> (C:\\Laravel\\deliveboo\\node_modules\\@babel\\core\\lib\\gensync-utils\\async.js:25:3)\n    at Generator.next (<anonymous>)\n    at step (C:\\Laravel\\deliveboo\\node_modules\\gensync\\index.js:261:32)\n    at C:\\Laravel\\deliveboo\\node_modules\\gensync\\index.js:273:13\n    at async.call.result.err.err (C:\\Laravel\\deliveboo\\node_modules\\gensync\\index.js:223:11)\n    at C:\\Laravel\\deliveboo\\node_modules\\gensync\\index.js:189:28\n    at FSReqCallback.readFileAfterClose [as oncomplete] (internal/fs/read_file_context.js:73:3)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "Checkout",
+  props: ["shoppingCart", "totalPrice"],
+  data: function data() {
+    return {
+      token: "",
+      order_id: "",
+      customer_name: "",
+      customer_lastname: "",
+      customer_phone_number: "",
+      customer_email: "",
+      customer_address: "",
+      order: {},
+      form: true,
+      payment: false,
+      thanks: false
+    };
+  },
+  methods: {
+    showConsoleLog: function showConsoleLog(cart, amount) {
+      console.log(cart);
+      console.log(amount);
+    },
+    onSuccess: function onSuccess(payload) {
+      var _this = this;
+
+      var nonce = payload.nonce;
+      axios({
+        method: "post",
+        url: "http://127.0.0.1:8000/api/payments",
+        data: {
+          token: nonce,
+          id: this.orderId
+        },
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        }
+      }).then(function (res) {
+        _this.payment = false;
+        _this.thanks = true;
+        localStorage.clear();
+        console.log(res);
+      });
+    },
+    onError: function onError(error) {
+      var message = error.message;
+      console.log(message);
+    },
+    createOrder: function createOrder() {
+      var _this2 = this;
+
+      // user info
+      var order = {
+        customer_name: this.customer_name,
+        customer_lastname: this.customer_lastname,
+        customer_address: this.customer_address,
+        customer_email: this.customer_email,
+        amount: this.totalPrice,
+        isPayed: false
+      };
+      var ogg = {};
+      this.shoppingCart.forEach(function (el) {
+        ogg[el.id] = el.quantity;
+      });
+      console.log(ogg);
+      order.order_details = ogg;
+      this.order = order;
+      console.log("ordine:  ", this.order); //  this.isLoading = true;
+
+      setTimeout(function () {
+        axios;
+        axios({
+          method: "post",
+          url: "http://127.0.0.1:8000/api/orders",
+          data: _this2.order
+        }).then(function (res) {
+          // this.orderId = res.data.Order_number;
+          _this2.form = false;
+          _this2.payment = true;
+        })["catch"](function (error) {
+          console.log(error.response.data);
+        }).then(function () {// this.isLoading = false;
+        });
+      }, 2500); // order complete
+
+      this.order = order;
+    },
+    getTokenFromApi: function getTokenFromApi() {
+      var _this3 = this;
+
+      axios.get("http://127.0.0.1:8000/api/payments").then(function (res) {
+        _this3.token = res.data.clientToken;
+      })["catch"]().then(function () {// this.isLoading = false;
+      });
+    }
+  },
+  created: function created() {
+    console.log(this.shoppingCart); // this.showConsoleLog(this.shoppingCart, this.totalPrice);
+
+    this.getTokenFromApi();
+  }
+});
 
 /***/ }),
 
@@ -76104,7 +76272,7 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Laravel\deliveboo\resources\js\test.js */"./resources/js/test.js");
+module.exports = __webpack_require__(/*! /Users/daniele/deliveboo/resources/js/test.js */"./resources/js/test.js");
 
 
 /***/ })
