@@ -2,47 +2,57 @@
   <div>
     <HeaderRestaurant />
     <Jambotron />
-    <div class="container">
+    <div class="container-fluid px-5">
       <Loader v-if="isLoading" />
       <div v-else>
-        <div v-if="!isCheckout">
-          <div
-            class="card col-12 d-flex flex-wrap justify-content-around"
-            v-for="(plate, index) in plates"
-            :key="plate.id + index"
-          >
-            <div
-              class="pro-pic"
-              v-bind:style="{
-                'background-image': 'url(' + imgurl + plate.image + ')',
-              }"
-            ></div>
-            <div class="description-wrap">
-              <div class="description">
-                <h5>{{ plate.name }}</h5>
-                <p>{{ plate.description }}</p>
-                <p>{{ plate.quantity }}</p>
-                <p>{{ plate.price }} €</p>
-                <a class="btn btn-success" @click="addPlateToCart(plate)">+</a>
-                <a
-                  class="btn btn-danger"
-                  v-if="plate.quantity"
-                  @click="removePlateToCart(plate, index)"
-                >
-                  Rimuovi
+        <div v-if="!isCheckout" class="container-fluid">
+          <div class="row">
+
+            <div class="col-9 d-flex justify-content-around flex-wrap">
+              <div
+              class="card col-5 d-flex flex-wrap justify-content-around"
+              v-for="(plate, index) in plates"
+              :key="plate.id + index"
+              >
+                <div
+                class="pro-pic"
+                v-bind:style="{
+                  'background-image': 'url(' + imgURL + plate.image + ')',
+                }"
+                ></div>
+                <div class="description-wrap">
+                  <div class="description">
+                    <h5>{{ plate.name }}</h5>
+                    <p>{{ plate.description }}</p>
+                    <p>{{ plate.quantity }}</p>
+                    <p>{{ plate.price }} €</p>
+                    <a class="btn btn-success" @click="addPlateToCart(plate)">+</a>
+                    <a
+                      class="btn btn-danger"
+                      v-if="plate.quantity"
+                      @click="removePlateToCart(plate, index)"
+                    >
+                      Rimuovi
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-3">
+              <div class="mt-5 pt-5">
+                <ModalCart
+                v-if="showModal"
+                :shoppingCart="shoppingCart"
+                :totalPrice="totalPrice"
+                />
+                <a class="btn btn-success" @click="showCheckoutComp">
+                  Vai al Checkout
                 </a>
               </div>
             </div>
-          </div>
 
-          <ModalCart
-            v-if="showModal"
-            :shoppingCart="shoppingCart"
-            :totalPrice="totalPrice"
-          />
-          <a class="btn btn-success" @click="showCheckoutComp"
-            >Vai al Checkout</a
-          >
+          </div>
           <div>
             <Checkout
               v-if="isCheckout"
@@ -82,7 +92,7 @@ export default {
       isCheckout: false,
       isLoading: false,
       totalPrice: 0,
-      imgurl: "../storage/",
+      imgURL: "../storage/",
     };
   },
   methods: {
@@ -176,7 +186,8 @@ export default {
 @import "../../sass/app.scss";
 
 .card {
-  min-height: 100%;
+  margin-top: 100px;
+  height: 500px;
   position: relative;
   background: #ff5858;
   transition: all 0.3s ease-out;
