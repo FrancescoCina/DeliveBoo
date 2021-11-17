@@ -65,17 +65,31 @@
                         </div>
                         <h4 class="text-center text-white">{{ $restaurant->name }}</h4>
                     </div>
-                    <div class="d-flex flex-column align-items-center">
-                        <a class="btn btn-light my-3 px-1 px-md-2 px-lg-3 px-xl-4" href="{{ url('/admin') }}">
-                            {{ __('Admin') }}
-                        </a>
-                        <a class="btn btn-light  my-3 px-1 px-md-2 px-lg-3 px-xl-4" href="{{ url('/admin/plates') }}">
-                            {{ __('Plates') }}
-                        </a>
-                        <a class="btn btn-light my-3 px-1 px-md-2 px-lg-3 px-xl-4" href="{{ url('/admin/orders') }}">
-                            {{ __('Orders') }}
-                        </a>
+                    <div class="navbar-links-container d-flex flex-column align-items-center">
+
+                        <div class="nav-link d-flex justify-content-center align-items-center my-4">
+                            <a class="btn nav-btn" href="{{ url('/admin') }}">
+                                <i class="fas fa-user"></i>
+                                <p>{{ __('Admin') }}</p>
+                            </a>
+                        </div>
+
+                        <div class="nav-link d-flex justify-content-center align-items-center my-4">
+                            <a class="btn nav-btn px-3" href="{{ url('/admin/plates') }}">
+                                <i class="fas fa-utensils"></i>
+                                <p>{{ __('Plates') }}</p>
+                            </a>
+                        </div>
+
+                        <div class="nav-link d-flex justify-content-center align-items-center my-4">
+                            <a class="btn nav-btn" href="{{ url('/admin/orders') }}">
+                                <i class="fas fa-calendar-alt"></i>
+                                <p>{{ __('Orders') }}</p>
+                            </a>
+                        </div>
+
                     </div>
+
                     @else
                     <div class="my-5">
                         <p class="text-white text-center fs-5">Ricordati di configurare il tuo ristorante!</p>
