@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Orders\OrderRequest;
+use App\Mail\OrderConfirmationEmail;
 use Illuminate\Http\Request;
 use Braintree\Gateway;
 use App\Models\Order;
-
+use Illuminate\Support\Facades\Mail;
 
 class PaymentController extends Controller
 {
@@ -26,28 +27,23 @@ class PaymentController extends Controller
     {
         $order = Order::find($request->id);
 
-
         $result = $gateway->transaction()->sale([
-            'amount' => $order->amount,
+            'amount' => $order->total,
             'paymentMethodNonce' => $request->token,
             'options' => [
                 'submitForSettlement' => true
             ]
         ]);
-
         if ($result->success) {
             $data = [
-                'email' => $order->customer_email,
-                'amount' => $order->amount,
+                'email' => $order->mail,
+                'amount' => $order->total,
                 'order_number' => $order->id,
                 'success' => true,
                 'message' => 'Transazione avvenuta con successo'
             ];
 
-            $order->is_payed = 1;
-
-            $order->save();
-
+            Mail::to($order->customer_email)->send(new OrderConfirmationEmail());
             return response()->json(compact('data'), 200);
         } else {
             $data = [
