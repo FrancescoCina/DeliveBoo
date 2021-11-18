@@ -18,7 +18,7 @@
         </div>
         <div class="form-group">
             <label for="logo">URL Logo</label>
-            <input class="form-control" type="text" name="logo" id="logo">
+            <input class="form-control" type="file" name="logo" id="logo">
         </div>
         <div class="form-group">
             <label for="address">Indirizzo</label>

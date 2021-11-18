@@ -25,7 +25,7 @@
             <div class="custom-navbar-small pl-1 d-md-none d-flex flex-column justify-content-start">
             @if($restaurant)
                 <div class="navbar-logo-small my-3"> 
-                    <img class="img-fluid small-nav-logo" src="{{ $restaurant->logo }}" alt="Logo">
+                    <img class="img-fluid small-nav-logo" src="{{asset('storage/'.$restaurant->logo)}}" alt="{{$restaurant->name}}">
                 </div>
                 <div class="small-nav-link d-flex justify-content-center align-items-center">
                     <a class="btn my-1 text-white small-nav-btn" href="{{ url('/admin') }}">
@@ -61,7 +61,7 @@
                     @if($restaurant)
                     <div class="d-flex flex-column align-items-center ">
                         <div class="navbar-logo d-flex justify-content-center align-items-center my-3"> 
-                            <img class="img-fluid" src="{{ $restaurant->logo }}" alt="Logo">
+                            <img class="img-fluid" src="{{asset('storage/'.$restaurant->logo)}}" alt="{{$restaurant->name}}">
                         </div>
                         <h4 class="text-center text-white">{{ $restaurant->name }}</h4>
                     </div>

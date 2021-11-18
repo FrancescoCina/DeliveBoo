@@ -39,7 +39,7 @@ class RestaurantController extends Controller
         $request->validate([
             'name' => 'required|max:100|string|min:3',
             //Modificare quando ci saranno le immagini definitive MEMO
-            'logo' => 'string|nullable',
+            'logo' => 'nullable',
             'address' => 'string|max:255',
             'vat_number' => 'max:11|min:11|string',
             'hours' => 'string|nullable',
@@ -49,13 +49,6 @@ class RestaurantController extends Controller
         $data = $request->all();
 
         $new_restaurant = new Restaurant();
-
-        // fill the image with the uploaded file
-        if (array_key_exists('image', $data)) {
-            // fill the image with the uploaded file
-            $img_path = Storage::put('public', $data['image']);
-            $data['image'] = $img_path;
-        }
 
         $new_restaurant->fill($data);
 
