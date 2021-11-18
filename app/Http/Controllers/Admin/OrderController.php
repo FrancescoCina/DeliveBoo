@@ -14,9 +14,11 @@ class OrderController extends Controller
 {
     public function index()
     {
+        // restaurant validation
         $restaurant = Restaurant::where('user_id', Auth::user()->id)->first();
-        $orders = Order::orderBy('created_at')->paginate(5);
 
+
+        // $orders = Plate::where('restaurant_id', $restaurant->id)->with('orders')->get()->pluck('orders')->flatten()->sortDesc()->unique('id')->get();
         // $orders = Order::all();
         return view('admin.orders.index', compact('orders', 'restaurant'));
     }

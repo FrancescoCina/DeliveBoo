@@ -34,7 +34,7 @@ class OrderController extends Controller
         $order->customer_address = $data['customer_address'];
         $order->customer_email = $data['customer_email'];
         $order->amount = $data['amount'];
-        $order->is_payed = 1;
+        $order->is_payed = 0;
         $order->save();
 
         foreach ($data['order_details'] as $key => $detail) {
