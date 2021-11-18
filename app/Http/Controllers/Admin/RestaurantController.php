@@ -50,20 +50,9 @@ class RestaurantController extends Controller
 
         $new_restaurant = new Restaurant();
 
-        // fill the image with the uploaded file
-        if (array_key_exists('image', $data)) {
-            // fill the image with the uploaded file
-            $img_path = Storage::put('public', $data['image']);
-            $data['image'] = $img_path;
-        }
-
         $new_restaurant->fill($data);
 
         $new_restaurant->user_id = Auth::user()->id;
-
-        // fill the image with the uploaded file
-        $img_path = Storage::put('public', $data['logo']);
-        $new_restaurant->logo = $img_path;
 
         $new_restaurant->save();
 
