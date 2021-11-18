@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="card" style="width: 18rem">
+    <div class="card shopping-cart">
       <div class="card-header">Carrello</div>
       <ul
         v-for="item in shoppingCart"
@@ -60,4 +60,8 @@ export default {
 
 <style scoped lang="scss">
 @import "../../sass/app.scss";
+.shopping-cart{
+  width: 100%;
+  max-width: 100%;
+}
 </style>

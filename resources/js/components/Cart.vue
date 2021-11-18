@@ -7,7 +7,7 @@
       <div v-else>
         <div v-if="!isCheckout" class="container-fluid">
           <div class="row w-100">
-            <div class="col-6 col-md-9 d-flex justify-content-around flex-wrap">
+            <div class="col-8 col-lg-9 col-xl-10 d-flex justify-content-around flex-wrap">
               <div
                 class="
                   card
@@ -28,7 +28,7 @@
                 <div class="description-wrap mw-100 text-center">
                   <div class="description text-white">
                     <h5>{{ plate.name }}</h5>
-                    <p>{{ plate.description }}</p>
+                    <p class="plate-description">{{ plate.description }}</p>
                     <p>{{ plate.quantity }}</p>
                     <p>{{ plate.price }} €</p>
                     <a class="btn btn-success" @click="addPlateToCart(plate)"
@@ -46,16 +46,18 @@
               </div>
             </div>
 
-            <div class="col-6 col-md-3 d-flex flex-column align-items-center">
-              <div class="mt-5 pt-5 mw-100 text-center">
-                <ModalCart
+            <div class="col-6 col-md-3 d-flex flex-column align-items-center cart-column">
+              <div class="text-center cart-modal-container bordello fixed-top">
+                <div class="mw-100">
+                  <ModalCart
                   v-if="showModal"
                   :shoppingCart="shoppingCart"
                   :totalPrice="totalPrice"
-                />
-                <a class="btn btn-success mt-3" @click="showCheckoutComp">
-                  Vai al Checkout
-                </a>
+                  />
+                  <a class="btn btn-success mt-3" @click="showCheckoutComp" v-if="showModal">
+                    Vai al Checkout
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -258,4 +260,27 @@ body {
   transform: translateY(0%);
   opacity: 1;
 }
+
+.cart-modal-container{
+  width: 100%;
+}
+
+.cart-column{
+  max-width: 100%;
+  position: relative;
+  .bordello{
+    width: 200px;
+    top: 100px;
+    left: calc(100% - 220px);
+
+  }
+
+}
+
+@media screen and (max-width: 1179px) {
+  .plate-description {
+    display: none;
+  }
+}
+
 </style>
