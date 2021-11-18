@@ -2508,6 +2508,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -63017,7 +63025,7 @@ var render = function () {
                               {
                                 key: plate.id + index,
                                 staticClass:
-                                  "card col-10 col-md-5 d-flex flex-wrap justify-content-around",
+                                  "\n                card\n                col-10 col-md-5\n                d-flex\n                flex-wrap\n                justify-content-around\n              ",
                               },
                               [
                                 _c("div", {
@@ -63135,23 +63143,23 @@ var render = function () {
                           ]
                         ),
                       ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        [
-                          _vm.isCheckout
-                            ? _c("Checkout", {
-                                attrs: {
-                                  shoppingCart: _vm.shoppingCart,
-                                  totalPrice: _vm.totalPrice,
-                                },
-                              })
-                            : _vm._e(),
-                        ],
-                        1
-                      ),
                     ])
                   : _vm._e(),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  [
+                    _vm.isCheckout
+                      ? _c("Checkout", {
+                          attrs: {
+                            shoppingCart: _vm.shoppingCart,
+                            totalPrice: _vm.totalPrice,
+                          },
+                        })
+                      : _vm._e(),
+                  ],
+                  1
+                ),
               ]),
         ],
         1
