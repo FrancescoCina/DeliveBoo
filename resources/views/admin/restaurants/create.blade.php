@@ -10,7 +10,7 @@
 @else
 <h2 class="text-success mt-5 text-center" > Crea il Tuo Ristorante!</h2>
 <div class="container">
-<form class="w-75 mx-auto mt-5 text-center" method="POST" action="{{ route('admin.restaurants.store') }}" enctype="multipart/form-data">
+    <form class="w-75 mx-auto mt-5 text-center" method="POST" action="{{ route('admin.restaurants.store') }}" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="name">Nome Ristorante</label>
@@ -51,6 +51,6 @@
             <button class='btn btn-success mx-4' type="submit">Crea</button>
        </div>
     </form>
-    </div>
+</div>
     @endif
 @endsection
