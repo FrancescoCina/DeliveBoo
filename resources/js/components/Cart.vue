@@ -1,15 +1,13 @@
 <template>
   <div>
-    <HeaderRestaurant  />
-    <Jambotron :restaurant="restaurant"/>
+    <HeaderRestaurant />
+    <Jambotron :restaurant="restaurant" />
     <div class="container-fluid px-md-5">
       <Loader v-if="isLoading" />
       <div v-else>
         <div v-if="!isCheckout" class="container-fluid">
           <div class="row w-100">
-            <div
-              class="col-12 col-lg-9 d-flex justify-content-around flex-wrap"
-            >
+            <div class="col-6 col-md-9 d-flex justify-content-around flex-wrap">
               <div
                 class="
                   card
@@ -48,7 +46,7 @@
               </div>
             </div>
 
-            <div class="col-12 col-lg-3 d-flex flex-column align-items-center">
+            <div class="col-6 col-md-3 d-flex flex-column align-items-center">
               <div class="mt-5 pt-5 mw-100 text-center">
                 <ModalCart
                   v-if="showModal"
