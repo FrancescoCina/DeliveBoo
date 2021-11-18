@@ -5,6 +5,11 @@
 <script>
 export default {
     name:'Thanks',
+    methods:{
+    },
+    created(){
+            console.log(this.shoppingCart);
+        }
 }
 </script>
 

@@ -2618,14 +2618,17 @@ __webpack_require__.r(__webpack_exports__);
     var url = window.location.href;
     url = new URL(url);
     var dinamicParam = url.pathname;
-    this.getRestaurantAndPlatesFromApi(dinamicParam); //   this.prevRestaurant = JSON.parse(localStorage.getItem("restaurant"));
-    //   if (this.shoppingCart !== null && this.totalPrice !== null) {
-    //     this.shoppingCart = JSON.parse(localStorage.getItem("cart"));
-    //     this.totalPrice = JSON.parse(localStorage.getItem("amount"));
-    //     if (this.shoppingCart.length > 0) {
-    //       this.showModal = true;
-    //     }
-    //   }
+    this.getRestaurantAndPlatesFromApi(dinamicParam);
+    this.prevRestaurant = JSON.parse(localStorage.getItem("restaurant"));
+
+    if (this.shoppingCart !== null && this.totalPrice !== null) {
+      this.shoppingCart = JSON.parse(localStorage.getItem("cart"));
+      this.totalPrice = JSON.parse(localStorage.getItem("amount"));
+
+      if (this.shoppingCart.length > 0) {
+        this.showModal = true;
+      }
+    }
   }
 });
 
@@ -3031,7 +3034,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Thanks'
+  name: 'Thanks',
+  methods: {},
+  created: function created() {
+    console.log(this.shoppingCart);
+  }
 });
 
 /***/ }),
