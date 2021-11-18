@@ -1,7 +1,7 @@
 <template>
   <div>
-    <HeaderRestaurant />
-    <Jambotron />
+    <HeaderRestaurant  />
+    <Jambotron :restaurant="restaurant"/>
     <div class="container-fluid px-md-5">
       <Loader v-if="isLoading" />
       <div v-else>
@@ -178,14 +178,14 @@ export default {
     url = new URL(url);
     let dinamicParam = url.pathname;
     this.getRestaurantAndPlatesFromApi(dinamicParam);
-    this.prevRestaurant = JSON.parse(localStorage.getItem("restaurant"));
-    if (this.shoppingCart !== null && this.totalPrice !== null) {
-      this.shoppingCart = JSON.parse(localStorage.getItem("cart"));
-      this.totalPrice = JSON.parse(localStorage.getItem("amount"));
-      if (this.shoppingCart.length > 0) {
-        this.showModal = true;
-      }
-    }
+  //   this.prevRestaurant = JSON.parse(localStorage.getItem("restaurant"));
+  //   if (this.shoppingCart !== null && this.totalPrice !== null) {
+  //     this.shoppingCart = JSON.parse(localStorage.getItem("cart"));
+  //     this.totalPrice = JSON.parse(localStorage.getItem("amount"));
+  //     if (this.shoppingCart.length > 0) {
+  //       this.showModal = true;
+  //     }
+  //   }
   },
 };
 </script>

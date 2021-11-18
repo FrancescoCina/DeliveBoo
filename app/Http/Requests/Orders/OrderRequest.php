@@ -25,13 +25,7 @@ class OrderRequest extends FormRequest
     {
         return [
             'token' => 'required',
-            'amount' => 'required'
+            // 'amount' => 'required',
         ];
     }
 }
-
-
-/* let obj = {};
-      this.cart.forEach((el) => {
-        obj[el.plate_id] = el.quantity;
-      }); */

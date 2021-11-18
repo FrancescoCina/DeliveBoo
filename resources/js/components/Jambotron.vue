@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="img-bg-restaurant">
-      <TextAnimationrestaurant />
+      <TextAnimationrestaurant :restaurant="restaurant"/>
     </div>
   </div>
 </template>
@@ -11,6 +11,7 @@ import TextAnimationrestaurant from "./TextAnimationrestaurant.vue";
 
 export default {
   name: "Jambotron",
+  props:['restaurant'],
   components: {
     TextAnimationrestaurant,
   },

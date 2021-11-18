@@ -59,12 +59,17 @@
         }"
       ></v-braintree>
     </div>
+    <Thanks v-if="thanks"/>
   </div>
 </template>
 
 <script>
+import Thanks from './Thanks.vue';
 export default {
   name: "Checkout",
+  components: {
+    Thanks,
+  },
   props: ["shoppingCart", "totalPrice"],
   data() {
     return {
@@ -82,6 +87,12 @@ export default {
     };
   },
   methods: {
+     clearLocalStorage() {
+      this.shoppingCart = [];
+      this.totalPrice = 0;
+      localStorage.setItem("cart", JSON.stringify(this.shoppingCart));
+      localStorage.setItem("amount", JSON.stringify(this.totalPrice));
+    },
     showConsoleLog(cart, amount) {
       console.log(cart);
       console.log(amount);
@@ -102,7 +113,7 @@ export default {
       }).then((res) => {
         this.payment = false;
         this.thanks = true;
-        localStorage.clear();
+        // this.clearLocalStorage();
         console.log(res);
       });
     },
@@ -137,7 +148,8 @@ export default {
           data: this.order,
         })
           .then((res) => {
-            // this.orderId = res.data.Order_number;
+            console.log(res);
+            this.orderId = res.data.Order_number;
             this.form = false;
             this.payment = true;
           })
@@ -145,7 +157,7 @@ export default {
             console.log(error.response.data);
           })
           .then(() => {
-            // this.isLoading = false;
+            // this.isLoading = false; 
           });
       }, 2500);
 
