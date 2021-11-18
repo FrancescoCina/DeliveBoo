@@ -75,7 +75,7 @@
                       <div class="img-container">
                         <img
                           class="img-fluid"
-                          :src="restaurant.logo"
+                          :src="imgURL + restaurant.logo"
                           :alt="restaurant.name"
                         />
                       </div>
@@ -107,6 +107,7 @@ export default {
     return {
       typesRestaurants: [],
       filteredRestaurants: [],
+      imgURL: "../storage/",
     };
   },
   methods: {

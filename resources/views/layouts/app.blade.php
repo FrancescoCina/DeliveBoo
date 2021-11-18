@@ -46,11 +46,11 @@
                 <div class="small-nav-logout d-flex justify-content-center align-items-center">
                     <button type="button" class="btn btn-primary small-nav-logout-btn">
                         <div class="d-flex flex-column align-items-center">
-                            <a class="text-white" href="{{ route('logout') }} "onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                <i class="fas fa-sign-out-alt"></i>
-                            </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" >
                                 @csrf
+                                <a class="text-white" href="{{ route('logout') }} "onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                </a>    
                             </form>
                         </div>
                     </button>
@@ -97,11 +97,11 @@
                     @endif
                     <button type="button" class="btn btn-primary m-2 mb-5">
                         <div class="d-flex flex-column align-items-center">
-                            <a class="text-white" href="{{ route('logout') }} "onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" >
                                 @csrf
+                                <a class="text-white" href="{{ route('logout') }} "onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
                             </form>
                         </div>
                     </button>
