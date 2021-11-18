@@ -27,27 +27,28 @@
                 ></div>
                 <div class="description-wrap mw-100 text-center">
                   <div class="description text-white">
-                    <h5>{{ plate.name }}</h5>
+                    <h5 class="plate-name">{{ plate.name }}</h5>
                     <p class="plate-description">{{ plate.description }}</p>
-                    <p>{{ plate.quantity }}</p>
-                    <p>{{ plate.price }} €</p>
-                    <a class="btn btn-success" @click="addPlateToCart(plate)"
-                      >+</a
-                    >
-                    <a
-                      class="btn btn-danger"
+                    <div class="plate-quantity-menu d-flex align-items-center justify-content-around flex-wrap" >
+                      <a
+                      class="btn btn-danger quantity-btn quantity-btn-negative"
                       v-if="plate.quantity"
                       @click="removePlateToCart(plate, index)"
-                    >
-                      Rimuovi
-                    </a>
+                      >
+                        -
+                      </a>
+                      <span v-else class="px-3 px-lg-5 replacer">.</span>
+                      <p class="plate-quantity">{{ plate.quantity }}</p>
+                      <a class="btn btn-success quantity-btn quantity-btn-positive" @click="addPlateToCart(plate)">+</a>
+                    </div>
+                    <p class="plate-price">{{ plate.price }} €</p>
                   </div>
                 </div>
               </div>
             </div>
 
             <div class="col-6 col-md-3 d-flex flex-column align-items-center cart-column">
-              <div class="text-center cart-modal-container bordello fixed-top">
+              <div class="text-center cart-modal-container cart-fixer fixed-top">
                 <div class="mw-100">
                   <ModalCart
                   v-if="showModal"
@@ -199,11 +200,12 @@ body {
 
 .card {
   margin-top: 100px;
-  height: 500px;
+  height: 575px;
   position: relative;
   background: #ff5858;
   transition: all 0.3s ease-out;
 }
+
 .card .description-wrap {
   padding: 105px 30px;
   position: relative;
@@ -268,19 +270,108 @@ body {
 .cart-column{
   max-width: 100%;
   position: relative;
-  .bordello{
+  .cart-fixer{
     width: 200px;
     top: 100px;
     left: calc(100% - 220px);
-
   }
-
 }
 
-@media screen and (max-width: 1179px) {
+.plate-name{
+  font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+}
+
+.plate-description{
+  font-size: 13px;
+  font-style: italic;
+}
+
+.plate-quantity{
+  font-size: 60px;
+}
+
+.quantity-btn{
+  font-size: 25px;
+  border-radius: 50%;
+}
+
+.quantity-btn-positive{
+  padding: 5px 20px;
+}
+
+.quantity-btn-negative{
+  padding: 8px 24px;
+}
+
+.replacer{
+  color: #ff5858;
+}
+
+
+@media screen and (max-width: 1199px) {
   .plate-description {
     display: none;
   }
 }
+
+.plate-quantity-menu{
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+}
+
+@media screen and (min-width: 768px) {
+  .plate-quantity-menu {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .plate-quantity, .plate-name{
+    font-size: 25px;
+  }
+
+  .quantity-btn-positive, .quantity-btn-negative{
+    margin: 10px 0;
+    font-size: 20px;
+
+  }
+
+  .quantity-btn-positive{
+    padding: 1px 12px;
+  }
+
+  .quantity-btn-negative{
+    padding: 3px 16px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .plate-quantity-menu {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .plate-name{
+    font-size: 50px;
+  }
+
+  .plate-quantity{
+    font-size: 110px;
+  }
+
+  .quantity-btn{
+    font-size: 35px;
+  }
+
+  .quantity-btn-positive{
+    padding: 5px 24px;
+  }
+
+  .quantity-btn-negative{
+    padding: 8px 30px;
+  }
+}
+
 
 </style>
