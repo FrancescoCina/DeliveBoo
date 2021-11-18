@@ -2,7 +2,7 @@
   <div class="bg">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-12 col-md-8 col-lg-5">
+        <div class="col-12 col-lg-5">
               <div
       class="
         text-and-button
@@ -68,11 +68,21 @@ export default {
   height: 100vh;
   width: 100vw;
   overflow-x: hidden;
-  background-image: url("/img/bg.png");
   background-position: right;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+}
+
+@media screen and (max-width: 991px) {
+  .bg {
+    background-image:  url("/img/bg-small.jpg");
+  }
+}
+@media screen and (min-width: 992px) {
+  .bg {
+    background-image:  url("/img/bg.png");
+  }
 }
 
 .text-and-button {
