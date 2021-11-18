@@ -1,34 +1,26 @@
 <template>
   <div>
-    <div class="card shopping-cart">
-      <div class="card-header">Carrello</div>
-      <ul
-        v-for="item in shoppingCart"
-        :key="item.id"
-        class="list-group list-group-flush"
-      >
-        <li v-if="item.quantity" class="list-group-item">
-          {{ item.name }}
-        </li>
-        <li v-if="item.quantity" class="list-group-item">
-          {{ item.quantity }}
-        </li>
-        <!-- <li class="list-group-item">A third item</li> -->
-      </ul>
-      <div class="card-header">Totale: € {{ totalPrice }}</div>
-    </div>
-
-    <!--  <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Carrello</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Nome Ristorante:</h6>
-        <div v-for="item in shoppingCart" :key="item.id" class="item-cart">
-          <p class="card-text">{{ item.name }}</p>
-          <p class="card-text">{{ item.quantity }}</p>
-        </div>
-        <h6>Totale: € {{ totalPrice }}</h6>
+    <div class="ck">
+      <div class="">
+        <h4>
+          <i class="fas fa-cart-arrow-down pt-4 bg-gradient-secondary"></i>
+          Carrello
+        </h4>
       </div>
-    </div> -->
+      <hr />
+      <ul v-for="item in shoppingCart" :key="item.id">
+        <div class="d-flex justify-content-between align-items-center px-3">
+          <li v-if="item.quantity">
+            {{ item.name }}
+          </li>
+          <li v-if="item.quantity">
+            {{ item.quantity }}
+          </li>
+        </div>
+        <hr />
+      </ul>
+      <h4 class="card-header font-weight-bold">Totale: € {{ totalPrice }}</h4>
+    </div>
   </div>
 </template>
 
@@ -60,8 +52,19 @@ export default {
 
 <style scoped lang="scss">
 @import "../../sass/app.scss";
-.shopping-cart{
+.shopping-cart {
   width: 100%;
   max-width: 100%;
+}
+.ck {
+  height: auto;
+  width: 200px;
+  background: white;
+  border-radius: 20px;
+  -webkit-box-shadow: -2px 5px 11px 0px rgba(64, 64, 64, 0.62);
+  box-shadow: -2px 5px 11px 0px rgba(64, 64, 64, 0.62);
+  ul {
+    list-style-type: none;
+  }
 }
 </style>

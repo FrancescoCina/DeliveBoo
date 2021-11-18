@@ -15,7 +15,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/admin') }}">Dashboard</a>
+                        {{-- <a href="{{ url('/admin') }}">Dashboard</a> --}}
 
                     @else
 

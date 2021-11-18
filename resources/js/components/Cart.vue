@@ -7,7 +7,14 @@
       <div v-else>
         <div v-if="!isCheckout" class="container-fluid">
           <div class="row w-100">
-            <div class="col-8 col-lg-9 col-xl-10 d-flex justify-content-around flex-wrap">
+            <div
+              class="
+                col-8 col-lg-9 col-xl-10
+                d-flex
+                justify-content-around
+                flex-wrap
+              "
+            >
               <div
                 class="
                   card
@@ -46,17 +53,30 @@
               </div>
             </div>
 
-            <div class="col-6 col-md-3 d-flex flex-column align-items-center cart-column">
+            <div
+              class="
+                col-6 col-md-3
+                d-flex
+                flex-column
+                align-items-center
+                cart-column
+              "
+            >
               <div class="text-center cart-modal-container bordello fixed-top">
                 <div class="mw-100">
                   <ModalCart
-                  v-if="showModal"
-                  :shoppingCart="shoppingCart"
-                  :totalPrice="totalPrice"
+                    v-if="showModal"
+                    :shoppingCart="shoppingCart"
+                    :totalPrice="totalPrice"
                   />
-                  <a class="btn btn-success mt-3" @click="showCheckoutComp" v-if="showModal">
+                  <a
+                    class="btn btn-success mt-3"
+                    @click="showCheckoutComp"
+                    v-if="showModal"
+                  >
                     Vai al Checkout
                   </a>
+                  <button class="btn btn-danger mt-3">clear</button>
                 </div>
               </div>
             </div>
@@ -261,20 +281,18 @@ body {
   opacity: 1;
 }
 
-.cart-modal-container{
+.cart-modal-container {
   width: 100%;
 }
 
-.cart-column{
+.cart-column {
   max-width: 100%;
   position: relative;
-  .bordello{
+  .bordello {
     width: 200px;
-    top: 100px;
-    left: calc(100% - 220px);
-
+    top: 230px;
+    left: calc(100% - 320px);
   }
-
 }
 
 @media screen and (max-width: 1179px) {
@@ -282,5 +300,38 @@ body {
     display: none;
   }
 }
+@media screen and (max-width: 1340px) {
+  .cart-column {
+    max-width: 100%;
+    position: relative;
+    .bordello {
+      width: 200px;
+      top: 230px;
+      left: calc(100% - 270px);
+    }
+  }
+}
+@media screen and (max-width: 700px) {
+  .cart-column {
+    max-width: 100%;
+    position: relative;
+    .bordello {
+      width: 200px;
+      top: 230px;
+      left: calc(100% - 250px);
+    }
+  }
+}
 
+@media screen and (max-width: 600px) {
+  .cart-column {
+    max-width: 100%;
+    position: relative;
+    .bordello {
+      width: 200px;
+      top: 230px;
+      left: calc(100% - 225px);
+    }
+  }
+}
 </style>
