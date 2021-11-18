@@ -1,5 +1,9 @@
 <template>
-  <div>
+  <div class="container mt-5 text-center">
+    <h2>Inserisci i tuoi dati</h2>
+
+    fai bottone torna in dietro http://127.0.0.1:8000/restaurants/menu
+    <ModalCart :shoppingCart="shoppingCart" :totalPrice="totalPrice" />
     <div v-if="form" class="form">
       <div class="mb-3">
         <label for="name">Nome</label>
@@ -44,7 +48,9 @@
           We'll never share your email with anyone else.
         </div>
       </div>
-      <button type="submit" @click="createOrder">Crea Ordine</button>
+      <button class="btn btn-primary" type="submit" @click="createOrder">
+        Crea Ordine
+      </button>
     </div>
     <div v-if="payment" class="payment">
       <v-braintree
@@ -59,15 +65,18 @@
         }"
       ></v-braintree>
     </div>
-    <Thanks v-if="thanks"/>
+    <Thanks v-if="thanks" />
   </div>
 </template>
 
 <script>
-import Thanks from './Thanks.vue';
+import Thanks from "./Thanks.vue";
+import ModalCart from "./ModalCart.vue";
+
 export default {
   name: "Checkout",
   components: {
+    ModalCart,
     Thanks,
   },
   props: ["shoppingCart", "totalPrice"],
@@ -87,7 +96,7 @@ export default {
     };
   },
   methods: {
-     clearLocalStorage() {
+    clearLocalStorage() {
       this.shoppingCart = [];
       this.totalPrice = 0;
       localStorage.setItem("cart", JSON.stringify(this.shoppingCart));
@@ -157,7 +166,7 @@ export default {
             console.log(error.response.data);
           })
           .then(() => {
-            // this.isLoading = false; 
+            // this.isLoading = false;
           });
       }, 2500);
 
