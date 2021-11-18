@@ -1,6 +1,9 @@
 <template>
   <div class="bg">
-    <div
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 col-md-8 col-lg-5">
+              <div
       class="
         text-and-button
         d-flex
@@ -11,12 +14,19 @@
       "
     >
       <!-- Text animation -->
-      <div>
-        <TextAnimation />
+      <div class="container-fluid text-center">
+        <div class="row text-center main-title-container">
+          <div class="col-12">
+            <TextAnimation />
+          </div>
+        </div>
       </div>
       <!-- Button modal -->
       <ButtonModal />
       <Footer />
+    </div>
+        </div>
+      </div>
     </div>
     <Modal />
   </div>
@@ -67,6 +77,5 @@ export default {
 
 .text-and-button {
   height: 100vh;
-  width: 40vw;
 }
 </style>

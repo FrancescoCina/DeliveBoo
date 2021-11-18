@@ -1,13 +1,11 @@
 <template>
   <!-- Text animation -->
-  <div class="swipe mt-5">
-    <h1>
-      Il tuo ristorante <br />
-      preferito
-    </h1>
-    <span class="swipe swipe--delay casa-tua mt-2">
-      direttamente a casa tua!</span
-    >
+  <div class="swipe mt-5 w-100 text-center">
+        <h1 class="text-center">
+          Il tuo ristorante <br />
+          preferito
+        </h1>
+        <span class="swipe swipe--delay casa-tua mt-2 text-center">direttamente a casa tua!</span>
   </div>
 </template>
 
