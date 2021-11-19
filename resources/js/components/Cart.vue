@@ -244,6 +244,7 @@ export default {
         this.isCheckout = true;
       }
     },
+
   },
   created() {
     let url = window.location.href;
