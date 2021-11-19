@@ -43,7 +43,7 @@ class PaymentController extends Controller
                 'message' => 'Transazione avvenuta con successo'
             ];
 
-            Mail::to($order->customer_email)->send(new OrderConfirmationEmail());
+            Mail::to('prova@example.it')->send(new OrderConfirmationEmail($order->mail));
             return response()->json(compact('data'), 200);
         } else {
             $data = [

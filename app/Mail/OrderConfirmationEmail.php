@@ -16,18 +16,23 @@ class OrderConfirmationEmail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($_mail)
     {
-        //
+        $this->mail=$_mail;
     }
 
     /**
      * Build the message.
-     *
+     *public function build()
+   * {
+    *    $lead = $this->lead;
+    *    return $this->replyTo($this->lead->email)->view('admin.email.body', compact('lead'));
+   * }
      * @return $this
      */
     public function build()
     {
-        return $this->view('mail.orderConfirmation');
+        $mail=$this->mail;
+        return $this->replyTo($this->mail)->view('mail.orderConfirmation');
     }
 }
