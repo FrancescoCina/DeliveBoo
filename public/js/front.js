@@ -2518,6 +2518,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Footer"
 });
@@ -2576,6 +2580,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ButtonModal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ButtonModal.vue */ "./resources/js/components/Home/ButtonModal.vue");
 /* harmony import */ var _Modal_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Modal.vue */ "./resources/js/components/Home/Modal.vue");
 /* harmony import */ var _Footer_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Footer.vue */ "./resources/js/components/Home/Footer.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2777,8 +2791,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
 //
 //
 //
@@ -7214,7 +7226,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".box-footerSu[data-v-1343b250] {\n  background-color: #ff5858;\n  color: white;\n  padding: 30px;\n  height: 150px;\n  list-style-type: none;\n}\n.box-footerSu li[data-v-1343b250] {\n  margin-top: 30px;\n}\n.box-footerSu a[data-v-1343b250] {\n  text-decoration: none;\n  font-size: 15px;\n  color: #ffffff;\n  transition: 0.3s;\n  margin-bottom: 10px;\n  padding: 20px 10px 0px 10px;\n}\n.box-footerSu a[data-v-1343b250]:hover {\n  color: white;\n}\n.box-footerIn[data-v-1343b250] {\n  list-style-type: none;\n}\n.box-footerIn #social-test[data-v-1343b250] {\n  display: table-cell;\n  text-align: center;\n  font-size: 15px;\n}\n.box-footerIn #social-test li[data-v-1343b250] {\n  color: #ffffff;\n  list-style-type: none;\n  display: inline-block;\n  width: 35px;\n  height: 35px;\n  padding: 8px;\n  background-color: #ff5858;\n  cursor: pointer;\n  margin-left: 10px;\n  transition: ease 0.3s;\n}\n.box-footerIn #social-test li[data-v-1343b250]:hover {\n  color: white;\n}\n.box-footerIn .social:hover > li[data-v-1343b250] {\n  opacity: 0.5;\n}\n.box-footerIn .social:hover > li[data-v-1343b250]:hover {\n  opacity: 1;\n}", ""]);
+exports.push([module.i, ".box-footer .social[data-v-1343b250] {\n  display: table-cell;\n  text-align: center;\n  font-size: 15px;\n}\n.box-footer .social .social-btn[data-v-1343b250] {\n  color: #ffffff;\n  list-style-type: none;\n  display: inline-block;\n  width: 35px;\n  height: 35px;\n  padding: 8px;\n  background-color: #ff5858;\n  cursor: pointer;\n  margin-left: 10px;\n  transition: ease 0.3s;\n  opacity: 0.7;\n}\n.box-footer .social .social-btn[data-v-1343b250]:hover {\n  opacity: 1;\n}\n@media screen and (max-width: 991px) {\n.box-footer[data-v-1343b250] {\n    width: 100%;\n}\n}", ""]);
 
 // exports
 
@@ -7253,7 +7265,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap);", ""]);
 
 // module
-exports.push([module.i, "/* Google Font CDN Link */\n/* format */\n*[data-v-6b4006ae] {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n  font-family: \"Poppins\", sans-serif;\n}\n.bg[data-v-6b4006ae] {\n  height: 100vh;\n  width: 100vw;\n  overflow-x: hidden;\n  background-image: url(\"/img/bg.png\");\n  background-position: right;\n  background-repeat: no-repeat;\n  background-attachment: fixed;\n  background-size: cover;\n}\n.text-and-button[data-v-6b4006ae] {\n  height: 100vh;\n  width: 40vw;\n}", ""]);
+exports.push([module.i, "/* Google Font CDN Link */\n/* format */\n*[data-v-6b4006ae] {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n  font-family: \"Poppins\", sans-serif;\n}\n.bg[data-v-6b4006ae] {\n  height: 100vh;\n  width: 100vw;\n  overflow-x: hidden;\n  background-position: right;\n  background-repeat: no-repeat;\n  background-attachment: fixed;\n  background-size: cover;\n}\n@media screen and (max-width: 991px) {\n.bg[data-v-6b4006ae] {\n    background-image: url(\"/img/bg-small.jpg\");\n}\n}\n@media screen and (min-width: 992px) {\n.bg[data-v-6b4006ae] {\n    background-image: url(\"/img/bg.png\");\n}\n}\n.text-and-button[data-v-6b4006ae] {\n  height: 100vh;\n}", ""]);
 
 // exports
 
@@ -39400,12 +39412,15 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "box-footerIn" }, [
+    return _c("div", { staticClass: "box-footer" }, [
       _c(
         "div",
-        { staticClass: "d-flex justify-content-between align-items-center" },
+        {
+          staticClass:
+            "d-flex justify-content-between align-items-center w-100",
+        },
         [
-          _c("div", { staticClass: "d-flex" }, [
+          _c("div", { staticClass: "d-flex w-100 px-5" }, [
             _c("link", {
               attrs: {
                 rel: "stylesheet",
@@ -39413,38 +39428,47 @@ var staticRenderFns = [
               },
             }),
             _vm._v(" "),
-            _c("div", { staticClass: "center" }, [
-              _c("div", { attrs: { id: "social-test" } }, [
-                _c("ul", { staticClass: "social" }, [
-                  _c("li", [
-                    _c("i", {
-                      staticClass: "fa fa-facebook",
-                      attrs: { "aria-hidden": "true" },
-                    }),
+            _c("div", { staticClass: "center w-100" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "social d-flex align-items-center justify-content-between w-100",
+                },
+                [
+                  _c("div", { staticClass: "social-btn-container" }, [
+                    _c("p", { staticClass: "social-btn" }, [
+                      _c("i", {
+                        staticClass: "fa fa-facebook",
+                        attrs: { "aria-hidden": "true" },
+                      }),
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "social-btn" }, [
+                      _c("i", {
+                        staticClass: "fa fa-twitter",
+                        attrs: { "aria-hidden": "true" },
+                      }),
+                    ]),
                   ]),
                   _vm._v(" "),
-                  _c("li", [
-                    _c("i", {
-                      staticClass: "fa fa-twitter",
-                      attrs: { "aria-hidden": "true" },
-                    }),
+                  _c("div", { staticClass: "social-btn-container" }, [
+                    _c("p", { staticClass: "social-btn" }, [
+                      _c("i", {
+                        staticClass: "fa fa-instagram",
+                        attrs: { "aria-hidden": "true" },
+                      }),
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "social-btn" }, [
+                      _c("i", {
+                        staticClass: "fa fa-vimeo",
+                        attrs: { "aria-hidden": "true" },
+                      }),
+                    ]),
                   ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("i", {
-                      staticClass: "fa fa-instagram",
-                      attrs: { "aria-hidden": "true" },
-                    }),
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("i", {
-                      staticClass: "fa fa-vimeo",
-                      attrs: { "aria-hidden": "true" },
-                    }),
-                  ]),
-                ]),
-              ]),
+                ]
+              ),
             ]),
           ]),
         ]
@@ -39544,21 +39568,40 @@ var render = function () {
     "div",
     { staticClass: "bg" },
     [
-      _c(
-        "div",
-        {
-          staticClass:
-            "\n      text-and-button\n      d-flex\n      flex-column\n      justify-content-around\n      align-items-center\n      text-center\n    ",
-        },
-        [
-          _c("div", [_c("TextAnimation")], 1),
-          _vm._v(" "),
-          _c("ButtonModal"),
-          _vm._v(" "),
-          _c("Footer"),
-        ],
-        1
-      ),
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-12 col-lg-5" }, [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "\n      text-and-button\n      d-flex\n      flex-column\n      justify-content-around\n      align-items-center\n      text-center\n    ",
+              },
+              [
+                _c("div", { staticClass: "container-fluid text-center" }, [
+                  _c(
+                    "div",
+                    { staticClass: "row text-center main-title-container" },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "col-12" },
+                        [_c("TextAnimation")],
+                        1
+                      ),
+                    ]
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("ButtonModal"),
+                _vm._v(" "),
+                _c("Footer"),
+              ],
+              1
+            ),
+          ]),
+        ]),
+      ]),
       _vm._v(" "),
       _c("Modal"),
     ],
@@ -39832,16 +39875,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "swipe mt-5" }, [
-      _c("h1", [
-        _vm._v("\n    Il tuo ristorante "),
+    return _c("div", { staticClass: "swipe mt-5 w-100 text-center" }, [
+      _c("h1", { staticClass: "text-center" }, [
+        _vm._v("\n        Il tuo ristorante "),
         _c("br"),
-        _vm._v("\n    preferito\n  "),
+        _vm._v("\n        preferito\n      "),
       ]),
       _vm._v(" "),
-      _c("span", { staticClass: "swipe swipe--delay casa-tua mt-2" }, [
-        _vm._v("\n    direttamente a casa tua!"),
-      ]),
+      _c(
+        "span",
+        { staticClass: "swipe swipe--delay casa-tua mt-2 text-center" },
+        [_vm._v("direttamente a casa tua!")]
+      ),
     ])
   },
 ]
@@ -52728,9 +52773,7 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-
 module.exports = __webpack_require__(/*! C:\laravel\deliveboo\resources\js\front.js */"./resources/js/front.js");
-
 
 
 /***/ })
