@@ -59,7 +59,10 @@
             <button class="btn btn-primary" type="submit" @click="createOrder">
               Crea Ordine
             </button>
-            <a class="btn btn-danger" href="http://127.0.0.1:8000/"
+            <a
+              @click="clearLocalStorage"
+              class="btn btn-danger"
+              :href="`http://127.0.0.1:8000/restaurants/${restaurant.id}`"
               >Cancella ordine</a
             >
           </div>
@@ -78,7 +81,7 @@
               }"
             ></v-braintree>
           </div>
-            <Thanks v-if="thanks" />
+          <Thanks v-if="thanks" />
         </div>
       </div>
     </div>
@@ -95,7 +98,7 @@ export default {
     ModalCart,
     Thanks,
   },
-  props: ["shoppingCart", "totalPrice"],
+  props: ["shoppingCart", "totalPrice", "restaurant"],
   data() {
     return {
       token: "",

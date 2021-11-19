@@ -2609,7 +2609,7 @@ __webpack_require__.r(__webpack_exports__);
       prevRestaurant: [],
       plates: [],
       shoppingCart: [],
-      showModal: false,
+      // showModal: false,
       isCheckout: false,
       isLoading: false,
       totalPrice: 0,
@@ -2623,7 +2623,7 @@ __webpack_require__.r(__webpack_exports__);
       this.isLoading = true;
       axios.get("".concat(this.baseUri).concat(dinamicParam)).then(function (res) {
         _this.restaurant = res.data.restaurant;
-        _this.plates = res.data.plates; // console.log(this.plates);
+        _this.plates = res.data.plates;
 
         if (_this.prevRestaurant.id !== _this.restaurant.id) {
           _this.clearLocalStorage();
@@ -2642,9 +2642,8 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         plate.quantity++;
         this.totalPrice += plate.price;
-      }
+      } // this.showModal = true;
 
-      this.showModal = true; // console.log(this.shoppingCart);
 
       this.saveCartInLocalStorage();
     },
@@ -2653,7 +2652,6 @@ __webpack_require__.r(__webpack_exports__);
         plate.quantity--;
         this.totalPrice = this.totalPrice - plate.price;
       } else if (plate.quantity == 0) {
-        // console.log("rimosso" + this.shoppingCart);
         this.totalPrice = this.totalPrice - plate.price;
       }
     },
@@ -2673,13 +2671,6 @@ __webpack_require__.r(__webpack_exports__);
       localStorage.setItem("cart", JSON.stringify(this.shoppingCart));
       localStorage.setItem("amount", JSON.stringify(this.totalPrice));
     },
-    // Per cancellare la cache del browser MEMO
-
-    /* clearLocalStorage() {
-                      localStorage.removeItem("cart");
-                      localStorage.removeItem("amount");
-                      console.log(this.shoppingCart);
-                    }, */
     showCheckoutComp: function showCheckoutComp() {
       if (this.shoppingCart.length > 0) {
         this.isCheckout = true;
@@ -2696,10 +2687,9 @@ __webpack_require__.r(__webpack_exports__);
     if (this.shoppingCart !== null && this.totalPrice !== null) {
       this.shoppingCart = JSON.parse(localStorage.getItem("cart"));
       this.totalPrice = JSON.parse(localStorage.getItem("amount"));
-
-      if (this.shoppingCart.length > 0) {
+      /*  if (this.shoppingCart.length > 0) {
         this.showModal = true;
-      }
+      } */
     }
   }
 });
@@ -2804,6 +2794,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2812,7 +2805,7 @@ __webpack_require__.r(__webpack_exports__);
     ModalCart: _ModalCart_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     Thanks: _Thanks_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  props: ["shoppingCart", "totalPrice"],
+  props: ["shoppingCart", "totalPrice", "restaurant"],
   data: function data() {
     return {
       token: "",
@@ -3159,8 +3152,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Thanks",
-  methods: {},
+  methods: {
+    clearStoragein10Seconds: function clearStoragein10Seconds() {
+      var _this = this;
+
+      setTimeout(function () {
+        _this.clearLocalStorage();
+
+        console.log("Svuotato carrello");
+      }, 10000);
+    },
+    clearLocalStorage: function clearLocalStorage() {
+      this.shoppingCart = [];
+      this.totalPrice = 0;
+      localStorage.setItem("cart", JSON.stringify(this.shoppingCart));
+      localStorage.setItem("amount", JSON.stringify(this.totalPrice));
+    }
+  },
   created: function created() {
+    this.clearStoragein10Seconds();
     console.log(this.shoppingCart);
   }
 });
@@ -63137,7 +63147,7 @@ var render = function () {
                               {
                                 key: plate.id + index,
                                 staticClass:
-                                  "\n                card\n                col-10 col-md-5 col-xl-3 mx-xl-1 mb-5\n                d-flex\n                flex-wrap\n                justify-content-around\n              ",
+                                  "\n                card\n                col-10 col-md-5 col-xl-3\n                mx-xl-1\n                mb-5\n                d-flex\n                flex-wrap\n                justify-content-around\n              ",
                               },
                               [
                                 _c("div", {
@@ -63300,15 +63310,12 @@ var render = function () {
                                           "div",
                                           { staticClass: "mw-100" },
                                           [
-                                            _vm.showModal
-                                              ? _c("ModalCart", {
-                                                  attrs: {
-                                                    shoppingCart:
-                                                      _vm.shoppingCart,
-                                                    totalPrice: _vm.totalPrice,
-                                                  },
-                                                })
-                                              : _vm._e(),
+                                            _c("ModalCart", {
+                                              attrs: {
+                                                shoppingCart: _vm.shoppingCart,
+                                                totalPrice: _vm.totalPrice,
+                                              },
+                                            }),
                                             _vm._v(" "),
                                             _c(
                                               "div",
@@ -63317,43 +63324,39 @@ var render = function () {
                                                   "d-flex justify-content-between",
                                               },
                                               [
-                                                _vm.showModal
-                                                  ? _c(
-                                                      "a",
-                                                      {
-                                                        staticClass:
-                                                          "btn btn-success mt-3 mr-1",
-                                                        on: {
-                                                          click:
-                                                            _vm.showCheckoutComp,
-                                                        },
-                                                      },
-                                                      [
-                                                        _vm._v(
-                                                          "\n                        Checkout\n                      "
-                                                        ),
-                                                      ]
-                                                    )
-                                                  : _vm._e(),
+                                                _c(
+                                                  "a",
+                                                  {
+                                                    staticClass:
+                                                      "btn btn-success mt-3 mr-1",
+                                                    on: {
+                                                      click:
+                                                        _vm.showCheckoutComp,
+                                                    },
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                        Checkout\n                      "
+                                                    ),
+                                                  ]
+                                                ),
                                                 _vm._v(" "),
-                                                _vm.showModal
-                                                  ? _c(
-                                                      "button",
-                                                      {
-                                                        staticClass:
-                                                          "btn btn-danger mt-3",
-                                                        on: {
-                                                          click:
-                                                            _vm.clearLocalStorage,
-                                                        },
-                                                      },
-                                                      [
-                                                        _vm._v(
-                                                          "\n                        Svuota\n                      "
-                                                        ),
-                                                      ]
-                                                    )
-                                                  : _vm._e(),
+                                                _c(
+                                                  "button",
+                                                  {
+                                                    staticClass:
+                                                      "btn btn-danger mt-3",
+                                                    on: {
+                                                      click:
+                                                        _vm.clearLocalStorage,
+                                                    },
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                        Svuota\n                      "
+                                                    ),
+                                                  ]
+                                                ),
                                               ]
                                             ),
                                           ],
@@ -63379,6 +63382,7 @@ var render = function () {
                           attrs: {
                             shoppingCart: _vm.shoppingCart,
                             totalPrice: _vm.totalPrice,
+                            restaurant: _vm.restaurant,
                           },
                         })
                       : _vm._e(),
@@ -63590,7 +63594,12 @@ var render = function () {
                       "a",
                       {
                         staticClass: "btn btn-danger",
-                        attrs: { href: "http://127.0.0.1:8000/" },
+                        attrs: {
+                          href:
+                            "http://127.0.0.1:8000/restaurants/" +
+                            _vm.restaurant.id,
+                        },
+                        on: { click: _vm.clearLocalStorage },
                       },
                       [_vm._v("Cancella ordine")]
                     ),

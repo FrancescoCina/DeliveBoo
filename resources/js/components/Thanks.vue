@@ -22,8 +22,22 @@
 <script>
 export default {
   name: "Thanks",
-  methods: {},
+  methods: {
+    clearStoragein10Seconds() {
+      setTimeout(() => {
+        this.clearLocalStorage();
+        console.log("Svuotato carrello");
+      }, 10000);
+    },
+    clearLocalStorage() {
+      this.shoppingCart = [];
+      this.totalPrice = 0;
+      localStorage.setItem("cart", JSON.stringify(this.shoppingCart));
+      localStorage.setItem("amount", JSON.stringify(this.totalPrice));
+    },
+  },
   created() {
+    this.clearStoragein10Seconds();
     console.log(this.shoppingCart);
   },
 };

@@ -18,7 +18,9 @@
               <div
                 class="
                   card
-                  col-10 col-md-5 col-xl-3 mx-xl-1 mb-5
+                  col-10 col-md-5 col-xl-3
+                  mx-xl-1
+                  mb-5
                   d-flex
                   flex-wrap
                   justify-content-around
@@ -107,22 +109,19 @@
                   >
                     <div class="mw-100">
                       <ModalCart
-                        v-if="showModal"
                         :shoppingCart="shoppingCart"
                         :totalPrice="totalPrice"
                       />
                       <div class="d-flex justify-content-between">
                         <a
-                        class="btn btn-success mt-3 mr-1"
-                        @click="showCheckoutComp"
-                        v-if="showModal"
+                          class="btn btn-success mt-3 mr-1"
+                          @click="showCheckoutComp"
                         >
                           Checkout
                         </a>
                         <button
-                        v-if="showModal"
-                        class="btn btn-danger mt-3"
-                        @click="clearLocalStorage"
+                          class="btn btn-danger mt-3"
+                          @click="clearLocalStorage"
                         >
                           Svuota
                         </button>
@@ -139,6 +138,7 @@
             v-if="isCheckout"
             :shoppingCart="shoppingCart"
             :totalPrice="totalPrice"
+            :restaurant="restaurant"
           />
         </div>
       </div>
@@ -168,7 +168,7 @@ export default {
       prevRestaurant: [],
       plates: [],
       shoppingCart: [],
-      showModal: false,
+      // showModal: false,
       isCheckout: false,
       isLoading: false,
       totalPrice: 0,
@@ -183,7 +183,6 @@ export default {
         .then((res) => {
           this.restaurant = res.data.restaurant;
           this.plates = res.data.plates;
-          // console.log(this.plates);
           if (this.prevRestaurant.id !== this.restaurant.id) {
             this.clearLocalStorage();
           }
@@ -204,8 +203,7 @@ export default {
         plate.quantity++;
         this.totalPrice += plate.price;
       }
-      this.showModal = true;
-      // console.log(this.shoppingCart);
+      // this.showModal = true;
       this.saveCartInLocalStorage();
     },
     removePlateToCart(plate) {
@@ -213,7 +211,6 @@ export default {
         plate.quantity--;
         this.totalPrice = this.totalPrice - plate.price;
       } else if (plate.quantity == 0) {
-        // console.log("rimosso" + this.shoppingCart);
         this.totalPrice = this.totalPrice - plate.price;
       }
     },
@@ -233,18 +230,11 @@ export default {
       localStorage.setItem("cart", JSON.stringify(this.shoppingCart));
       localStorage.setItem("amount", JSON.stringify(this.totalPrice));
     },
-    // Per cancellare la cache del browser MEMO
-    /* clearLocalStorage() {
-                      localStorage.removeItem("cart");
-                      localStorage.removeItem("amount");
-                      console.log(this.shoppingCart);
-                    }, */
     showCheckoutComp() {
       if (this.shoppingCart.length > 0) {
         this.isCheckout = true;
       }
     },
-
   },
   created() {
     let url = window.location.href;
@@ -255,9 +245,9 @@ export default {
     if (this.shoppingCart !== null && this.totalPrice !== null) {
       this.shoppingCart = JSON.parse(localStorage.getItem("cart"));
       this.totalPrice = JSON.parse(localStorage.getItem("amount"));
-      if (this.shoppingCart.length > 0) {
+      /*  if (this.shoppingCart.length > 0) {
         this.showModal = true;
-      }
+      } */
     }
   },
 };
@@ -431,7 +421,7 @@ body {
     font-size: 20px;
   }
 
-  .plate-description{
+  .plate-description {
     font-size: 8px;
   }
 
@@ -470,7 +460,7 @@ body {
     padding: 3px 14px;
   }
 
-  .plate-description{
+  .plate-description {
     font-size: 15px;
   }
 }
