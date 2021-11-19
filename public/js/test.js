@@ -63053,7 +63053,7 @@ var render = function () {
                               {
                                 key: plate.id + index,
                                 staticClass:
-                                  "\n                card\n                col-10 col-md-5 col-xl-3\n                d-flex\n                flex-wrap\n                justify-content-around\n              ",
+                                  "\n                card\n                col-10 col-md-5 col-xl-3 mx-xl-1 mb-5\n                d-flex\n                flex-wrap\n                justify-content-around\n              ",
                               },
                               [
                                 _c("div", {
