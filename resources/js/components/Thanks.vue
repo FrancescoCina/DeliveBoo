@@ -1,18 +1,31 @@
 <template>
-  <div>Grazie per aver effettuato l'ordine</div>
+  <div class="container flex-column justify-content-center align-items-center">
+    <div class="bg img-fluid"></div>
+    <div>
+      <a class="btn btn-primary mt-1" href="http://127.0.0.1:8000/"
+        >Torna alla home</a
+      >
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-    name:'Thanks',
-    methods:{
-    },
-    created(){
-            console.log(this.shoppingCart);
-        }
-}
+  name: "Thanks",
+  methods: {},
+  created() {
+    console.log(this.shoppingCart);
+  },
+};
 </script>
 
-<style>
-
+<style scoped lang="scss">
+.bg {
+  height: 600px;
+  width: 1000px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("/img/tk.png");
+  border-radius: 20px;
+}
 </style>
