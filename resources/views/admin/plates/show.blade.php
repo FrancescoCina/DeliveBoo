@@ -4,11 +4,11 @@
 
 
 <div class="container mt-5">
-        <div class="row restaurant-card">
-            <div class="col-md-6 col-12 text-center text-lg-start d-flex justify-content-center align-items-center my-5 my-md-0 plate-img-container">
+        <div class="row plate-card">
+            <div class="col-12 col-md-6 text-center text-lg-start d-flex justify-content-center align-items-center my-5 my-md-0 plate-img-container">
                 <img src="{{asset('storage/'.$plate->image)}}" alt="{{$plate->name}}">
             </div>
-            <div class="col-md-6 col-12">
+            <div class="col-12 col-md-6">
                 <h2 class="text-white mt-3 mb-5 restaurant-title text-center" > {{$plate->name}}</h2>
                 <ul class="text-white plate-info ">
                     <li class="plate-description">{{$plate->description}}</li>
