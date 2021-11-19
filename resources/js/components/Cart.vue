@@ -18,7 +18,7 @@
               <div
                 class="
                   card
-                  col-10 col-md-5 col-xl-3
+                  col-10 col-md-5 col-xl-3 mx-xl-1 mb-5
                   d-flex
                   flex-wrap
                   justify-content-around
