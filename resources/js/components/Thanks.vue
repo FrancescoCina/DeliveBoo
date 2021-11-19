@@ -1,10 +1,20 @@
 <template>
-  <div class="container flex-column justify-content-center align-items-center">
-    <div class="bg img-fluid"></div>
-    <div>
-      <a class="btn btn-primary mt-1" href="http://127.0.0.1:8000/"
-        >Torna alla home</a
-      >
+  <div>
+    <div
+      class="
+        container
+        d-flex
+        flex-column
+        justify-content-center
+        align-items-center
+      "
+    >
+      <div class="bg img-fluid"></div>
+      <div>
+        <a class="btn d-block btn-primary mt-1" href="http://127.0.0.1:8000/"
+          >Torna alla home</a
+        >
+      </div>
     </div>
   </div>
 </template>
