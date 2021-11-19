@@ -18,7 +18,7 @@
               <div
                 class="
                   card
-                  col-10 col-md-5
+                  col-10 col-md-5 col-xl-3
                   d-flex
                   flex-wrap
                   justify-content-around
@@ -55,7 +55,7 @@
                       >
                         -
                       </a>
-                      <span v-else class="px-3 px-lg-5 replacer">.</span>
+                      <span v-else class="px-4 px-lg-3 replacer">.</span>
                       <p
                         class="plate-quantity"
                         v-if="shoppingCart.length === 0"
@@ -111,20 +111,22 @@
                         :shoppingCart="shoppingCart"
                         :totalPrice="totalPrice"
                       />
-                      <a
-                        class="btn btn-success mt-3"
+                      <div class="d-flex justify-content-between">
+                        <a
+                        class="btn btn-success mt-3 mr-1"
                         @click="showCheckoutComp"
                         v-if="showModal"
-                      >
-                        Vai al Checkout
-                      </a>
-                      <button
+                        >
+                          Checkout
+                        </a>
+                        <button
                         v-if="showModal"
                         class="btn btn-danger mt-3"
                         @click="clearLocalStorage"
-                      >
-                        Svuota
-                      </button>
+                        >
+                          Svuota
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -269,7 +271,7 @@ body {
 
 .card {
   margin-top: 100px;
-  height: 575px;
+  height: 500px;
   position: relative;
   background: #ff5858;
   transition: all 0.3s ease-out;
@@ -340,12 +342,6 @@ body {
   max-width: 100%;
   position: relative;
 
-  .bordello {
-    width: 200px;
-    top: 230px;
-    left: calc(100% - 320px);
-  }
-
   .cart-fixer {
     width: 200px;
     top: 230px;
@@ -369,16 +365,16 @@ body {
 }
 
 .quantity-btn {
-  font-size: 25px;
+  font-size: 15px;
   border-radius: 50%;
 }
 
 .quantity-btn-positive {
-  padding: 5px 20px;
+  padding: 3px 12px;
 }
 
 .quantity-btn-negative {
-  padding: 8px 24px;
+  padding: 5px 15px;
 }
 
 .replacer {
@@ -434,6 +430,10 @@ body {
     font-size: 20px;
   }
 
+  .plate-description{
+    font-size: 8px;
+  }
+
   .quantity-btn-positive {
     padding: 1px 12px;
   }
@@ -450,23 +450,27 @@ body {
   }
 
   .plate-name {
-    font-size: 50px;
+    font-size: 25px;
   }
 
   .plate-quantity {
-    font-size: 110px;
+    font-size: 55px;
   }
 
   .quantity-btn {
-    font-size: 35px;
+    font-size: 15px;
   }
 
   .quantity-btn-positive {
-    padding: 5px 24px;
+    padding: 2px 11px;
   }
 
   .quantity-btn-negative {
-    padding: 8px 30px;
+    padding: 3px 14px;
+  }
+
+  .plate-description{
+    font-size: 15px;
   }
 }
 </style>
