@@ -50,13 +50,19 @@
                           btn btn-danger
                           quantity-btn quantity-btn-negative
                         "
-                        v-if="plate.quantity"
+                        v-if="plate.quantity && shoppingCart.length > 0"
                         @click="removePlateToCart(plate, index)"
                       >
                         -
                       </a>
                       <span v-else class="px-3 px-lg-5 replacer">.</span>
-                      <p class="plate-quantity">{{ plate.quantity }}</p>
+                      <p
+                        class="plate-quantity"
+                        v-if="shoppingCart.length === 0"
+                      >
+                        0
+                      </p>
+                      <p v-else class="plate-quantity">{{ plate.quantity }}</p>
                       <a
                         class="
                           btn btn-success
@@ -112,7 +118,13 @@
                       >
                         Vai al Checkout
                       </a>
-                      <button class="btn btn-danger mt-3">clear</button>
+                      <button
+                        v-if="showModal"
+                        class="btn btn-danger mt-3"
+                        @click="clearLocalStorage"
+                      >
+                        Svuota
+                      </button>
                     </div>
                   </div>
                 </div>
