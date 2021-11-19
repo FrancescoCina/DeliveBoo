@@ -28,6 +28,11 @@
                     <img class="img-fluid small-nav-logo" src="{{ $restaurant->logo }}" alt="Logo">
                 </div>
                 <div class="small-nav-link d-flex justify-content-center align-items-center">
+                    <a class="btn my-1 text-white small-nav-btn" href="{{ url('http://127.0.0.1:8000/') }}">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </div>
+                <div class="small-nav-link d-flex justify-content-center align-items-center">
                     <a class="btn my-1 text-white small-nav-btn" href="{{ url('/admin') }}">
                         <i class="fas fa-user"></i>
                     </a>
@@ -68,7 +73,14 @@
                     <div class="navbar-links-container d-flex flex-column align-items-center">
 
                         <div class="nav-link d-flex justify-content-center align-items-center my-4">
-                            <a class="btn nav-btn" href="{{ url('/admin') }}">
+                            <a class="btn nav-btn px-3" href="{{ url('http://127.0.0.1:8000/') }}">
+                                <i class="fas fa-home"></i>
+                                <p>{{ __('Home') }}</p>
+                            </a>
+                        </div>
+
+                        <div class="nav-link d-flex justify-content-center align-items-center my-4">
+                            <a class="btn nav-btn px-3" href="{{ url('/admin') }}">
                                 <i class="fas fa-user"></i>
                                 <p>{{ __('Admin') }}</p>
                             </a>
@@ -82,7 +94,7 @@
                         </div>
 
                         <div class="nav-link d-flex justify-content-center align-items-center my-4">
-                            <a class="btn nav-btn" href="{{ url('/admin/orders') }}">
+                            <a class="btn nav-btn px-3" href="{{ url('/admin/orders') }}">
                                 <i class="fas fa-calendar-alt"></i>
                                 <p>{{ __('Orders') }}</p>
                             </a>

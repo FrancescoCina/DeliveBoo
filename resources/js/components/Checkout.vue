@@ -1,73 +1,98 @@
 <template>
   <div>
-    <div v-if="form" class="form">
-      <div class="mb-3">
-        <label for="name">Nome</label>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Nome"
-          id="name"
-          v-model="customer_name"
-        />
-      </div>
-      <div class="mb-3">
-        <label for="Surname">Cognome</label>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Cognome"
-          id="Surname"
-          v-model="customer_lastname"
-        />
-      </div>
-      <div class="mb-3">
-        <label for="Address">Indirizzo</label>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Indirizzo"
-          id="Address"
-          v-model="customer_address"
-        />
-      </div>
-      <div class="mb-3">
-        <label for="customer_email" class="form-label">Email</label>
-        <input
-          type="email"
-          class="form-control"
-          id="customer_email"
-          aria-describedby="emailHelp"
-          v-model="customer_email"
-        />
-        <div id="emailHelp" class="form-text">
-          We'll never share your email with anyone else.
+    <div class="container mt-3">
+      <div class="d-flex">
+        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5">
+          <ModalCart
+            class="mt-5 text-center"
+            :shoppingCart="shoppingCart"
+            :totalPrice="totalPrice"
+          />
+        </div>
+        <div v-if="form" class="form col-xl-10 col-lg-9 col-md-8 col-sm-7 ml-5">
+          <h2 class="text-center">Inserisci i tuoi dati</h2>
+          <div class="mb-1">
+            <label for="name"></label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Nome..."
+              id="name"
+              v-model="customer_name"
+            />
+          </div>
+          <div class="mb-1">
+            <label for="Surname"></label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Cognome..."
+              id="Surname"
+              v-model="customer_lastname"
+            />
+          </div>
+          <div class="mb-1">
+            <label for="Address"></label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Indirizzo..."
+              id="Address"
+              v-model="customer_address"
+            />
+          </div>
+          <div class="mb-1">
+            <label for="customer_email" class="form-label"></label>
+            <input
+              type="email"
+              class="form-control"
+              id="customer_email"
+              aria-describedby="emailHelp"
+              placeholder="Email.."
+              v-model="customer_email"
+            />
+            <div id="emailHelp" class="form-text">
+              We'll never share your email with anyone else.
+            </div>
+          </div>
+          <div class="d-flex justify-content-between mt-4">
+            <button class="btn btn-primary" type="submit" @click="createOrder">
+              Crea Ordine
+            </button>
+            <a class="btn btn-danger" href="http://127.0.0.1:8000/"
+              >Cancella ordine</a
+            >
+          </div>
+        </div>
+        <div class="form col-xl-10 col-lg-9 col-md-8 col-sm-7 ml-5">
+          <div v-if="payment" class="payment">
+            <v-braintree
+              :authorization="token"
+              @success="onSuccess"
+              @error="onError"
+              locale="it_IT"
+              :card="{
+                cardholderName: {
+                  required: true,
+                },
+              }"
+            ></v-braintree>
+          </div>
+            <Thanks v-if="thanks" />
         </div>
       </div>
-      <button type="submit" @click="createOrder">Crea Ordine</button>
     </div>
-    <div v-if="payment" class="payment">
-      <v-braintree
-        :authorization="token"
-        @success="onSuccess"
-        @error="onError"
-        locale="it_IT"
-        :card="{
-          cardholderName: {
-            required: true,
-          },
-        }"
-      ></v-braintree>
-    </div>
-    <Thanks v-if="thanks"/>
   </div>
 </template>
 
 <script>
-import Thanks from './Thanks.vue';
+import Thanks from "./Thanks.vue";
+import ModalCart from "./ModalCart.vue";
+
 export default {
   name: "Checkout",
   components: {
+    ModalCart,
     Thanks,
   },
   props: ["shoppingCart", "totalPrice"],
@@ -87,7 +112,7 @@ export default {
     };
   },
   methods: {
-     clearLocalStorage() {
+    clearLocalStorage() {
       this.shoppingCart = [];
       this.totalPrice = 0;
       localStorage.setItem("cart", JSON.stringify(this.shoppingCart));
@@ -157,7 +182,7 @@ export default {
             console.log(error.response.data);
           })
           .then(() => {
-            // this.isLoading = false; 
+            // this.isLoading = false;
           });
       }, 2500);
 

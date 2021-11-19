@@ -1,14 +1,19 @@
 <template>
   <div>
-    <HeaderRestaurant  />
-    <Jambotron :restaurant="restaurant"/>
+    <HeaderRestaurant />
+    <Jambotron :restaurant="restaurant" />
     <div class="container-fluid px-md-5">
       <Loader v-if="isLoading" />
       <div v-else>
         <div v-if="!isCheckout" class="container-fluid">
           <div class="row w-100">
             <div
-              class="col-12 col-lg-9 d-flex justify-content-around flex-wrap"
+              class="
+                col-8 col-lg-9 col-xl-10
+                d-flex
+                justify-content-around
+                flex-wrap
+              "
             >
               <div
                 class="
@@ -29,35 +34,88 @@
                 ></div>
                 <div class="description-wrap mw-100 text-center">
                   <div class="description text-white">
-                    <h5>{{ plate.name }}</h5>
-                    <p>{{ plate.description }}</p>
-                    <p>{{ plate.quantity }}</p>
-                    <p>{{ plate.price }} €</p>
-                    <a class="btn btn-success" @click="addPlateToCart(plate)"
-                      >+</a
+                    <h5 class="plate-name">{{ plate.name }}</h5>
+                    <p class="plate-description">{{ plate.description }}</p>
+                    <div
+                      class="
+                        plate-quantity-menu
+                        d-flex
+                        align-items-center
+                        justify-content-around
+                        flex-wrap
+                      "
                     >
-                    <a
-                      class="btn btn-danger"
-                      v-if="plate.quantity"
-                      @click="removePlateToCart(plate, index)"
-                    >
-                      Rimuovi
-                    </a>
+                      <a
+                        class="
+                          btn btn-danger
+                          quantity-btn quantity-btn-negative
+                        "
+                        v-if="plate.quantity"
+                        @click="removePlateToCart(plate, index)"
+                      >
+                        -
+                      </a>
+                      <span v-else class="px-3 px-lg-5 replacer">.</span>
+                      <p class="plate-quantity">{{ plate.quantity }}</p>
+                      <a
+                        class="
+                          btn btn-success
+                          quantity-btn quantity-btn-positive
+                        "
+                        @click="addPlateToCart(plate)"
+                        >+</a
+                      >
+                    </div>
+                    <p class="plate-price">{{ plate.price }} €</p>
                   </div>
                 </div>
               </div>
             </div>
-
-            <div class="col-12 col-lg-3 d-flex flex-column align-items-center">
-              <div class="mt-5 pt-5 mw-100 text-center">
-                <ModalCart
-                  v-if="showModal"
-                  :shoppingCart="shoppingCart"
-                  :totalPrice="totalPrice"
-                />
-                <a class="btn btn-success mt-3" @click="showCheckoutComp">
-                  Vai al Checkout
-                </a>
+            <div
+              class="
+                col-6 col-md-3
+                d-flex
+                flex-column
+                align-items-center
+                cart-column
+              "
+            >
+              <div
+                class="text-center cart-modal-container cart-fixer fixed-top"
+              >
+                <div
+                  class="
+                    col-6 col-md-3
+                    d-flex
+                    flex-column
+                    align-items-center
+                    cart-column
+                  "
+                >
+                  <div
+                    class="
+                      text-center
+                      cart-modal-container cart-fixer
+                      fixed-top
+                    "
+                  >
+                    <div class="mw-100">
+                      <ModalCart
+                        v-if="showModal"
+                        :shoppingCart="shoppingCart"
+                        :totalPrice="totalPrice"
+                      />
+                      <a
+                        class="btn btn-success mt-3"
+                        @click="showCheckoutComp"
+                        v-if="showModal"
+                      >
+                        Vai al Checkout
+                      </a>
+                      <button class="btn btn-danger mt-3">clear</button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -199,11 +257,12 @@ body {
 
 .card {
   margin-top: 100px;
-  height: 500px;
+  height: 575px;
   position: relative;
   background: #ff5858;
   transition: all 0.3s ease-out;
 }
+
 .card .description-wrap {
   padding: 105px 30px;
   position: relative;
@@ -259,5 +318,143 @@ body {
 .card:hover .description {
   transform: translateY(0%);
   opacity: 1;
+}
+
+.cart-modal-container {
+  width: 100%;
+}
+
+.cart-column {
+  max-width: 100%;
+  position: relative;
+
+  .bordello {
+    width: 200px;
+    top: 230px;
+    left: calc(100% - 320px);
+  }
+
+  .cart-fixer {
+    width: 200px;
+    top: 230px;
+    left: calc(100% - 320px);
+  }
+}
+
+.plate-name {
+  font-size: 20px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+}
+
+.plate-description {
+  font-size: 13px;
+  font-style: italic;
+}
+
+.plate-quantity {
+  font-size: 60px;
+}
+
+.quantity-btn {
+  font-size: 25px;
+  border-radius: 50%;
+}
+
+.quantity-btn-positive {
+  padding: 5px 20px;
+}
+
+.quantity-btn-negative {
+  padding: 8px 24px;
+}
+
+.replacer {
+  color: #ff5858;
+}
+
+@media screen and (max-width: 1199px) {
+  .plate-description {
+    display: none;
+  }
+}
+@media screen and (max-width: 1340px) {
+  .cart-column {
+    .cart-fixer {
+      left: calc(100% - 270px);
+    }
+  }
+}
+@media screen and (max-width: 700px) {
+  .cart-column {
+    .cart-fixer {
+      left: calc(100% - 250px);
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .cart-column {
+    .cart-fixer {
+      left: calc(100% - 225px);
+    }
+  }
+}
+.plate-quantity-menu {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+}
+
+@media screen and (min-width: 768px) {
+  .plate-quantity-menu {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .plate-quantity,
+  .plate-name {
+    font-size: 25px;
+  }
+
+  .quantity-btn-positive,
+  .quantity-btn-negative {
+    margin: 10px 0;
+    font-size: 20px;
+  }
+
+  .quantity-btn-positive {
+    padding: 1px 12px;
+  }
+
+  .quantity-btn-negative {
+    padding: 3px 16px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .plate-quantity-menu {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .plate-name {
+    font-size: 50px;
+  }
+
+  .plate-quantity {
+    font-size: 110px;
+  }
+
+  .quantity-btn {
+    font-size: 35px;
+  }
+
+  .quantity-btn-positive {
+    padding: 5px 24px;
+  }
+
+  .quantity-btn-negative {
+    padding: 8px 30px;
+  }
 }
 </style>

@@ -1,19 +1,23 @@
 <template>
-  <div class="box-footerIn">
-    <div class="d-flex justify-content-between align-items-center">
-      <div class="d-flex">
+  <div class="box-footer">
+    <div class="d-flex justify-content-between align-items-center w-100">
+      <div class="d-flex w-100 px-5">
         <link
           rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         />
-        <div class="center">
-          <div id="social-test">
-            <ul class="social">
-              <li><i class="fa fa-facebook" aria-hidden="true"></i></li>
-              <li><i class="fa fa-twitter" aria-hidden="true"></i></li>
-              <li><i class="fa fa-instagram" aria-hidden="true"></i></li>
-              <li><i class="fa fa-vimeo" aria-hidden="true"></i></li>
-            </ul>
+        <div class="center w-100">
+          <div class="social d-flex align-items-center justify-content-between w-100">
+            <div class="social-btn-container">
+              <p class="social-btn"><i class="fa fa-facebook" aria-hidden="true"></i></p>
+              <p class="social-btn"><i class="fa fa-twitter" aria-hidden="true"></i></p>
+            </div>
+
+            <div class="social-btn-container">
+              <p class="social-btn"><i class="fa fa-instagram" aria-hidden="true"></i></p>
+              <p class="social-btn"><i class="fa fa-vimeo" aria-hidden="true"></i></p>              
+            </div>
+
           </div>
         </div>
       </div>
@@ -28,37 +32,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.box-footerSu {
-  background-color: #ff5858;
-  color: white;
-  padding: 30px;
-  height: 150px;
-  list-style-type: none;
-  li {
-    margin-top: 30px;
-  }
-  a {
-    text-decoration: none;
-    font-size: 15px;
-    color: #ffffff;
-    transition: 0.3s;
-    margin-bottom: 10px;
-    padding: 20px 10px 0px 10px;
-  }
 
-  a:hover {
-    color: white;
-  }
-}
-.box-footerIn {
-  list-style-type: none;
+.box-footer{
+  .social {
+  display: table-cell;
+  text-align: center;
+  font-size: 15px;
 
-  #social-test {
-    display: table-cell;
-    text-align: center;
-    font-size: 15px;
-
-    li {
+    .social-btn {
       color: #ffffff;
       list-style-type: none;
       display: inline-block;
@@ -71,17 +52,17 @@ export default {
       margin-left: 10px;
 
       transition: ease 0.3s;
-      &:hover {
-        color: white;
+      opacity: 0.7;
+      &:hover{
+        opacity: 1;
       }
     }
   }
-  .social:hover > li {
-    opacity: 0.5;
-  }
+}
 
-  .social:hover > li:hover {
-    opacity: 1;
+@media screen and (max-width: 991px) {
+  .box-footer{
+    width: 100%;
   }
 }
 </style>
