@@ -77,8 +77,8 @@
                 },
               }"
             ></v-braintree>
-            <Thanks v-if="thanks" />
           </div>
+            <Thanks v-if="thanks" />
         </div>
       </div>
     </div>
