@@ -77,6 +77,7 @@
                 </div>
               </div>
             </div>
+            <p></p>
             <div
               class="
                 col-6 col-md-3
@@ -244,6 +245,7 @@ export default {
         this.isCheckout = true;
       }
     },
+
   },
   created() {
     let url = window.location.href;

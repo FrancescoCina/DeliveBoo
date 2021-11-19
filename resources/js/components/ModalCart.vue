@@ -1,6 +1,9 @@
 <template>
   <div>
     <div class="ck">
+      <div class="quantity-indicator">
+        {{ getQuantityTotal() }}
+      </div>
       <div>
         <h4>
           <i class="fas fa-cart-arrow-down pt-4 bg-gradient-secondary"></i>
@@ -28,6 +31,17 @@
 export default {
   name: "ModalCart",
   props: ["shoppingCart", "totalPrice"],
+  methods: {
+    getQuantityTotal(){
+      var sum = 0;
+      if(this.shoppingCart.length){
+        for (let i = 0; i < this.shoppingCart.length; i++){
+            sum += this.shoppingCart[i].quantity;
+        };
+      }
+      return sum;
+    },
+  },
   /*   methods: {
       removePlateToCart(plate, index) {
       if (this.shoppingCart.includes(plate) && plate.quantity > 0) {
@@ -63,8 +77,23 @@ export default {
   border-radius: 20px;
   -webkit-box-shadow: -2px 5px 11px 0px rgba(64, 64, 64, 0.62);
   box-shadow: -2px 5px 11px 0px rgba(64, 64, 64, 0.62);
+  position: relative;
   ul {
     list-style-type: none;
+  }
+  .quantity-indicator{
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    height: 45px;
+    width: 45px;
+    font-size: 20px;
+    border-radius: 50%;
+    background-color: #ff5858;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 </style>
