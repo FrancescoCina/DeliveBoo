@@ -28,22 +28,24 @@ class PaymentController extends Controller
         $order = Order::find($request->id);
 
         $result = $gateway->transaction()->sale([
-            'amount' => $order->total,
+            'amount' => $order->amount,
             'paymentMethodNonce' => $request->token,
             'options' => [
                 'submitForSettlement' => true
             ]
         ]);
         if ($result->success) {
+            $order->is_payed=1;
+            $order->save();
             $data = [
-                'email' => $order->mail,
-                'amount' => $order->total,
+                'email' => $order->customer_email,
+                'amount' => $order->amount,
                 'order_number' => $order->id,
                 'success' => true,
                 'message' => 'Transazione avvenuta con successo'
             ];
 
-            Mail::to('prova@example.it')->send(new OrderConfirmationEmail($order->mail));
+            Mail::to($order->customer_email,'customer@email.com')->send(new OrderConfirmationEmail($order));
             return response()->json(compact('data'), 200);
         } else {
             $data = [

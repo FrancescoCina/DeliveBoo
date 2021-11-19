@@ -13,10 +13,11 @@
             <h4>Conferma ordine</h4>
         </div>
         <div class="card-text">
-            <p> il numero ordine:</p>
-            <p> Cliente:</p>
-            <p> Venditore:</p>
-            <p> Ammontare :</p>
+            <p>Conferimiamo il pagamento del seguente ordine: </p>
+            <p> il numero ordine: {{ $order->id}}</p>
+            <p> Cliente:   {{$order->customer_name}}  {{$order->customer_lastname}} </p>
+            <p> email:  {{$order->customer_email}}</p>
+            <p> Totale ordine : {{$order->amount}} €</p>
         </div>
     </div>
     </div>
