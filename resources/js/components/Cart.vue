@@ -77,7 +77,6 @@
                 </div>
               </div>
             </div>
-            <p></p>
             <div
               class="
                 col-6 col-md-3
