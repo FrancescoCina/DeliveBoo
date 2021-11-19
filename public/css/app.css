@@ -14697,6 +14697,7 @@ h3 {
 .restaurant-card {
   margin: 150px 0;
   min-height: 500px;
+  height: 100%;
   min-width: 475px;
   background-color: #FF5858;
   box-shadow: -11px 10px 28px 6px #4D4D4D;
@@ -14710,22 +14711,61 @@ h3 {
 }
 .restaurant-card .restaurant-img-container {
   height: 100%;
+  max-height: 100%;
+  overflow: hidden;
 }
 .restaurant-card .restaurant-img-container img {
-  height: 100%;
+  min-height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
 }
 
-.plate-img-container {
-  overflow: hidden;
+@media screen and (min-width: 992px) {
+  .restaurant-card {
+    height: 500px;
+  }
 }
-.plate-img-container img {
+.plate-card-show {
+  margin: 150px 0;
+  min-height: 500px;
   height: 100%;
+  min-width: 475px;
+  background-color: #FF5858;
+  box-shadow: -11px 10px 28px 6px #4D4D4D;
+  padding: 0;
+  box-sizing: border-box;
+}
+.plate-card-show * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.plate-card-show .plate-img-container {
+  overflow: hidden;
+  min-height: 100%;
+}
+.plate-card-show .plate-img-container img {
+  min-height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
 
+@media screen and (max-width: 767px) {
+  .plate-img-container {
+    max-height: 500px;
+  }
+  .plate-img-container img {
+    max-height: 100%;
+  }
+}
+@media screen and (min-width: 768px) {
+  .plate-card-show {
+    height: 500px;
+  }
+  .plate-card-show .plate-img-container {
+    max-height: 100%;
+  }
+}
 .bot {
   border-color: transparent;
 }
@@ -14737,8 +14777,8 @@ h3 {
 }
 
 .restaurant-title {
-  font-size: 50px;
-  font-family: montserrat, sans-serif;
+  font-size: 40px;
+  font-family: "Montserrat", sans-serif;
 }
 
 .restaurant-info {
