@@ -53,9 +53,6 @@
           <tfoot>
             <div class="mt-4  text-center">
               <a href="{{ route('admin.orders.statistics.index') }}" class="btn btn-success">Statistiche</a>           
-              <div class="mt-4 d-flex justify-content-center">
-                  {{ $orders->links() }}
-              </div>
             </div>
           </tfoot>
     </section>

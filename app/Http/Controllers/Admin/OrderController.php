@@ -18,7 +18,7 @@ class OrderController extends Controller
         $restaurant = Restaurant::where('user_id', Auth::user()->id)->first();
 
         $orders =  Plate::where('restaurant_id', $restaurant->id)->with('orders')->get()->pluck('orders')->flatten()->sortDesc();
-        $orders = Order::paginate(6);
+        // $orders = $orders->paginate(6);
 
         return view('admin.orders.index', compact('orders', 'restaurant'));
     }

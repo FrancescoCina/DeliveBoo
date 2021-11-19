@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\Plate;
 use Illuminate\Http\Request;
 use Redirect, Response;
 use Illuminate\Support\Facades\DB;
@@ -21,7 +22,7 @@ class ChartController extends Controller
             ->groupBy('month_name', 'month')
             ->orderBy('month')
             ->get();
-            
+
 
         $amounts = Order::select(DB::raw("SUM(amount) as amount"), DB::raw("MONTHNAME(created_at) as month_name"), DB::raw("MONTH(created_at) as month"))
             ->where('created_at', '<', Carbon::today())
@@ -58,6 +59,6 @@ class ChartController extends Controller
 
         $data['chart_data'] = json_encode($data);
         $dataAmount['chart_data_amount'] = json_encode($dataAmount);
-        return view('admin.orders.statistics.index', $data, $dataAmount)->with('restaurant',$restaurant);
+        return view('admin.orders.statistics.index', $data, $dataAmount)->with('restaurant', $restaurant);
     }
 }
