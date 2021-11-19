@@ -36,17 +36,35 @@
                   <div class="description text-white">
                     <h5 class="plate-name">{{ plate.name }}</h5>
                     <p class="plate-description">{{ plate.description }}</p>
-                    <div class="plate-quantity-menu d-flex align-items-center justify-content-around flex-wrap" >
+                    <div
+                      class="
+                        plate-quantity-menu
+                        d-flex
+                        align-items-center
+                        justify-content-around
+                        flex-wrap
+                      "
+                    >
                       <a
-                      class="btn btn-danger quantity-btn quantity-btn-negative"
-                      v-if="plate.quantity"
-                      @click="removePlateToCart(plate, index)"
+                        class="
+                          btn btn-danger
+                          quantity-btn quantity-btn-negative
+                        "
+                        v-if="plate.quantity"
+                        @click="removePlateToCart(plate, index)"
                       >
                         -
                       </a>
                       <span v-else class="px-3 px-lg-5 replacer">.</span>
                       <p class="plate-quantity">{{ plate.quantity }}</p>
-                      <a class="btn btn-success quantity-btn quantity-btn-positive" @click="addPlateToCart(plate)">+</a>
+                      <a
+                        class="
+                          btn btn-success
+                          quantity-btn quantity-btn-positive
+                        "
+                        @click="addPlateToCart(plate)"
+                        >+</a
+                      >
                     </div>
                     <p class="plate-price">{{ plate.price }} €</p>
                   </div>
@@ -62,23 +80,41 @@
                 cart-column
               "
             >
-              <div class="text-center cart-modal-container bordello fixed-top">
-            <div class="col-6 col-md-3 d-flex flex-column align-items-center cart-column">
-              <div class="text-center cart-modal-container cart-fixer fixed-top">
-                <div class="mw-100">
-                  <ModalCart
-                    v-if="showModal"
-                    :shoppingCart="shoppingCart"
-                    :totalPrice="totalPrice"
-                  />
-                  <a
-                    class="btn btn-success mt-3"
-                    @click="showCheckoutComp"
-                    v-if="showModal"
+              <div
+                class="text-center cart-modal-container cart-fixer fixed-top"
+              >
+                <div
+                  class="
+                    col-6 col-md-3
+                    d-flex
+                    flex-column
+                    align-items-center
+                    cart-column
+                  "
+                >
+                  <div
+                    class="
+                      text-center
+                      cart-modal-container cart-fixer
+                      fixed-top
+                    "
                   >
-                    Vai al Checkout
-                  </a>
-                  <button class="btn btn-danger mt-3">clear</button>
+                    <div class="mw-100">
+                      <ModalCart
+                        v-if="showModal"
+                        :shoppingCart="shoppingCart"
+                        :totalPrice="totalPrice"
+                      />
+                      <a
+                        class="btn btn-success mt-3"
+                        @click="showCheckoutComp"
+                        v-if="showModal"
+                      >
+                        Vai al Checkout
+                      </a>
+                      <button class="btn btn-danger mt-3">clear</button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -300,8 +336,8 @@ body {
 
   .cart-fixer {
     width: 200px;
-    top: 100px;
-    left: calc(100% - 220px);
+    top: 230px;
+    left: calc(100% - 320px);
   }
 }
 
@@ -344,22 +380,14 @@ body {
 }
 @media screen and (max-width: 1340px) {
   .cart-column {
-    max-width: 100%;
-    position: relative;
-    .bordello {
-      width: 200px;
-      top: 230px;
+    .cart-fixer {
       left: calc(100% - 270px);
     }
   }
 }
 @media screen and (max-width: 700px) {
   .cart-column {
-    max-width: 100%;
-    position: relative;
-    .bordello {
-      width: 200px;
-      top: 230px;
+    .cart-fixer {
       left: calc(100% - 250px);
     }
   }
@@ -367,11 +395,7 @@ body {
 
 @media screen and (max-width: 600px) {
   .cart-column {
-    max-width: 100%;
-    position: relative;
-    .bordello {
-      width: 200px;
-      top: 230px;
+    .cart-fixer {
       left: calc(100% - 225px);
     }
   }

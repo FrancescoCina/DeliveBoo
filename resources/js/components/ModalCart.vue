@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="ck">
-      <div class="">
+      <div>
         <h4>
           <i class="fas fa-cart-arrow-down pt-4 bg-gradient-secondary"></i>
           Carrello
