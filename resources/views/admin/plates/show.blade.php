@@ -4,7 +4,7 @@
 
 
 <div class="container mt-5">
-        <div class="row plate-card">
+        <div class="row plate-card-show">
             <div class="col-12 col-md-6 text-center text-lg-start d-flex justify-content-center align-items-center my-5 my-md-0 plate-img-container">
                 <img src="{{asset('storage/'.$plate->image)}}" alt="{{$plate->name}}">
             </div>
