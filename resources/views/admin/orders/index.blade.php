@@ -2,6 +2,8 @@
 
 @section('content')
     <section id="orders" class="container">
+        <h1 class="text-success mt-3 font-weight-bold text-center mb-2">I Tuoi Ordini</h1>
+
       <div class="box mt-5">
 
         @if(session('alert-msg'))
@@ -17,7 +19,6 @@
         @include('includes.alert_restaurant')
         @else  
 
-        <h1 class="text-white mt-3 font-weight-bold text-center mb-2">I Tuoi Ordini</h1>
 
         <table class="table">
             <thead>
@@ -51,10 +52,12 @@
             </tbody>
           </table>
           <tfoot>
-            <div class="mt-4  text-center">
+            
+          </tfoot>
+      </div>
+      <div class="mt-5  text-center">
               <a href="{{ route('admin.orders.statistics.index') }}" class="btn btn-success">Statistiche</a>           
             </div>
-          </tfoot>
     </section>
     @endif
 @endsection
